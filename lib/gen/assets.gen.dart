@@ -25,19 +25,48 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow_back.svg
   String get arrowBack => 'assets/icons/arrow_back.svg';
 
+  /// File path: assets/icons/baby.svg
+  String get baby => 'assets/icons/baby.svg';
+
+  /// File path: assets/icons/brain.svg
+  String get brain => 'assets/icons/brain.svg';
+
+  /// File path: assets/icons/feet.svg
+  String get feet => 'assets/icons/feet.svg';
+
+  /// File path: assets/icons/heart.svg
+  String get heart => 'assets/icons/heart.svg';
+
+  /// File path: assets/icons/heart1.svg
+  String get heart1 => 'assets/icons/heart1.svg';
+
+  /// File path: assets/icons/sparm.svg
+  String get sparm => 'assets/icons/sparm.svg';
+
+  /// File path: assets/icons/stepper.svg
+  String get stepper => 'assets/icons/stepper.svg';
+
   /// List of all assets
-  List<String> get values => [arrowBack];
+  List<String> get values =>
+      [arrowBack, baby, brain, feet, heart, heart1, sparm, stepper];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
+
+  /// File path: assets/images/cocooil.png
+  AssetGenImage get cocooil => const AssetGenImage('assets/images/cocooil.png');
+
+  /// File path: assets/images/cosmetics.png
+  AssetGenImage get cosmetics =>
+      const AssetGenImage('assets/images/cosmetics.png');
 
   /// File path: assets/images/splash_screen.png
   AssetGenImage get splashScreen =>
       const AssetGenImage('assets/images/splash_screen.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [splashScreen];
+  List<AssetGenImage> get values => [cocooil, cosmetics, splashScreen];
 }
 
 class Assets {
