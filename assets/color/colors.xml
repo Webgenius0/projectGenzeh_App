@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <colors>
 
+<color name="allPrimaryColor">#FF3689FD</color>
   <color name="c3689FD">#FF3689FD</color>
   <color name="cFFFFFF">#FFFFFFFF</color>
   <color name="c4D4D4D">#FF4D4D4D</color>
-
-  
   <color name="c222222">#FF222222</color>
   <color name="c000000">#FF000000</color>
   <color name="cEEEEEE">#FFEEEEEE</color>
   <color name="c252C2E">#FF252C2E</color>
   <color name="c252C2E">#FF252C2E</color>
+
+
+  <color name="cFFFFFF">#FFFFFFFF</color>
   
   
-
-
-
 </colors>

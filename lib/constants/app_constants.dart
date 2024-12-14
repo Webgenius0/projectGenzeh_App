@@ -61,6 +61,7 @@ class DeliveryStatusColor {
 
 const String kImageUrl = 'imageUrl';
 // Keys
+const String kKeyfirstTime = "first";
 const String kKeyStatus = 'status';
 const String kKeySelectedProfile = 'selected_profile';
 const String kKeyJsonObject = 'json_object';

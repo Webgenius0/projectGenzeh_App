@@ -1,43 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/gen/assets.gen.dart';
-import 'package:genzeh911/helpers/helper_methods.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
 
   @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-              child: Image.asset(
-            Assets.images.splashScreen.path,
-            fit: BoxFit.cover,
-          )),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "BYE,\nMICROPLASTICS\nAI",
-                  style: TextFontStyle.textStyle24c222222QuandoW400,
-                ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Text(
-                  "Unmask Hidden Microplastics in Your\nEveryday Products. Empower Your Choices.\nProtect Your Health and The Environment.",
-                  style: TextFontStyle.textStyle16c4D4D4DOpenSansW400,
-                )
-              ],
-            ),
-          )
-        ],
-      ),
+    return Center(
+      child: Text('Body'),
     );
   }
 }
