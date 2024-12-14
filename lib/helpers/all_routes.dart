@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
-import 'package:genzeh911/features/dummy_screen.dart';
 
 import '../loading.dart';
 
@@ -24,11 +23,12 @@ final class RouteGenerator {
         return Platform.isAndroid
             ? _FadedTransitionRoute(widget: const Loading(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const Loading());
-      case Routes.welcomeScreen:
-        return Platform.isAndroid
-            ? _FadedTransitionRoute(
-                widget: const DummyScreen(), settings: settings)
-            : CupertinoPageRoute(builder: (context) => const DummyScreen());
+
+      // case Routes.welcomeScreen:
+      //   return Platform.isAndroid
+      //       ? _FadedTransitionRoute(
+      //           widget: const DummyScreen(), settings: settings)
+      //       : CupertinoPageRoute(builder: (context) => const DummyScreen());
       default:
         return null;
     }
