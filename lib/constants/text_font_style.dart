@@ -15,4 +15,15 @@ class TextFontStyle {
 
   static final textStyle14c252C2EOpenSansW400 = GoogleFonts.openSans(
       color: AppColors.c252C2E, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  static final textStyle24c222222UrbanistW600 = GoogleFonts.urbanist(
+      color: AppColors.c252C2E, fontSize: 24.sp, fontWeight: FontWeight.w600);
+
+  static final textStyle14c54585CDmSans400 =
+      TextStyle(fontFamilyFallback: const [
+    'DMSans',
+    'Open Sans',
+    'Roboto',
+    'Noto Sans',
+  ], color: AppColors.c54585C, fontSize: 14.sp, fontWeight: FontWeight.w400);
 }

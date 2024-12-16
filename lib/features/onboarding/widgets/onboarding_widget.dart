@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:genzeh911/common_widgets/custom_elevated_button.dart';
+import 'package:genzeh911/common_widgets/stepper_bar.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
+import 'package:genzeh911/features/onboarding/widgets/onboarding_page_eleven.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_five.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_four.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_nine.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_one.dart';
+import 'package:genzeh911/features/onboarding/widgets/onboarding_page_seven.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_six.dart';
+import 'package:genzeh911/features/onboarding/widgets/onboarding_page_ten.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_three.dart';
+import 'package:genzeh911/features/onboarding/widgets/onboarding_page_twelve.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_two.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
-import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:get/get.dart';
 import '../../../../gen/assets.gen.dart';
 
 class OnBoardingWidget extends StatefulWidget {
@@ -28,6 +33,7 @@ class OnBoardingWidget extends StatefulWidget {
 class _OnBoardingWidgetState extends State<OnBoardingWidget> {
   final PageController _controller = PageController();
   int _currentIndex = 0;
+  final int totalSteps = 11;
 
   @override
   void initState() {
@@ -39,9 +45,31 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
     });
   }
 
+  double calculatePerformanceBarWidth() {
+    return (_currentIndex / totalSteps) * 100; // Returns percentage width
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SvgPicture.asset(
+              Assets.icons.arrowBack,
+              height: 24.h,
+              width: 24.w,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -54,25 +82,26 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             child: Column(
               children: [
                 UIHelper.verticalSpace(25.h),
+                Container(
+                  height: 5,
+                  width: double.infinity,
+                ),
                 Row(
                   children: [
-                    IconButton(
-                        onPressed: () {
-                          NavigationService.goBack;
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: AppColors.c000000,
-                        )),
-                    SvgPicture.asset(Assets.icons.stepper)
+                    // if (_currentIndex != -0) Container(),
+                    UIHelper.horizontalSpace(115.w),
+                    PerformanceBar(
+                      fillColor: AppColors.c3689FD, // You can choose any color
+                      width: calculatePerformanceBarWidth(),
+                    ),
                   ],
                 ),
-                Expanded(
+                Flexible(
                   child: PageView(
-                    physics: const BouncingScrollPhysics(),
-
+                    physics: NeverScrollableScrollPhysics(),
                     // scrollBehavior: ScrollBehavior,
                     allowImplicitScrolling: false,
+
                     controller: _controller,
                     children: const [
                       OnboardingPageOne(
@@ -106,34 +135,57 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                         descriptionTwo:
                             'Microplastics increase the risk of heart disease, stroke, and death.',
                       ),
-                      OnboardingPageNine(title: 'What is your main goal?')
+                      OnboardingPageSeven(
+                        title: 'MicroPlastics are Harmful to Our Health',
+                        descriptionOne:
+                            'Microplastics can be found in the maternal and fetal sides of the placenta, as well as in the amniochorial membranes.',
+                        descriptionTwo:
+                            'A study found microplastics in the blood samples of 77% individuals. Microplastics can circulate through the body, lodging in organs and affecting their function over time.',
+                      ),
+                      OnboardingPageNine(title: 'What is your main goal?'),
+                      OnboardingPageTen(
+                        titleOne: 'Welcome to ',
+                        titleTwo: ' BMAi',
+                        icon: '👋',
+                        description:
+                            'Your AI-powered companion for detecting microplastics in cosmetics and skincare. Let’s make safer, smarter choices together prieod.',
+                      ),
+                      OnboardingPageEleven(
+                        title: 'Complete Your Profile',
+                        description:
+                            'Don\'t worry, only you can see your personal data. NO one else will be able to see it.',
+                      ),
+                      OnboardingPageTwelve(),
                     ],
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.only(left: 38.w, right: 38.w, bottom: 53.h),
-                  child: customElevatedButton(
-                      onPressed: () {
-                        if (_currentIndex == 10) {
-                          widget.onDone();
-                        } else {
-                          _controller.nextPage(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.linear);
-                        }
-                      },
-                      child: Text(
-                        'Continew',
-                        style: TextFontStyle.textStyle14c252C2EOpenSansW400
-                            .copyWith(
-                          fontSize: 12.sp,
-                          color: AppColors.cFFFFFF,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      bgColor: AppColors.allPrimaryColor),
+                  padding: EdgeInsets.symmetric(horizontal: 10.sp),
+                  child: _currentIndex == totalSteps - 1
+                      ? const SizedBox.shrink()
+                      : customElevatedButton(
+                          onPressed: () {
+                            if (_currentIndex == totalSteps - 1) {
+                              widget.onDone();
+                            } else {
+                              _controller.nextPage(
+                                duration: const Duration(milliseconds: 300),
+                                curve: Curves.linear,
+                              );
+                            }
+                          },
+                          child: Text(
+                            'Continue',
+                            style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                                .copyWith(
+                              fontSize: 12.sp,
+                              color: AppColors.cFFFFFF,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          bgColor: AppColors.allPrimaryColor),
                 ),
+                UIHelper.verticalSpace(40.h),
               ],
             ),
           )

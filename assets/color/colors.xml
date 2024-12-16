@@ -13,6 +13,14 @@
 
 
   <color name="cFFFFFF">#FFFFFFFF</color>
-  
-  
+  <color name="c0D95F6">#FF0D95F6</color>
+  <color name="c4B586B">#FF4B586B</color>
+  <color name="c212121">#FF212121</color>
+  <color name="c8A8A8A">#FF8A8A8A</color>
+  <color name="c54585C">#FF54585C</color>
+  <color name="c2B2B2B">#FF2B2B2B</color>
+  <color name="c55D0FF">#FF55D0FF</color>
+  <color name="cF8F8F8">#FFF8F8F8</color>
+  <color name="cF7F7F7">#FFF7F7F7</color>
+
 </colors>

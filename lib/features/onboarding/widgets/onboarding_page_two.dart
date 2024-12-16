@@ -29,7 +29,6 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
       'Facebook',
       'LinkedIn'
           'Through a Friedn',
-      'Other'
     ];
 
     return SafeArea(

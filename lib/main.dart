@@ -1,28 +1,27 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:auto_animated/auto_animated.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:genzeh911/features/subscription_plan/presentation/subscription_plan_screen.dart';
+import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/di.dart';
+import 'package:genzeh911/loading.dart';
+import 'package:genzeh911/networks/dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:genzeh911/loading.dart';
-import 'package:provider/provider.dart';
-import '/helpers/all_routes.dart';
-import 'helpers/di.dart';
 import 'helpers/helper_methods.dart';
-import 'helpers/language.dart';
 import 'helpers/navigation_service.dart';
-import 'helpers/register_provider.dart';
-import 'networks/dio/dio.dart';
 
-Future<void> backgroundHandler(RemoteMessage message) async {}
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //await _requestPermissions();
   await GetStorage.init();
   diSetup();
-  initiInternetChecker();
+  // initiInternetChecker();
+
   DioSingleton.instance.create();
+
   runApp(const MyApp());
 }
 
@@ -33,20 +32,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     rotation();
     setInitValue();
-    return MultiProvider(
-      providers: providers,
-      child: AnimateIfVisibleWrapper(
-        showItemInterval: const Duration(milliseconds: 150),
-        child: PopScope(
-          canPop: false,
-          onPopInvoked: (bool didPop) async {
-            showMaterialDialog(context);
+    return AnimateIfVisibleWrapper(
+      showItemInterval: const Duration(milliseconds: 150),
+      child: PopScope(
+        canPop: false,
+        onPopInvoked: (bool didPop) async {
+          showMaterialDialog(context);
+        },
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return const UtillScreenMobile();
           },
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              return const UtillScreenMobile();
-            },
-          ),
         ),
       ),
     );
@@ -61,31 +57,31 @@ class UtillScreenMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(412, 827),
+      designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
         return PopScope(
-          canPop: false,
-          onPopInvoked: (bool didPop) async {
-            showMaterialDialog(context);
-          },
-          child: GetMaterialApp(
-            showPerformanceOverlay: false,
-            theme: ThemeData(
-              scaffoldBackgroundColor: Colors.white,
-              useMaterial3: false,
-            ),
-            debugShowCheckedModeBanner: false,
-            translations: LocalString(),
-            builder: (context, widget) {
-              return MediaQuery(data: MediaQuery.of(context), child: widget!);
+            canPop: false,
+            onPopInvokedWithResult: (bool didPop, _) async {
+              showMaterialDialog(context);
             },
-            navigatorKey: NavigationService.navigatorKey,
-            onGenerateRoute: RouteGenerator.generateRoute,
-            home: const Loading(),
-          ),
-        );
+            child: GetMaterialApp(
+                //    showPerformanceOverlay: true,
+                theme: ThemeData(
+                    unselectedWidgetColor: Colors.white,
+                    useMaterial3: false,
+                    scaffoldBackgroundColor: AppColors.cFFFFFF,
+                    appBarTheme: const AppBarTheme(
+                        color: AppColors.cFFFFFF, elevation: 0)),
+                debugShowCheckedModeBanner: false,
+                builder: (context, widget) {
+                  return MediaQuery(
+                      data: MediaQuery.of(context), child: widget!);
+                },
+                navigatorKey: NavigationService.navigatorKey,
+                onGenerateRoute: RouteGenerator.generateRoute,
+                home: Loading()));
       },
     );
   }

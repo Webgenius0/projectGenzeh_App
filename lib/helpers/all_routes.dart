@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:genzeh911/features/auth/forgot_password/presentation/forgot_password_screen.dart';
+import 'package:genzeh911/features/auth/otp_verification/presentation/otp_verification_screen.dart';
+import 'package:genzeh911/features/auth/sign_in/presentation/sign_in_screen.dart';
 
 import '../loading.dart';
 
@@ -9,7 +12,11 @@ final class Routes {
   static Routes get instance => _routes;
 
   static const String loadingScreen = '/Loading';
-  static const String welcomeScreen = '/welcome_screen';
+  static const String loginSwapScreen = '/loginSwapScreen';
+  static const String signInScreen = '/signInScreen';
+  // static const String signUpScreen = '/signUpScreen';
+  static const String forgetPasswordScreen = '/forgetPasswordScreen';
+  static const String otpVerificationScreen = '/forgetPasswordScreen';
 }
 
 final class RouteGenerator {
@@ -24,11 +31,32 @@ final class RouteGenerator {
             ? _FadedTransitionRoute(widget: const Loading(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const Loading());
 
-      // case Routes.welcomeScreen:
+      case Routes.signInScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const SignInScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => const SignInScreen());
+
+      // case Routes.signUpScreen:
       //   return Platform.isAndroid
       //       ? _FadedTransitionRoute(
-      //           widget: const DummyScreen(), settings: settings)
-      //       : CupertinoPageRoute(builder: (context) => const DummyScreen());
+      //           widget: const SignUpScreen(), settings: settings)
+      //       : CupertinoPageRoute(builder: (context) => const SignUpScreen());
+
+      case Routes.forgetPasswordScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const ForgotPasswordScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => const ForgotPasswordScreen());
+
+      case Routes.otpVerificationScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const OtpVerificationScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => const OtpVerificationScreen());
+
       default:
         return null;
     }
