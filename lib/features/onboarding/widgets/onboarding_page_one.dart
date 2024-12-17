@@ -45,7 +45,7 @@ class _OnboardingPageOneState extends State<OnboardingPageOne> {
             ),
             UIHelper.verticalSpace(16.h),
             Text(
-              widget.description!,
+              widget.description ?? '',
               textAlign: TextAlign.center,
               style: TextFontStyle.textStyle14c252C2EOpenSansW400
                   .copyWith(color: AppColors.c252C2E),

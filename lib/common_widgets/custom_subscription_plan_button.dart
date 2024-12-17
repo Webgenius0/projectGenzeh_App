@@ -46,8 +46,8 @@ class CustomSubscriptionButton extends StatelessWidget {
                 style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: 24.sp,
-                    letterSpacing: -0.48,
-                    color: rightTextColor2),
+                    letterSpacing: -0.48.sp,
+                    color: rightTextColor1),
               ),
               Text(
                 rightText2,

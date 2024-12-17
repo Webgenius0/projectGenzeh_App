@@ -12,13 +12,13 @@ import '../../../../helpers/ui_helpers.dart';
 import '../../../gen/assets.gen.dart';
 
 class OnboardingPageEleven extends StatefulWidget {
-  final String title;
-  final String description;
+  final String? title;
+  final String? description;
 
   const OnboardingPageEleven({
     super.key,
-    required this.title,
-    required this.description,
+    this.title,
+    this.description,
   });
 
   @override
@@ -58,12 +58,12 @@ class _OnboardingPageElevenState extends State<OnboardingPageEleven> {
           children: [
             UIHelper.verticalSpace(42.h),
             Text(
-              widget.title,
+              widget.title ?? '',
               style: TextFontStyle.textStyle24c222222UrbanistW600
                   .copyWith(letterSpacing: -0.5.sp, color: AppColors.c000000),
             ),
             UIHelper.verticalSpace(16.h),
-            Text(widget.description,
+            Text(widget.description ?? '',
                 style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                   color: AppColors.c4B586B,
                   fontSize: 14.sp,

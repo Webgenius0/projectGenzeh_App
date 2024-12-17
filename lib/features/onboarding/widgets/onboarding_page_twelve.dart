@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:genzeh911/common_widgets/custom_elevated_button.dart';
 import 'package:genzeh911/common_widgets/custom_input_field_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
@@ -8,7 +7,6 @@ import 'package:genzeh911/features/subscription_plan/presentation/subscription_p
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class OnboardingPageTwelve extends StatefulWidget {
   const OnboardingPageTwelve({super.key});
@@ -39,7 +37,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
           ),
           UIHelper.verticalSpace(16.h),
           Text(
-            "Enter your username, email & password. If you forget it, then you have to do forgot password.",
+            "Please enter your username, email and password. If you forget it, then you have to do forgot password.",
             style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
               color: AppColors.c4B586B,
               fontWeight: FontWeight.w400,
@@ -48,10 +46,10 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
           ),
           UIHelper.verticalSpace(24.h),
           CustomInputFieldWidget(
-            labelText: "User Name",
+            labelText: "Username",
             isPasswordField: false,
             showSuffixIcon: false,
-            hintText: 'Azizul Hakim',
+            hintText: 'Enter username',
             inputType: TextInputType.emailAddress,
             controller: nameController,
           ),

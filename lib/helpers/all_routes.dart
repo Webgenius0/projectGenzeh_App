@@ -17,6 +17,7 @@ final class Routes {
   // static const String signUpScreen = '/signUpScreen';
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
   static const String otpVerificationScreen = '/forgetPasswordScreen';
+  // static const String onboardingPageEleven = '/onboardingPageEleven';
 }
 
 final class RouteGenerator {
@@ -56,6 +57,13 @@ final class RouteGenerator {
                 widget: const OtpVerificationScreen(), settings: settings)
             : CupertinoPageRoute(
                 builder: (context) => const OtpVerificationScreen());
+
+      // case Routes.onboardingPageEleven:
+      //   return Platform.isAndroid
+      //       ? _FadedTransitionRoute(
+      //           widget: const OnboardingPageEleven(), settings: settings)
+      //       : CupertinoPageRoute(
+      //           builder: (context) => const OnboardingPageEleven());
 
       default:
         return null;

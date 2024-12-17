@@ -27,8 +27,7 @@ class _OnboardingPageNineState extends State<OnboardingPageNine> {
       'Support Detoxification and Body Health',
       'Improve Skin and Respiratory Health',
       'Educate on Product Safety',
-      'Reduce Personal use of Plastics'
-          'Through a Friedn',
+      'Reduce Personal use of Microplastics',
     ];
 
     return SafeArea(

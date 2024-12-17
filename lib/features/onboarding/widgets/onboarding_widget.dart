@@ -17,7 +17,8 @@ import 'package:genzeh911/features/onboarding/widgets/onboarding_page_twelve.dar
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_two.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
+import 'package:genzeh911/provider/page_view_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../gen/assets.gen.dart';
 
 class OnBoardingWidget extends StatefulWidget {
@@ -31,16 +32,16 @@ class OnBoardingWidget extends StatefulWidget {
 }
 
 class _OnBoardingWidgetState extends State<OnBoardingWidget> {
-  final PageController _controller = PageController();
   int _currentIndex = 0;
   final int totalSteps = 11;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() {
+    context.read<PageViewProvider>().controller.addListener(() {
       setState(() {
-        _currentIndex = _controller.page!.round();
+        _currentIndex =
+            context.read<PageViewProvider>().controller.page!.round();
       });
     });
   }
@@ -52,24 +53,24 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: SvgPicture.asset(
-              Assets.icons.arrowBack,
-              height: 24.h,
-              width: 24.w,
-            ),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      // extendBodyBehindAppBar: true,
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       Get.back();
+      //     },
+      //     icon: Padding(
+      //       padding: const EdgeInsets.all(10.0),
+      //       child: SvgPicture.asset(
+      //         Assets.icons.arrowBack,
+      //         height: 24.h,
+      //         width: 24.w,
+      //       ),
+      //     ),
+      //   ),
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      // ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -102,11 +103,11 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                     // scrollBehavior: ScrollBehavior,
                     allowImplicitScrolling: false,
 
-                    controller: _controller,
+                    controller: context.read<PageViewProvider>().controller,
                     children: const [
                       OnboardingPageOne(
                         title: 'How Old Are You?',
-                        description: 'Select age range for better content.',
+                        description: '',
                       ),
                       OnboardingPageTwo(
                         title: 'How did you find us?',
@@ -168,10 +169,13 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                             if (_currentIndex == totalSteps - 1) {
                               widget.onDone();
                             } else {
-                              _controller.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.linear,
-                              );
+                              context
+                                  .read<PageViewProvider>()
+                                  .controller
+                                  .nextPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.linear,
+                                  );
                             }
                           },
                           child: Text(

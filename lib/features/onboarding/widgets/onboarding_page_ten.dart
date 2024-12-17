@@ -5,6 +5,8 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
+import 'package:genzeh911/provider/page_view_provider.dart';
+import 'package:provider/provider.dart';
 import '../../../../helpers/ui_helpers.dart';
 import '../../../gen/assets.gen.dart';
 
@@ -45,7 +47,7 @@ class _OnboardingPageTenState extends State<OnboardingPageTen> {
       },
       {
         'icon': null,
-        'title': 'I Have Already an Account',
+        'title': 'I Already Have An Account',
       },
     ];
 
@@ -96,8 +98,11 @@ class _OnboardingPageTenState extends State<OnboardingPageTen> {
                   onPressed: () {
                     if (index == signInOption.length - 1) {
                       NavigationService.navigateTo(Routes.signInScreen);
-                    } else if (index == signInOption.length - 2) {
-                      // NavigationService.navigateTo(Routes.signUpScreen);
+                    } else if (index == 2) {
+                      context.read<PageViewProvider>().controller.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.linear,
+                          );
                     } else {
                       setState(() {
                         selectedIndex = index;

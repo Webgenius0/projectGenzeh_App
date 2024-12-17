@@ -60,7 +60,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   ),
                   UIHelper.verticalSpace(16.h),
                   Text(
-                      "We Fave sent the OTP verification code to your email address Chock your ernail and entor the code below,",
+                      "We have sent the OTP verification code to your email address Check your email and enter the code below,",
                       style:
                           TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
                         color: AppColors.c4B586B,

@@ -1,4 +1,5 @@
 import 'package:genzeh911/provider/auth_provider.dart';
+import 'package:genzeh911/provider/page_view_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/address.dart';
@@ -7,7 +8,7 @@ import '../provider/provides.dart';
 
 var providers = [
   //New
-   ChangeNotifierProvider<AuthProvider>(
+  ChangeNotifierProvider<AuthProvider>(
     create: ((context) => AuthProvider()),
   ),
   // Old
@@ -39,5 +40,8 @@ var providers = [
   ChangeNotifierProvider<CartCounter>(
     create: ((context) => CartCounter()),
   ),
- 
+
+  ChangeNotifierProvider<PageViewProvider>(
+    create: ((context) => PageViewProvider()),
+  ),
 ];

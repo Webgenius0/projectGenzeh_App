@@ -11,7 +11,7 @@ Widget customSubscriptionText({required String text}) {
     children: [
       CircleAvatar(
           backgroundColor: AppColors.c55D0FF,
-          radius: 12.r,
+          radius: 8.r,
           child: Padding(
             padding: const EdgeInsets.all(5.0),
             child: SvgPicture.asset(
@@ -25,7 +25,7 @@ Widget customSubscriptionText({required String text}) {
           style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
               color: AppColors.c222222,
               fontWeight: FontWeight.w600,
-              fontSize: 12.sp)),
+              fontSize: 13.sp)),
     ],
   );
 }

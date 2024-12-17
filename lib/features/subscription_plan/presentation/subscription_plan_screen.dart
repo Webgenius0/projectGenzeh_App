@@ -35,7 +35,8 @@ class _SubscriptionPlanScreenState extends State<SubscriptionPlanScreen> {
               style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                   color: AppColors.c2B2B2B,
                   fontSize: 20.sp,
-                  letterSpacing: -0.4.sp),
+                  letterSpacing: -0.4.sp,
+                  fontWeight: FontWeight.w600),
             ),
             UIHelper.verticalSpace(16.h),
             Container(
@@ -57,22 +58,22 @@ class _SubscriptionPlanScreenState extends State<SubscriptionPlanScreen> {
             ),
             UIHelper.verticalSpace(16.h),
             Padding(
-              padding: EdgeInsets.only(bottom: 10.h),
+              padding: EdgeInsets.only(bottom: 8.h),
               child: customSubscriptionText(
                   text: 'Al Agent Managed Risk Assessments.'),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 10.h),
+              padding: EdgeInsets.only(bottom: 8.h),
               child: customSubscriptionText(
                   text: 'Scientific Based Educational Insights.'),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 10.h),
+              padding: EdgeInsets.only(bottom: 8.h),
               child: customSubscriptionText(
                   text: 'Self Empowerment to a Healthier You.'),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 10.h),
+              padding: EdgeInsets.only(bottom: 8.h),
               child: customSubscriptionText(text: 'AD Free'),
             ),
             UIHelper.verticalSpace(10.w),
@@ -83,7 +84,7 @@ class _SubscriptionPlanScreenState extends State<SubscriptionPlanScreen> {
               rightText1: '3.33',
               rightText2: ' /weekly',
               rightTextColor1: Colors.white,
-              rightTextColor2: Colors.white,
+              rightTextColor2: AppColors.c222222.withOpacity(0.72),
             ),
             UIHelper.verticalSpace(10.w),
             CustomSubscriptionButton(
@@ -92,8 +93,8 @@ class _SubscriptionPlanScreenState extends State<SubscriptionPlanScreen> {
               leftTextColor: Colors.black,
               rightText1: '34.44',
               rightText2: ' /weekly',
-              rightTextColor1: Colors.white,
-              rightTextColor2: Colors.black,
+              rightTextColor1: AppColors.c222222,
+              rightTextColor2: AppColors.c222222.withOpacity(0.72),
             ),
             UIHelper.verticalSpace(10.w),
             CustomSubscriptionButton(
@@ -102,8 +103,8 @@ class _SubscriptionPlanScreenState extends State<SubscriptionPlanScreen> {
               leftTextColor: Colors.black,
               rightText1: '6.88',
               rightText2: ' /weekly',
-              rightTextColor1: Colors.white,
-              rightTextColor2: Colors.black,
+              rightTextColor1: AppColors.c222222,
+              rightTextColor2: AppColors.c222222.withOpacity(0.72),
             ),
             UIHelper.verticalSpace(10.h),
             customElevatedButton(

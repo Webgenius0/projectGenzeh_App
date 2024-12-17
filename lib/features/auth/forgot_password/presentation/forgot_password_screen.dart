@@ -61,7 +61,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   ),
                   UIHelper.verticalSpace(16.h),
                   Text(
-                      "Enter your email address. We will send an OTP \ncode for verification in the next step.",
+                      "Enter your email address. You Will receive an OTP code for verification via email.",
                       style:
                           TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
                         color: AppColors.c4B586B,

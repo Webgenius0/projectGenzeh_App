@@ -65,8 +65,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                             letterSpacing: -0.5.sp, color: AppColors.c000000),
                   ),
                   UIHelper.verticalSpace(16.h),
-                  Text(
-                      "Enter your new password If you forget it, \nthen you have to do forgot password.",
+                  Text("Enter your new password.",
                       style:
                           TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
                         color: AppColors.c4B586B,
