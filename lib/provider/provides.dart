@@ -66,7 +66,7 @@ final class ItemOptionIndex extends ChangeNotifier {
       itemCalculation();
       notifyListeners();
     } else {
-      ToastUtil.showShortToast("Can't add more then 5 extra item");
+      // ToastUtil.showShortToast("Can't add more then 5 extra item");
     }
   }
 
@@ -166,7 +166,13 @@ class PlcaeMarkAddress extends ChangeNotifier {
     _isDefault = addDefault;
     _phone = phn;
     _addressName = adName;
-    log((address! + city! + state! + postalCode! + country!.toString() + lat! + lng!));
+    log((address! +
+        city! +
+        state! +
+        postalCode! +
+        country!.toString() +
+        lat! +
+        lng!));
     notifyListeners();
   }
 

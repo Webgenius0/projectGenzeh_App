@@ -44,8 +44,8 @@ class _OnboardingPageFourState extends State<OnboardingPageFour> {
             ),
             UIHelper.verticalSpace(32.h),
             Image.asset(
-              Assets.images.cocooil.path,
-              height: 343.h,
+              Assets.images.phone.path,
+              height: 355.h,
             )
           ],
         ),

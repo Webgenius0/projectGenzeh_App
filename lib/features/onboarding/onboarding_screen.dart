@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:genzeh911/constants/app_constants.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_widget.dart';
+import 'package:genzeh911/helpers/di.dart';
 import 'package:genzeh911/welcome_screen.dart';
 import 'package:get/get.dart';
-import '../../../constants/app_constants.dart';
-import '../../../helpers/di.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -21,7 +21,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       child: Stack(
         children: [
           OnBoardingWidget(onDone: () {
-            Get.to<dynamic>(const WelcomeScreen());
+            Get.to(const WelcomeScreen());
           }),
         ],
       ),

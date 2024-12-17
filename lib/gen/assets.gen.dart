@@ -22,8 +22,27 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/activity.svg
+  String get activity => 'assets/icons/activity.svg';
+
+  /// File path: assets/icons/apple.svg
+  String get apple => 'assets/icons/apple.svg';
+
   /// File path: assets/icons/arrow_back.svg
   String get arrowBack => 'assets/icons/arrow_back.svg';
+
+  /// File path: assets/icons/arrow_bottom.svg
+  String get arrowBottom => 'assets/icons/arrow_bottom.svg';
+
+  /// File path: assets/icons/arrow_right.svg
+  String get arrowRight => 'assets/icons/arrow_right.svg';
+
+  /// File path: assets/icons/arrow_right_notification.svg
+  String get arrowRightNotification =>
+      'assets/icons/arrow_right_notification.svg';
+
+  /// File path: assets/icons/arrow_rights.svg
+  String get arrowRights => 'assets/icons/arrow_rights.svg';
 
   /// File path: assets/icons/baby.svg
   String get baby => 'assets/icons/baby.svg';
@@ -31,8 +50,23 @@ class $AssetsIconsGen {
   /// File path: assets/icons/brain.svg
   String get brain => 'assets/icons/brain.svg';
 
+  /// File path: assets/icons/congratulation.svg
+  String get congratulation => 'assets/icons/congratulation.svg';
+
+  /// File path: assets/icons/date_of_birth.svg
+  String get dateOfBirth => 'assets/icons/date_of_birth.svg';
+
+  /// File path: assets/icons/dot_icon.svg
+  String get dotIcon => 'assets/icons/dot_icon.svg';
+
+  /// File path: assets/icons/editProfile.svg
+  String get editProfile => 'assets/icons/editProfile.svg';
+
   /// File path: assets/icons/feet.svg
   String get feet => 'assets/icons/feet.svg';
+
+  /// File path: assets/icons/google.svg
+  String get google => 'assets/icons/google.svg';
 
   /// File path: assets/icons/heart.svg
   String get heart => 'assets/icons/heart.svg';
@@ -40,15 +74,90 @@ class $AssetsIconsGen {
   /// File path: assets/icons/heart1.svg
   String get heart1 => 'assets/icons/heart1.svg';
 
-  /// File path: assets/icons/sparm.svg
-  String get sparm => 'assets/icons/sparm.svg';
+  /// File path: assets/icons/home_menu.svg
+  String get homeMenu => 'assets/icons/home_menu.svg';
+
+  /// File path: assets/icons/low_disk.svg
+  String get lowDisk => 'assets/icons/low_disk.svg';
+
+  /// File path: assets/icons/mail.svg
+  String get mail => 'assets/icons/mail.svg';
+
+  /// File path: assets/icons/menu.svg
+  String get menu => 'assets/icons/menu.svg';
+
+  /// File path: assets/icons/menu_icon.svg
+  String get menuIcon => 'assets/icons/menu_icon.svg';
+
+  /// File path: assets/icons/new_article.svg
+  String get newArticle => 'assets/icons/new_article.svg';
+
+  /// File path: assets/icons/notification.svg
+  String get notification => 'assets/icons/notification.svg';
+
+  /// File path: assets/icons/notification_img.svg
+  String get notificationImg => 'assets/icons/notification_img.svg';
+
+  /// File path: assets/icons/process_payment.svg
+  String get processPayment => 'assets/icons/process_payment.svg';
+
+  /// File path: assets/icons/right_icon.svg
+  String get rightIcon => 'assets/icons/right_icon.svg';
+
+  /// File path: assets/icons/safe.svg
+  String get safe => 'assets/icons/safe.svg';
+
+  /// File path: assets/icons/security_update.svg
+  String get securityUpdate => 'assets/icons/security_update.svg';
+
+  /// File path: assets/icons/setting.svg
+  String get setting => 'assets/icons/setting.svg';
+
+  /// File path: assets/icons/sparms.svg
+  String get sparms => 'assets/icons/sparms.svg';
+
+  /// File path: assets/icons/star.svg
+  String get star => 'assets/icons/star.svg';
 
   /// File path: assets/icons/stepper.svg
   String get stepper => 'assets/icons/stepper.svg';
 
   /// List of all assets
-  List<String> get values =>
-      [arrowBack, baby, brain, feet, heart, heart1, sparm, stepper];
+  List<String> get values => [
+        activity,
+        apple,
+        arrowBack,
+        arrowBottom,
+        arrowRight,
+        arrowRightNotification,
+        arrowRights,
+        baby,
+        brain,
+        congratulation,
+        dateOfBirth,
+        dotIcon,
+        editProfile,
+        feet,
+        google,
+        heart,
+        heart1,
+        homeMenu,
+        lowDisk,
+        mail,
+        menu,
+        menuIcon,
+        newArticle,
+        notification,
+        notificationImg,
+        processPayment,
+        rightIcon,
+        safe,
+        securityUpdate,
+        setting,
+        sparms,
+        star,
+        stepper
+      ];
 }
 
 class $AssetsImagesGen {
@@ -57,16 +166,50 @@ class $AssetsImagesGen {
   /// File path: assets/images/cocooil.png
   AssetGenImage get cocooil => const AssetGenImage('assets/images/cocooil.png');
 
+  /// File path: assets/images/computer.png
+  AssetGenImage get computer =>
+      const AssetGenImage('assets/images/computer.png');
+
   /// File path: assets/images/cosmetics.png
   AssetGenImage get cosmetics =>
       const AssetGenImage('assets/images/cosmetics.png');
+
+  /// File path: assets/images/fruits.png
+  AssetGenImage get fruits => const AssetGenImage('assets/images/fruits.png');
+
+  /// File path: assets/images/img1.png
+  AssetGenImage get img1 => const AssetGenImage('assets/images/img1.png');
+
+  /// File path: assets/images/phone.png
+  AssetGenImage get phone => const AssetGenImage('assets/images/phone.png');
+
+  /// File path: assets/images/product_img.png
+  AssetGenImage get productImg =>
+      const AssetGenImage('assets/images/product_img.png');
+
+  /// File path: assets/images/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
 
   /// File path: assets/images/splash_screen.png
   AssetGenImage get splashScreen =>
       const AssetGenImage('assets/images/splash_screen.png');
 
+  /// File path: assets/images/winter.png
+  AssetGenImage get winter => const AssetGenImage('assets/images/winter.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [cocooil, cosmetics, splashScreen];
+  List<AssetGenImage> get values => [
+        cocooil,
+        computer,
+        cosmetics,
+        fruits,
+        img1,
+        phone,
+        productImg,
+        profile,
+        splashScreen,
+        winter
+      ];
 }
 
 class Assets {

@@ -22,14 +22,12 @@ class _OnboardingPageNineState extends State<OnboardingPageNine> {
   @override
   Widget build(BuildContext context) {
     final List<String> options = [
-      'Prevent LOng-Term Chronic Conditions',
+      'Prevent Long-Term Chronic Conditions',
       'Promote Reproductive Health',
       'Support Detoxification and Body Health',
       'Improve Skin and Respiratory Health',
       'Educate on Product Safety',
-      'Reduce Personal use of Plastics'
-          'Through a Friedn',
-      'Other'
+      'Reduce Personal use of Microplastics',
     ];
 
     return SafeArea(

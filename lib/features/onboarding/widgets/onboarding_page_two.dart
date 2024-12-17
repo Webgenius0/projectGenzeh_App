@@ -27,9 +27,7 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
       'Searched on App Store',
       'Instagram',
       'Facebook',
-      'LinkedIn'
-          'Through a Friedn',
-      'Other'
+      'Through a Friend',
     ];
 
     return SafeArea(

@@ -13,6 +13,26 @@ class TextFontStyle {
   static final textStyle16c4D4D4DOpenSansW400 = GoogleFonts.openSans(
       color: AppColors.c4D4D4D, fontSize: 16.sp, fontWeight: FontWeight.w400);
 
+  static final textStylec212121OpenSansW600 = GoogleFonts.openSans(
+      color: AppColors.c4D4D4D, fontSize: 14.sp, fontWeight: FontWeight.w600);
+
   static final textStyle14c252C2EOpenSansW400 = GoogleFonts.openSans(
-      color: AppColors.c252C2E, fontSize: 14.sp, fontWeight: FontWeight.w400);
+      color: AppColors.c212121, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  static final textStyle24c222222UrbanistW600 = GoogleFonts.urbanist(
+      color: AppColors.c252C2E, fontSize: 24.sp, fontWeight: FontWeight.w600);
+
+  static final textStyle24c2B2B2BInterW600 = GoogleFonts.inter(
+      color: AppColors.c2B2B2B, fontSize: 24.sp, fontWeight: FontWeight.w600);
+
+  static final textStyle12c0A3004PoppinsW500 = GoogleFonts.poppins(
+      color: AppColors.c0A3004, fontSize: 12.sp, fontWeight: FontWeight.w500);
+
+  static final textStyle14c54585CDmSans400 =
+      TextStyle(fontFamilyFallback: const [
+    'DMSans',
+    'Open Sans',
+    'Roboto',
+    'Noto Sans',
+  ], color: AppColors.c54585C, fontSize: 14.sp, fontWeight: FontWeight.w400);
 }

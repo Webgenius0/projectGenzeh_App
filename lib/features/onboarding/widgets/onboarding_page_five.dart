@@ -39,7 +39,7 @@ class _OnboardingPageFiveState extends State<OnboardingPageFive> {
             ),
             UIHelper.verticalSpace(26.h),
             SvgPicture.asset(
-              Assets.icons.sparm,
+              Assets.icons.sparms,
               height: 80.h,
               width: 80.w,
             ),
