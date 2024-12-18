@@ -22,8 +22,14 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/about_us.svg
+  String get aboutUs => 'assets/icons/about_us.svg';
+
   /// File path: assets/icons/activity.svg
   String get activity => 'assets/icons/activity.svg';
+
+  /// File path: assets/icons/app_logo.svg
+  String get appLogo => 'assets/icons/app_logo.svg';
 
   /// File path: assets/icons/apple.svg
   String get apple => 'assets/icons/apple.svg';
@@ -41,6 +47,9 @@ class $AssetsIconsGen {
   String get arrowRightNotification =>
       'assets/icons/arrow_right_notification.svg';
 
+  /// File path: assets/icons/arrow_right_two.svg
+  String get arrowRightTwo => 'assets/icons/arrow_right_two.svg';
+
   /// File path: assets/icons/arrow_rights.svg
   String get arrowRights => 'assets/icons/arrow_rights.svg';
 
@@ -55,6 +64,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/date_of_birth.svg
   String get dateOfBirth => 'assets/icons/date_of_birth.svg';
+
+  /// File path: assets/icons/delete.svg
+  String get delete => 'assets/icons/delete.svg';
 
   /// File path: assets/icons/dot_icon.svg
   String get dotIcon => 'assets/icons/dot_icon.svg';
@@ -74,8 +86,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/heart1.svg
   String get heart1 => 'assets/icons/heart1.svg';
 
+  /// File path: assets/icons/help_center.svg
+  String get helpCenter => 'assets/icons/help_center.svg';
+
   /// File path: assets/icons/home_menu.svg
   String get homeMenu => 'assets/icons/home_menu.svg';
+
+  /// File path: assets/icons/logo.svg
+  String get logo => 'assets/icons/logo.svg';
+
+  /// File path: assets/icons/logout.svg
+  String get logout => 'assets/icons/logout.svg';
 
   /// File path: assets/icons/low_disk.svg
   String get lowDisk => 'assets/icons/low_disk.svg';
@@ -98,8 +119,20 @@ class $AssetsIconsGen {
   /// File path: assets/icons/notification_img.svg
   String get notificationImg => 'assets/icons/notification_img.svg';
 
+  /// File path: assets/icons/personal_info.svg
+  String get personalInfo => 'assets/icons/personal_info.svg';
+
   /// File path: assets/icons/process_payment.svg
   String get processPayment => 'assets/icons/process_payment.svg';
+
+  /// File path: assets/icons/profile.svg
+  String get profile => 'assets/icons/profile.svg';
+
+  /// File path: assets/icons/profile_edit.svg
+  String get profileEdit => 'assets/icons/profile_edit.svg';
+
+  /// File path: assets/icons/profile_notification.svg
+  String get profileNotification => 'assets/icons/profile_notification.svg';
 
   /// File path: assets/icons/right_icon.svg
   String get rightIcon => 'assets/icons/right_icon.svg';
@@ -124,24 +157,31 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
+        aboutUs,
         activity,
+        appLogo,
         apple,
         arrowBack,
         arrowBottom,
         arrowRight,
         arrowRightNotification,
+        arrowRightTwo,
         arrowRights,
         baby,
         brain,
         congratulation,
         dateOfBirth,
+        delete,
         dotIcon,
         editProfile,
         feet,
         google,
         heart,
         heart1,
+        helpCenter,
         homeMenu,
+        logo,
+        logout,
         lowDisk,
         mail,
         menu,
@@ -149,7 +189,11 @@ class $AssetsIconsGen {
         newArticle,
         notification,
         notificationImg,
+        personalInfo,
         processPayment,
+        profile,
+        profileEdit,
+        profileNotification,
         rightIcon,
         safe,
         securityUpdate,
@@ -180,6 +224,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/img1.png
   AssetGenImage get img1 => const AssetGenImage('assets/images/img1.png');
 
+  /// File path: assets/images/person.png
+  AssetGenImage get person => const AssetGenImage('assets/images/person.png');
+
   /// File path: assets/images/phone.png
   AssetGenImage get phone => const AssetGenImage('assets/images/phone.png');
 
@@ -204,6 +251,7 @@ class $AssetsImagesGen {
         cosmetics,
         fruits,
         img1,
+        person,
         phone,
         productImg,
         profile,

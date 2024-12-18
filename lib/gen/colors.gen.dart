@@ -52,8 +52,20 @@ class AppColors {
   /// Color: #FF54585C
   static const Color c54585C = Color(0xFF54585C);
 
+  /// Color: #FF545A63
+  static const Color c545A63 = Color(0xFF545A63);
+
   /// Color: #FF55D0FF
   static const Color c55D0FF = Color(0xFF55D0FF);
+
+  /// Color: #FF55D0FF1C
+  static const Color c55D0FF1C = Color(0xFF55D0FF1C);
+
+  /// Color: #FF55D0FF29
+  static const Color c55D0FF29 = Color(0xFF55D0FF29);
+
+  /// Color: #FF55d0ff
+  static const Color c55d0ff = Color(0xFF55D0FF);
 
   /// Color: #FF6B6B6B
   static const Color c6B6B6B = Color(0xFF6B6B6B);
@@ -73,8 +85,23 @@ class AppColors {
   /// Color: #FFE7E7E7
   static const Color cE7E7E7 = Color(0xFFE7E7E7);
 
+  /// Color: #FFE9EFF7
+  static const Color cE9EFF7 = Color(0xFFE9EFF7);
+
+  /// Color: #FFEBEBEB
+  static const Color cEBEBEB = Color(0xFFEBEBEB);
+
+  /// Color: #FFECECEC
+  static const Color cECECEC = Color(0xFFECECEC);
+
   /// Color: #FFEEEEEE
   static const Color cEEEEEE = Color(0xFFEEEEEE);
+
+  /// Color: #FFF00
+  static const Color cF00 = Color(0xFFF00);
+
+  /// Color: #FFF4F5F6
+  static const Color cF4F5F6 = Color(0xFFF4F5F6);
 
   /// Color: #FFF7F7F7
   static const Color cF7F7F7 = Color(0xFFF7F7F7);
@@ -84,6 +111,9 @@ class AppColors {
 
   /// Color: #FFF98121
   static const Color cF98121 = Color(0xFFF98121);
+
+  /// Color: #FFFF0000
+  static const Color cFF0000 = Color(0xFFFF0000);
 
   /// Color: #FFFFD21E
   static const Color cFFD21E = Color(0xFFFFD21E);
