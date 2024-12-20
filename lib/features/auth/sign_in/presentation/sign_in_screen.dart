@@ -3,13 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:genzeh911/common_widgets/custom_input_field_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/home/presentation/home_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
 
 import '../../../../common_widgets/custom_elevated_button.dart';
 
@@ -34,10 +32,30 @@ class _SignInScreenState extends State<SignInScreen> {
       'icon': Assets.icons.google,
       'title': 'Continue with Google',
     },
+    // {
+    //   'icon': null,
+    //   'title': 'Other Email',
+    // },
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SvgPicture.asset(
+              Assets.icons.arrowBack,
+              height: 24.h,
+              width: 24.w,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -53,6 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    UIHelper.verticalSpace(55.h),
                     Text(
                       "Hello there 👋",
                       style: TextFontStyle.textStyle24c222222UrbanistW600
@@ -60,7 +79,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               letterSpacing: -0.48.sp,
                               color: AppColors.c000000),
                     ),
-                    UIHelper.verticalSpace(16.h),
+                    UIHelper.verticalSpace(10.h),
                     Text(
                       "Please enter your username/email and \npassword to sign in",
                       style:
@@ -70,7 +89,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         fontSize: 14.sp,
                       ),
                     ),
-                    UIHelper.verticalSpace(24.h),
+                    UIHelper.verticalSpace(15.h),
                     CustomInputFieldWidget(
                       labelText: "User Name 0r Email",
                       isPasswordField: false,
@@ -79,7 +98,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       inputType: TextInputType.emailAddress,
                       controller: nameOrEmailController,
                     ),
-                    UIHelper.verticalSpace(24.h),
+                    UIHelper.verticalSpace(15.h),
                     CustomInputFieldWidget(
                       labelText: "Password",
                       isPasswordField: true,
@@ -88,9 +107,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       inputType: TextInputType.text,
                       controller: passwordController,
                     ),
-                    UIHelper.verticalSpace(16.h),
+                    UIHelper.verticalSpace(10.h),
                     const RememberMeCheckbox(),
-                    UIHelper.verticalSpace(32.h),
+                    UIHelper.verticalSpace(20.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -106,7 +125,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ],
                     ),
-                    UIHelper.verticalSpace(24.h),
+                    UIHelper.verticalSpace(15.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -171,10 +190,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         );
                       }),
                     ),
-                    UIHelper.verticalSpace(30.h),
+                    UIHelper.verticalSpace(18.h),
                     customElevatedButton(
                         onPressed: () {
-                          Get.to(() => HomeScreen());
+                          NavigationService.navigateToWithArgs(
+                              Routes.bottomNav, {"pageNum": 0});
                         },
                         child: Text(
                           'Sign In',
@@ -278,7 +298,7 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.h),
+        padding: EdgeInsets.only(bottom: 10.h),
         child: Container(
           height: 56.h,
           alignment: Alignment.center,

@@ -3,13 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:genzeh911/common_widgets/custom_input_field_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/home/presentation/home_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
 import '../../../../common_widgets/custom_elevated_button.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
@@ -96,7 +94,8 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       onPressed: () {
                         // NavigationService.navigateTo(
                         //     Routes.otpVerificationScreen);
-                        Get.to(() => HomeScreen());
+                        NavigationService.navigateToWithArgs(
+                            Routes.bottomNav, {"pageNum": 0});
                       },
                       child: Text(
                         'Confirm',

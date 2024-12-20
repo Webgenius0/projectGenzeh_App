@@ -4,12 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/common_widgets/custom_educational_insight_card_widget.dart';
 import 'package:genzeh911/common_widgets/custom_recent_scan_card_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/home/presentation/educational_insides/presentation/educational_insides.dart';
-import 'package:genzeh911/features/home/presentation/recent_scans/presentation/recent_scans_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
 
 class HomeBodyScreen extends StatefulWidget {
   const HomeBodyScreen({super.key});
@@ -25,8 +24,6 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
       "title": "Food price rise fears amid staff shortages",
       "time": "4min ago",
       "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
       "icon": Assets.icons.dotIcon,
     },
     {
@@ -34,8 +31,6 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
       "title": "2021's most brilliant horror movie",
       "time": "4min ago",
       "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
       "icon": Assets.icons.dotIcon,
     },
     {
@@ -43,8 +38,6 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
       "title": "US jobs growth disappoints as recovery falters",
       "time": "4min ago",
       "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
       "icon": Assets.icons.dotIcon,
     },
     {
@@ -52,8 +45,6 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
       "title": "US jobs growth disappoints as recovery falters",
       "time": "4min ago",
       "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
       "icon": Assets.icons.dotIcon,
     },
     {
@@ -61,8 +52,6 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
       "title": "US jobs growth disappoints as recovery falters",
       "time": "4min ago",
       "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
       "icon": Assets.icons.dotIcon,
     },
     {
@@ -70,8 +59,6 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
       "title": "US jobs growth disappoints as recovery falters",
       "time": "4min ago",
       "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
       "icon": Assets.icons.dotIcon,
     },
   ];
@@ -95,30 +82,36 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
               ),
               GestureDetector(
                   onTap: () {
-                    Get.to(() => RecentScansScreen());
+                    NavigationService.navigateToWithArgs(
+                        Routes.bottomNav, {"pageNum": 2});
                   },
                   child: SvgPicture.asset(Assets.icons.arrowRights))
             ],
           ),
           UIHelper.verticalSpace(16.h),
-          CustomRecentScanCard(
-            imageUrl: Assets.images.productImg.path,
-            title: "ABC skin care solution",
-            date: "12 Dec 2024",
-            status: "Low Risk",
-            statusColor: AppColors.cFFD21E,
-            icon: Assets.icons.lowDisk,
-            time: '09:42',
-            statusIconColor: AppColors.cFFD21E,
+          GestureDetector(
+            onTap: () {
+              NavigationService.navigateTo(Routes.historyDetails);
+            },
+            child: CustomRecentScanCard(
+              imageUrl: Assets.images.productImg.path,
+              title: "ABC skin care solution",
+              date: "12 Dec 2024",
+              status: "Low Risk",
+              statusColor: AppColors.cFFD21E,
+              // icon: Assets.icons.lowRisk,
+              time: '09:42',
+              statusIconColor: AppColors.cFFD21E,
+            ),
           ),
-          UIHelper.verticalSpace(8.h),
+          UIHelper.verticalSpace(12.h),
           CustomRecentScanCard(
               imageUrl: Assets.images.productImg.path,
               title: "ABC hair solution",
               date: "17 Dec 2024",
               status: "Safe",
               statusColor: AppColors.c00B822,
-              icon: Assets.icons.safe,
+              // icon: Assets.icons.safe,
               time: '09:42',
               statusIconColor: AppColors.c00B822),
           UIHelper.verticalSpace(24.h),
@@ -126,7 +119,7 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Educational Insight",
+                "Educational Insights",
                 style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                     color: AppColors.c212121,
                     fontSize: 18.sp,
@@ -135,29 +128,32 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
               ),
               GestureDetector(
                   onTap: () {
-                    Get.to(() => EducationalInsides());
+                    // Get.to(() => EducationalInsides());
+                    NavigationService.popAndReplaceWihArgs(
+                        Routes.bottomNav, {"pageNum": 1});
                   },
                   child: SvgPicture.asset(Assets.icons.arrowRights))
             ],
           ),
-          UIHelper.verticalSpace(24.h),
+          UIHelper.verticalSpace(16.h),
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
               primary: false,
               itemCount: educationalInsightDataList.length,
               itemBuilder: (context, index) {
-                final scanData = educationalInsightDataList[index];
+                final eduData = educationalInsightDataList[index];
                 return Padding(
                   padding: EdgeInsets.only(bottom: 12.h),
                   child: CustomEducationalInsightCardWidget(
-                    imageUrl: scanData["imageUrl"],
-                    title: scanData["title"],
-                    time: scanData["time"],
-                    source: scanData["source"],
-                    sourceColor: scanData["sourceColor"],
-                    icon: scanData["icon"],
-                    statusIconColor: scanData["statusIconColor"],
+                    onTap: () {
+                      NavigationService.navigateTo(Routes.insightDetailsScreen);
+                    },
+                    // onTap: () => NavigationService.navigateTo(),
+                    imageUrl: eduData["imageUrl"],
+                    title: eduData["title"],
+                    time: eduData["time"],
+                    source: eduData["source"],
                   ),
                 );
               },

@@ -3,26 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/common_widgets/custom_account_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/profile/presentation/about_us_screen.dart';
-import 'package:genzeh911/features/profile/presentation/help_center_screen.dart';
-import 'package:genzeh911/features/profile/presentation/notification_setup_screeen.dart';
-import 'package:genzeh911/features/profile/presentation/personal_info_screen.dart';
+import 'package:genzeh911/features/account_and_setting/presentation/faq_screen.dart';
+import 'package:genzeh911/features/account_and_setting/presentation/personal_info_screen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import 'edit_profile_screen.dart';
-
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class AccountFullScreen extends StatefulWidget {
+  const AccountFullScreen({Key? key}) : super(key: key);
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _AccountFullScreenState createState() => _AccountFullScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _AccountFullScreenState extends State<AccountFullScreen> {
   final List<Map<String, dynamic>> items = [
     {
       'icon': Assets.icons.notification, // Replace with your asset path
@@ -31,53 +27,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
       'route': PersonalInfoScreen(),
       // Replace with your actual screen.
     },
-    {
-      'icon': Assets.icons.notification, // Replace with your asset path
-      'text': 'Notification',
-      'iconColor': Colors.blue,
-      'route': NotificationSetupScreeen(),
-      // Replace with your actual screen.
-    },
+    // {
+    //   'icon': Assets.icons.notification, // Replace with your asset path
+    //   'text': 'Notification',
+    //   'iconColor': Colors.blue,
+    //   'route': NotificationScreeen(),
+    //   // Replace with your actual screen.
+    // },
     {
       'icon': Assets.icons.helpCenter, // Replace with your asset path
       'text': 'Help Center',
       'iconColor': Colors.blue,
-      'route': HelpCenterScreen(),
+      'route': FaqScreen(),
       // Replace with your actual screen.
     },
-    {
-      'icon': Assets.icons.aboutUs, // Replace with your asset path
-      'text': 'About Us',
-      'iconColor': Colors.blue,
-      'route': AboutUsScreen(),
-      // Replace with your actual screen.
-    },
+    // {
+    //   'icon': Assets.icons.aboutUs, // Replace with your asset path
+    //   'text': 'About Us',
+    //   'iconColor': Colors.blue,
+    //   'route': FaqScreen(),
+    //   // Replace with your actual screen.
+    // },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.cF4F5F6,
-        appBar: AppBar(
-          backgroundColor: AppColors.cF4F5F6,
-          leading: IconButton(
-            onPressed: () {
-              // Get.back();
-            },
-            icon: SvgPicture.asset(
-              Assets.icons.appLogo,
-              width: 58.w,
-              height: 58.h,
-              fit: BoxFit.contain,
-            ),
-          ),
-          centerTitle: true,
-          title: Text('Account',
-              style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
-                  fontSize: 20.sp,
-                  letterSpacing: -0.4,
-                  color: AppColors.c2B2B2B)),
-        ),
+        // appBar: AppBar(
+        //   backgroundColor: AppColors.cF4F5F6,
+        //   leading: IconButton(
+        //     onPressed: () {
+        //       // Get.back();
+        //     },
+        //     icon: SvgPicture.asset(
+        //       Assets.icons.appLogo,
+        //       width: 58.w,
+        //       height: 58.h,
+        //       fit: BoxFit.contain,
+        //     ),
+        //   ),
+        //   centerTitle: true,
+        //   title: Text('Account',
+        //       style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
+        //           fontSize: 20.sp,
+        //           letterSpacing: -0.4,
+        //           color: AppColors.c2B2B2B)),
+        // ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(
@@ -85,7 +81,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               UIHelper.verticalSpace(24.h),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => EditProfileScreen());
+                  NavigationService.navigateTo(Routes.personalInfoScreen);
                 },
                 child: Container(
                   height: 90.h,
@@ -156,11 +152,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           iconColor: item['iconColor'],
                           text: item['text'],
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => item['route']),
-                            );
+                            if (index == 0) {
+                              NavigationService.navigateTo(
+                                  Routes.personalInfoScreen);
+                            } else if (index == 1) {
+                              NavigationService.navigateTo(
+                                  Routes.notificationScreeen);
+                            } else if (index == 2) {
+                              NavigationService.navigateTo(Routes.faqScreen);
+                            }
                           },
                           showDivider: !isLastItem,
                         ),
@@ -170,9 +170,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   },
                 ),
               ),
-              Spacer(),
+              UIHelper.verticalSpace(10.h),
               GestureDetector(
-                onTap: () {},
+                onTap: () => NavigationService.navigateTo(Routes.signInScreen),
                 child: Container(
                   height: 72.h,
                   padding:

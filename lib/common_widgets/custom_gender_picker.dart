@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,7 +7,7 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 
-class CustomDateOrCountryPickWidget extends StatefulWidget {
+class CustomGenderPicker extends StatefulWidget {
   final String labelText;
   final String hintText;
   final bool showSuffixIcon;
@@ -14,7 +16,7 @@ class CustomDateOrCountryPickWidget extends StatefulWidget {
   // Callback when button is pressed
   final bool isDatePicker;
 
-  const CustomDateOrCountryPickWidget({
+  const CustomGenderPicker({
     super.key,
     required this.labelText,
     required this.hintText,
@@ -25,12 +27,10 @@ class CustomDateOrCountryPickWidget extends StatefulWidget {
   });
 
   @override
-  State<CustomDateOrCountryPickWidget> createState() =>
-      _CustomDateOrCountryPickWidgetState();
+  State<CustomGenderPicker> createState() => _CustomGenderPickerState();
 }
 
-class _CustomDateOrCountryPickWidgetState
-    extends State<CustomDateOrCountryPickWidget> {
+class _CustomGenderPickerState extends State<CustomGenderPicker> {
   bool isIconVisible = false; // To manage dynamic icon display
   String displayedHintText = "";
   bool isDateSelected = false;
@@ -50,9 +50,7 @@ class _CustomDateOrCountryPickWidgetState
         Text(
           widget.labelText,
           style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
-            color: AppColors.c212121,
-            fontSize: 14.sp,
-          ),
+              color: AppColors.c212121, fontSize: 16.sp, letterSpacing: -0.32),
         ),
         UIHelper.verticalSpace(12.h),
         ElevatedButton(
@@ -77,9 +75,9 @@ class _CustomDateOrCountryPickWidgetState
             shadowColor: Colors.transparent, // Remove shadow if desired
             shape: RoundedRectangleBorder(
               borderRadius:
-                  BorderRadius.circular(4), // Optional rounded corners
+                  BorderRadius.circular(4.r), // Optional rounded corners
               side: BorderSide(
-                width: 1,
+                width: 1.sp,
                 color: AppColors.c3689FD, // Border color
               ),
             ),
@@ -133,7 +131,7 @@ class _CustomDateOrCountryPickWidgetState
       context: context,
       builder: (BuildContext context) {
         return SimpleDialog(
-          title: Text("Select Country"),
+          title: Text("Select Gender"),
           children: [
             SingleChildScrollView(
               child: Column(
@@ -141,75 +139,21 @@ class _CustomDateOrCountryPickWidgetState
                 children: [
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'United States');
+                      Navigator.pop(context, 'Male');
                     },
-                    child: Text("United States"),
+                    child: Text("Male"),
                   ),
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'India');
+                      Navigator.pop(context, 'Female');
                     },
-                    child: Text("India"),
+                    child: Text("Female"),
                   ),
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'Germany');
+                      Navigator.pop(context, 'Non-Binary');
                     },
-                    child: Text("Germany"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'United States');
-                    },
-                    child: Text("United States"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'India');
-                    },
-                    child: Text("India"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Germany');
-                    },
-                    child: Text("Germany"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'United States');
-                    },
-                    child: Text("United States"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'India');
-                    },
-                    child: Text("India"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Germany');
-                    },
-                    child: Text("Germany"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'India');
-                    },
-                    child: Text("India"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Germany');
-                    },
-                    child: Text("Germany"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'United States');
-                    },
-                    child: Text("United States"),
+                    child: Text("Non-Binary"),
                   ),
                 ],
               ),

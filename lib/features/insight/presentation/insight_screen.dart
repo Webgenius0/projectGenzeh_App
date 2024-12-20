@@ -4,17 +4,19 @@ import 'package:genzeh911/common_widgets/custom_educational_insight_card_widget.
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 
-class EducationalInsides extends StatefulWidget {
-  const EducationalInsides({Key? key}) : super(key: key);
+class InsightScreen extends StatefulWidget {
+  const InsightScreen({Key? key}) : super(key: key);
 
   @override
-  _EducationalInsidesState createState() => _EducationalInsidesState();
+  _InsightScreenState createState() => _InsightScreenState();
 }
 
-class _EducationalInsidesState extends State<EducationalInsides> {
-  final List<Map<String, dynamic>> educationalInsightDataList = [
+class _InsightScreenState extends State<InsightScreen> {
+  final List<Map<String, dynamic>> insightDataList = [
     {
       "imageUrl": Assets.images.fruits.path,
       "title": "Food price rise fears amid staff shortages",
@@ -81,7 +83,7 @@ class _EducationalInsidesState extends State<EducationalInsides> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Educational Insight",
+                  "Educational Insights",
                   style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                       color: AppColors.c212121,
                       fontSize: 18.sp,
@@ -94,19 +96,18 @@ class _EducationalInsidesState extends State<EducationalInsides> {
             ListView.builder(
               shrinkWrap: true,
               primary: false,
-              itemCount: educationalInsightDataList.length,
+              itemCount: insightDataList.length,
               itemBuilder: (context, index) {
-                final scanData = educationalInsightDataList[index];
+                final scanData = insightDataList[index];
                 return Padding(
                   padding: EdgeInsets.only(bottom: 12.h),
                   child: CustomEducationalInsightCardWidget(
+                    onTap: () => NavigationService.navigateTo(
+                        Routes.insightDetailsScreen),
                     imageUrl: scanData["imageUrl"],
                     title: scanData["title"],
                     time: scanData["time"],
                     source: scanData["source"],
-                    sourceColor: scanData["sourceColor"],
-                    icon: scanData["icon"],
-                    statusIconColor: scanData["statusIconColor"],
                   ),
                 );
               },

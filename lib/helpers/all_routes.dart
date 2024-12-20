@@ -1,9 +1,20 @@
+// ignore_for_file: unreachable_switch_case
+
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:genzeh911/features/account_and_setting/presentation/faq_screen.dart';
+import 'package:genzeh911/features/account_and_setting/presentation/notification_screeen.dart';
+import 'package:genzeh911/features/account_and_setting/presentation/personal_info_screen.dart';
 import 'package:genzeh911/features/auth/forgot_password/presentation/forgot_password_screen.dart';
 import 'package:genzeh911/features/auth/otp_verification/presentation/otp_verification_screen.dart';
 import 'package:genzeh911/features/auth/sign_in/presentation/sign_in_screen.dart';
-
+import 'package:genzeh911/features/history/presentation/history_details.dart';
+import 'package:genzeh911/features/insight/presentation/insight_details.dart';
+import 'package:genzeh911/features/quick_scan/presentation/quick_scan_screen.dart';
+import 'package:genzeh911/features/subscription_plan/presentation/congratulation_screen.dart';
+import 'package:genzeh911/features/subscription_plan/presentation/process_payment_screen.dart';
+import 'package:genzeh911/features/subscription_plan/presentation/subscription_plan_screen.dart';
+import 'package:genzeh911/navigation_screen.dart';
 import '../loading.dart';
 
 final class Routes {
@@ -17,7 +28,16 @@ final class Routes {
   // static const String signUpScreen = '/signUpScreen';
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
   static const String otpVerificationScreen = '/forgetPasswordScreen';
-  // static const String onboardingPageEleven = '/onboardingPageEleven';
+  static const String bottomNav = '/bottomNav';
+  static const String insightDetailsScreen = '/insightDetailsScreen';
+  static const String personalInfoScreen = '/personalInfoScreen';
+  static const String historyDetails = '/historyDetails';
+  static const String notificationScreeen = '/notificationScreeen';
+  static const String faqScreen = '/faqScreen';
+  static const String quickScanScreen = '/quickScanScreen';
+  static const String subscriptionPlanScreen = '/subscriptionPlanScreen';
+  static const String processPaymentScreen = '/processPaymentScreen';
+  static const String congratulationScreen = '/congratulationScreen';
 }
 
 final class RouteGenerator {
@@ -57,6 +77,74 @@ final class RouteGenerator {
                 widget: const OtpVerificationScreen(), settings: settings)
             : CupertinoPageRoute(
                 builder: (context) => const OtpVerificationScreen());
+
+      case Routes.insightDetailsScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const InsightDetailsScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => const InsightDetailsScreen());
+
+      case Routes.personalInfoScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const PersonalInfoScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => const PersonalInfoScreen());
+      case Routes.historyDetails:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: HistoryDetails(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => HistoryDetails());
+
+      case Routes.notificationScreeen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: NotificationScreeen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => NotificationScreeen());
+
+      case Routes.faqScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(widget: FaqScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => FaqScreen());
+
+      case Routes.quickScanScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: QuickScanScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => QuickScanScreen());
+
+      case Routes.subscriptionPlanScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: SubscriptionPlanScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => SubscriptionPlanScreen());
+
+      case Routes.processPaymentScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: ProcessPaymentScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => ProcessPaymentScreen());
+
+      case Routes.congratulationScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: CongratulationScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => CongratulationScreen());
+
+      case Routes.bottomNav:
+        final args = settings.arguments as Map;
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: BottomNavBar(
+                  pageNum: args["pageNum"],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => BottomNavBar(
+                      pageNum: args["pageNum"],
+                    ));
 
       // case Routes.onboardingPageEleven:
       //   return Platform.isAndroid

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:genzeh911/features/subscription_plan/presentation/congratulation_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
-import 'package:get/get.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 
 class ProcessPaymentScreen extends StatefulWidget {
   const ProcessPaymentScreen({super.key});
@@ -19,8 +19,8 @@ class _ProcessPaymentScreenState extends State<ProcessPaymentScreen> {
     super.initState();
 
     // Navigate to the next screen after 3 seconds
-    Future.delayed(Duration(seconds: 10), () {
-      Get.to(() => const CongratulationScreen()); // Navigate with GetX
+    Future.delayed(Duration(seconds: 2), () {
+      NavigationService.navigateTo(Routes.congratulationScreen);
     });
   }
 
@@ -30,7 +30,7 @@ class _ProcessPaymentScreenState extends State<ProcessPaymentScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => NavigationService.goBack,
           icon: Padding(
             padding: const EdgeInsets.all(10.0),
             child: SvgPicture.asset(

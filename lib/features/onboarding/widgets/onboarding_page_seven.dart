@@ -34,10 +34,11 @@ class _OnboardingPageSevenState extends State<OnboardingPageSeven> {
             Text(
               widget.title,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle24c222222QuandoW400
-                  .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
+              style: TextFontStyle.textStyle24c222222QuandoW400.copyWith(
+                letterSpacing: -0.48.sp,
+              ),
             ),
-            UIHelper.verticalSpace(72.h),
+            UIHelper.verticalSpace(55.h),
             SvgPicture.asset(
               Assets.icons.baby,
               height: 80.h,

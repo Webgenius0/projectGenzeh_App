@@ -31,15 +31,16 @@ class _OnboardingPageThreeState extends State<OnboardingPageThree> {
           Text(
             widget.title,
             textAlign: TextAlign.center,
-            style: TextFontStyle.textStyle24c222222QuandoW400
-                .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
+            style: TextFontStyle.textStyle24c222222QuandoW400.copyWith(
+              letterSpacing: -0.48.sp,
+            ),
           ),
           UIHelper.verticalSpace(13.h),
           Text(
             widget.description!,
             textAlign: TextAlign.center,
             style: TextFontStyle.textStyle14c252C2EOpenSansW400
-                .copyWith(color: AppColors.c252C2E),
+                .copyWith(color: AppColors.c252C2E, fontSize: 16.sp),
           ),
         ],
       ),

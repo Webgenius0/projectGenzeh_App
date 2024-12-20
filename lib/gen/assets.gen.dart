@@ -22,6 +22,9 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Camera1.svg
+  String get camera1 => 'assets/icons/Camera1.svg';
+
   /// File path: assets/icons/about_us.svg
   String get aboutUs => 'assets/icons/about_us.svg';
 
@@ -33,6 +36,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/apple.svg
   String get apple => 'assets/icons/apple.svg';
+
+  /// File path: assets/icons/arrow-up.svg
+  String get arrowUp => 'assets/icons/arrow-up.svg';
 
   /// File path: assets/icons/arrow_back.svg
   String get arrowBack => 'assets/icons/arrow_back.svg';
@@ -62,6 +68,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/congratulation.svg
   String get congratulation => 'assets/icons/congratulation.svg';
 
+  /// File path: assets/icons/copy_link.svg
+  String get copyLink => 'assets/icons/copy_link.svg';
+
   /// File path: assets/icons/date_of_birth.svg
   String get dateOfBirth => 'assets/icons/date_of_birth.svg';
 
@@ -73,6 +82,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/editProfile.svg
   String get editProfile => 'assets/icons/editProfile.svg';
+
+  /// File path: assets/icons/facebook.svg
+  String get facebook => 'assets/icons/facebook.svg';
 
   /// File path: assets/icons/feet.svg
   String get feet => 'assets/icons/feet.svg';
@@ -89,17 +101,35 @@ class $AssetsIconsGen {
   /// File path: assets/icons/help_center.svg
   String get helpCenter => 'assets/icons/help_center.svg';
 
+  /// File path: assets/icons/history.svg
+  String get history => 'assets/icons/history.svg';
+
+  /// File path: assets/icons/home.svg
+  String get home => 'assets/icons/home.svg';
+
   /// File path: assets/icons/home_menu.svg
   String get homeMenu => 'assets/icons/home_menu.svg';
+
+  /// File path: assets/icons/insides.svg
+  String get insides => 'assets/icons/insides.svg';
+
+  /// File path: assets/icons/insides_share.svg
+  String get insidesShare => 'assets/icons/insides_share.svg';
+
+  /// File path: assets/icons/linkedin.svg
+  String get linkedin => 'assets/icons/linkedin.svg';
 
   /// File path: assets/icons/logo.svg
   String get logo => 'assets/icons/logo.svg';
 
+  /// File path: assets/icons/logos.svg
+  String get logos => 'assets/icons/logos.svg';
+
   /// File path: assets/icons/logout.svg
   String get logout => 'assets/icons/logout.svg';
 
-  /// File path: assets/icons/low_disk.svg
-  String get lowDisk => 'assets/icons/low_disk.svg';
+  /// File path: assets/icons/low_risk.svg
+  String get lowRisk => 'assets/icons/low_risk.svg';
 
   /// File path: assets/icons/mail.svg
   String get mail => 'assets/icons/mail.svg';
@@ -122,6 +152,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/personal_info.svg
   String get personalInfo => 'assets/icons/personal_info.svg';
 
+  /// File path: assets/icons/pinterest.svg
+  String get pinterest => 'assets/icons/pinterest.svg';
+
   /// File path: assets/icons/process_payment.svg
   String get processPayment => 'assets/icons/process_payment.svg';
 
@@ -134,11 +167,20 @@ class $AssetsIconsGen {
   /// File path: assets/icons/profile_notification.svg
   String get profileNotification => 'assets/icons/profile_notification.svg';
 
+  /// File path: assets/icons/reddit.svg
+  String get reddit => 'assets/icons/reddit.svg';
+
+  /// File path: assets/icons/repeat.svg
+  String get repeat => 'assets/icons/repeat.svg';
+
   /// File path: assets/icons/right_icon.svg
   String get rightIcon => 'assets/icons/right_icon.svg';
 
   /// File path: assets/icons/safe.svg
   String get safe => 'assets/icons/safe.svg';
+
+  /// File path: assets/icons/scan.svg
+  String get scan => 'assets/icons/scan.svg';
 
   /// File path: assets/icons/security_update.svg
   String get securityUpdate => 'assets/icons/security_update.svg';
@@ -155,12 +197,20 @@ class $AssetsIconsGen {
   /// File path: assets/icons/stepper.svg
   String get stepper => 'assets/icons/stepper.svg';
 
+  /// File path: assets/icons/twitter.svg
+  String get twitter => 'assets/icons/twitter.svg';
+
+  /// File path: assets/icons/whatsapp.svg
+  String get whatsapp => 'assets/icons/whatsapp.svg';
+
   /// List of all assets
   List<String> get values => [
+        camera1,
         aboutUs,
         activity,
         appLogo,
         apple,
+        arrowUp,
         arrowBack,
         arrowBottom,
         arrowRight,
@@ -170,19 +220,27 @@ class $AssetsIconsGen {
         baby,
         brain,
         congratulation,
+        copyLink,
         dateOfBirth,
         delete,
         dotIcon,
         editProfile,
+        facebook,
         feet,
         google,
         heart,
         heart1,
         helpCenter,
+        history,
+        home,
         homeMenu,
+        insides,
+        insidesShare,
+        linkedin,
         logo,
+        logos,
         logout,
-        lowDisk,
+        lowRisk,
         mail,
         menu,
         menuIcon,
@@ -190,17 +248,23 @@ class $AssetsIconsGen {
         notification,
         notificationImg,
         personalInfo,
+        pinterest,
         processPayment,
         profile,
         profileEdit,
         profileNotification,
+        reddit,
+        repeat,
         rightIcon,
         safe,
+        scan,
         securityUpdate,
         setting,
         sparms,
         star,
-        stepper
+        stepper,
+        twitter,
+        whatsapp
       ];
 }
 
@@ -224,11 +288,26 @@ class $AssetsImagesGen {
   /// File path: assets/images/img1.png
   AssetGenImage get img1 => const AssetGenImage('assets/images/img1.png');
 
+  /// File path: assets/images/img_details.jpg
+  AssetGenImage get imgDetails =>
+      const AssetGenImage('assets/images/img_details.jpg');
+
+  /// File path: assets/images/messanger.png
+  AssetGenImage get messanger =>
+      const AssetGenImage('assets/images/messanger.png');
+
   /// File path: assets/images/person.png
   AssetGenImage get person => const AssetGenImage('assets/images/person.png');
 
+  /// File path: assets/images/person_img.png
+  AssetGenImage get personImg =>
+      const AssetGenImage('assets/images/person_img.png');
+
   /// File path: assets/images/phone.png
   AssetGenImage get phone => const AssetGenImage('assets/images/phone.png');
+
+  /// File path: assets/images/pic.png
+  AssetGenImage get pic => const AssetGenImage('assets/images/pic.png');
 
   /// File path: assets/images/product_img.png
   AssetGenImage get productImg =>
@@ -251,8 +330,12 @@ class $AssetsImagesGen {
         cosmetics,
         fruits,
         img1,
+        imgDetails,
+        messanger,
         person,
+        personImg,
         phone,
+        pic,
         productImg,
         profile,
         splashScreen,

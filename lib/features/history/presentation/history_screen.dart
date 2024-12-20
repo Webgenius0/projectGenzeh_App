@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/common_widgets/custom_recent_scan_card_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
 
-class RecentScansScreen extends StatefulWidget {
-  const RecentScansScreen({Key? key}) : super(key: key);
+class HistoryScreen extends StatefulWidget {
+  const HistoryScreen({Key? key}) : super(key: key);
 
   @override
-  _RecentScansScreenState createState() => _RecentScansScreenState();
+  _HistoryScreenState createState() => _HistoryScreenState();
 }
 
-class _RecentScansScreenState extends State<RecentScansScreen> {
-  final List<Map<String, dynamic>> scanDataList = [
+class _HistoryScreenState extends State<HistoryScreen> {
+  final List<Map<String, dynamic>> historyDataList = [
     {
       "imageUrl": Assets.images.productImg.path,
       "title": "ABC Skin Care Solution",
@@ -25,7 +25,7 @@ class _RecentScansScreenState extends State<RecentScansScreen> {
       "status": "Low Risk",
       "statusColor": AppColors.cFFD21E,
       "statusIconColor": AppColors.cFFD21E,
-      "icon": Assets.icons.lowDisk,
+      "icon": Assets.icons.lowRisk,
     },
     {
       "imageUrl": Assets.images.productImg.path,
@@ -55,7 +55,7 @@ class _RecentScansScreenState extends State<RecentScansScreen> {
       "status": "Low Risk",
       "statusColor": AppColors.cFFD21E,
       "statusIconColor": AppColors.cFFD21E,
-      "icon": Assets.icons.lowDisk,
+      "icon": Assets.icons.lowRisk,
     },
     {
       "imageUrl": Assets.images.productImg.path,
@@ -96,31 +96,36 @@ class _RecentScansScreenState extends State<RecentScansScreen> {
                       fontWeight: FontWeight.w600,
                       letterSpacing: -0.36),
                 ),
-                GestureDetector(
-                    onTap: () {
-                      Get.to(() => RecentScansScreen());
-                    },
-                    child: SvgPicture.asset(Assets.icons.arrowRights))
+                // GestureDetector(
+                //     onTap: () {
+                //       Get.to(() => RecentScansScreen());
+                //     },
+                //     child: SvgPicture.asset(Assets.icons.arrowRights))
               ],
             ),
             UIHelper.verticalSpace(16.h),
             ListView.builder(
               shrinkWrap: true,
               primary: false,
-              itemCount: scanDataList.length,
+              itemCount: historyDataList.length,
               itemBuilder: (context, index) {
-                final scanData = scanDataList[index];
+                final scanData = historyDataList[index];
                 return Padding(
                   padding: EdgeInsets.only(bottom: 12.h),
-                  child: CustomRecentScanCard(
-                    imageUrl: scanData["imageUrl"],
-                    title: scanData["title"],
-                    date: scanData["date"],
-                    time: scanData["time"],
-                    status: scanData["status"],
-                    statusColor: scanData["statusColor"],
-                    icon: scanData["icon"],
-                    statusIconColor: scanData["statusIconColor"],
+                  child: GestureDetector(
+                    onTap: () {
+                      NavigationService.navigateTo(Routes.historyDetails);
+                    },
+                    child: CustomRecentScanCard(
+                      imageUrl: scanData["imageUrl"],
+                      title: scanData["title"],
+                      date: scanData["date"],
+                      time: scanData["time"],
+                      status: scanData["status"],
+                      statusColor: scanData["statusColor"],
+                      // icon: scanData["icon"],
+                      statusIconColor: scanData["statusIconColor"],
+                    ),
                   ),
                 );
               },

@@ -1,17 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:genzeh911/common_widgets/custom_appbar.dart';
 import 'package:genzeh911/common_widgets/custom_elevated_button.dart';
 import 'package:genzeh911/common_widgets/custom_subscription_plan_button.dart';
 import 'package:genzeh911/common_widgets/custom_subscription_text.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/subscription_plan/presentation/process_payment_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
 
 class SubscriptionPlanScreen extends StatefulWidget {
   const SubscriptionPlanScreen({super.key});
@@ -109,7 +106,7 @@ class _SubscriptionPlanScreenState extends State<SubscriptionPlanScreen> {
             UIHelper.verticalSpace(10.h),
             customElevatedButton(
                 onPressed: () {
-                  Get.to(() => ProcessPaymentScreen());
+                  NavigationService.navigateTo(Routes.processPaymentScreen);
                 },
                 child: Text(
                   'Continue',

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,14 +8,14 @@ import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 
-class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({super.key});
+class NotificationListScreen extends StatefulWidget {
+  const NotificationListScreen({super.key});
 
   @override
-  State<NotificationScreen> createState() => _CreateNewPasswordScreenState();
+  State<NotificationListScreen> createState() => _NotificationListScreenState();
 }
 
-class _CreateNewPasswordScreenState extends State<NotificationScreen> {
+class _NotificationListScreenState extends State<NotificationListScreen> {
   final List<Map<String, dynamic>> notifications = [
     {
       "title": "Daily Step Goal Achieved!",
@@ -99,24 +101,6 @@ class _CreateNewPasswordScreenState extends State<NotificationScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //if notification is empty
-              // Container(
-              //     height: 240.h,
-              //     width: 240.w,
-              //     child: SvgPicture.asset(Assets.icons.notificationImg)),
-              // Text(
-              //   'Empty',
-              //   style: TextFontStyle.textStyle24c2B2B2BInterW600.copyWith(
-              //     color: AppColors.c000000,
-              //     letterSpacing: -0.48.sp,
-              //   ),
-              // ),
-              // UIHelper.verticalSpace(12.h),
-              // Text(
-              //   'You dont have any notification at this time',
-              //   style: TextFontStyle.textStyle14c252C2EOpenSansW400
-              //       .copyWith(color: AppColors.c000000, fontSize: 14.sp),
-              // ),
               UIHelper.verticalSpace(20.h),
               ListView.builder(
                 shrinkWrap: true,

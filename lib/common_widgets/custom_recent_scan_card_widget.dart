@@ -1,6 +1,7 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
@@ -13,7 +14,7 @@ class CustomRecentScanCard extends StatelessWidget {
   final String status;
   final Color statusColor;
   final Color statusIconColor;
-  final String icon;
+  // final String icon;
 
   const CustomRecentScanCard({
     super.key,
@@ -24,7 +25,7 @@ class CustomRecentScanCard extends StatelessWidget {
     required this.status,
     required this.statusColor,
     required this.statusIconColor,
-    required this.icon,
+    // required this.icon,
   });
 
   @override
@@ -45,6 +46,7 @@ class CustomRecentScanCard extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     title,
@@ -85,22 +87,11 @@ class CustomRecentScanCard extends StatelessWidget {
                   size: 16.h,
                 ),
                 UIHelper.verticalSpace(17.h),
-                Row(
-                  children: [
-                    SvgPicture.asset(
-                      icon,
-                      color: statusIconColor,
-                      height: 16.h,
-                      width: 16.w,
-                    ),
-                    UIHelper.horizontalSpace(12.w),
-                    Text(
-                      status,
-                      style: TextFontStyle.textStyle14c252C2EOpenSansW400
-                          .copyWith(fontSize: 12.sp, color: statusColor),
-                    ),
-                  ],
-                )
+                Text(
+                  status,
+                  style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                      .copyWith(fontSize: 12.sp, color: statusColor),
+                ),
               ],
             ),
           ],

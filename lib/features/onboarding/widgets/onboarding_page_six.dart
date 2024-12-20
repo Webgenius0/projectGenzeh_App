@@ -35,7 +35,7 @@ class _OnboardingPageSixState extends State<OnboardingPageSix> {
               widget.title,
               textAlign: TextAlign.center,
               style: TextFontStyle.textStyle24c222222QuandoW400
-                  .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
+                  .copyWith(letterSpacing: -0.48.sp, color: AppColors.c222222),
             ),
             UIHelper.verticalSpace(72.h),
             SvgPicture.asset(

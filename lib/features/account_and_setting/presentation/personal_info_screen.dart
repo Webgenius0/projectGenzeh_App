@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:genzeh911/common_widgets/custom_button.dart';
+import 'package:genzeh911/common_widgets/custom_country_picker_widget.dart';
 import 'package:genzeh911/common_widgets/custom_country_picker.dart';
+import 'package:genzeh911/common_widgets/custom_gender_picker.dart';
 import 'package:genzeh911/common_widgets/custom_text_feild.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 
-class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+class PersonalInfoScreen extends StatefulWidget {
+  const PersonalInfoScreen({super.key});
 
   @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
+  State<PersonalInfoScreen> createState() => _PersonalInfoScreenState();
 }
 
-class _EditProfileScreenState extends State<EditProfileScreen> {
+class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   TextEditingController nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -124,31 +125,32 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     letterSpacing: -0.32),
               ),
               UIHelper.verticalSpace(12.h),
+
               CustomCountryPicker(),
-              UIHelper.verticalSpace(24.h),
-              Text(
-                'Gender',
-                style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
-                    color: AppColors.c212121,
-                    fontSize: 16.sp,
-                    letterSpacing: -0.32),
-              ),
+              // UIHelper.verticalSpace(24.h),
+              // Text(
+              //   'Gender',
+              //   style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
+              //       color: AppColors.c212121,
+              //       fontSize: 16.sp,
+              //       letterSpacing: -0.32),
+              // ),
               UIHelper.verticalSpace(12.h),
-              CustomTextFormField(
-                isPrefixIcon: true,
-                readOnly: true,
-                prefixIcon: Padding(
-                  padding: EdgeInsets.all(3.sp),
-                  child: SvgPicture.asset(
-                    Assets.icons.profile,
-                    height: 24.sp,
-                    width: 24.sp,
-                  ),
-                ),
-                controller: nameController,
-                hintText: 'andrew.ainsley@yahoo.com',
-              ),
-              UIHelper.verticalSpace(24.h),
+              // CustomTextFormField(
+              //   isPrefixIcon: true,
+              //   readOnly: true,
+              //   prefixIcon: Padding(
+              //     padding: EdgeInsets.all(3.sp),
+              //     child: SvgPicture.asset(
+              //       Assets.icons.profile,
+              //       height: 24.sp,
+              //       width: 24.sp,
+              //     ),
+              //   ),
+              //   controller: nameController,
+              //   hintText: 'andrew.ainsley@yahoo.com',
+              // ),
+              // UIHelper.verticalSpace(24.h),
               // Text(
               //   'Date of Birth',
               //   style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
@@ -157,17 +159,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               //       letterSpacing: -0.32),
               // ),
 
-              CustomDateOrCountryPickWidget(
-                hintText: "Gender",
-                labelText: 'Male',
+              CustomGenderPicker(
+                hintText: 'Male',
+                isDatePicker: false,
+                labelText: 'Gender',
+                showSuffixIcon: true,
                 suffixIcon: Assets.icons.arrowBottom,
                 onButtonPressed: () {},
-                isDatePicker: false,
-                showSuffixIcon: true,
               ),
 
               UIHelper.verticalSpace(24.h),
-              CustomDateOrCountryPickWidget(
+              CustomBirthDayAndCountryPickWidget(
                 hintText: "1 January, 2003",
                 labelText: ' Date of Birth',
                 onButtonPressed: () {},

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,34 +11,29 @@ import 'package:genzeh911/helpers/ui_helpers.dart';
 class CustomEducationalInsightCardWidget extends StatelessWidget {
   final String imageUrl;
   final String title;
-
   final String time;
   final String source;
-  final Color sourceColor;
-  final Color statusIconColor;
-  final String icon;
+  void Function()? onTap;
 
-  const CustomEducationalInsightCardWidget({
+  CustomEducationalInsightCardWidget({
     super.key,
     required this.imageUrl,
     required this.title,
     required this.time,
     required this.source,
-    required this.sourceColor,
-    required this.statusIconColor,
-    required this.icon,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 342.w,
-      decoration: BoxDecoration(
-        color: AppColors.cF7F7F7,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(8.w),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(8.r),
+        decoration: BoxDecoration(
+          color: AppColors.cF7F7F7,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -72,13 +69,18 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
                       UIHelper.horizontalSpace(7.h),
                       Row(
                         children: [
-                          SvgPicture.asset(Assets.icons.dotIcon),
+                          SvgPicture.asset(
+                            Assets.icons.dotIcon,
+                            color: AppColors.cC4C4C4,
+                          ),
                           UIHelper.horizontalSpace(7.h),
                           Text(
                             time,
-                            style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                            style: TextFontStyle.textStyle12c0A3004PoppinsW500
                                 .copyWith(
-                                    fontSize: 12.sp, color: AppColors.c757575),
+                                    fontWeight: FontWeight.w300,
+                                    fontSize: 9.sp,
+                                    color: AppColors.c757575),
                           ),
                         ],
                       ),
@@ -87,7 +89,12 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Image.asset(imageUrl, width: 77.w, height: 77.h),
+            Image.asset(
+              imageUrl,
+              width: 77.w,
+              height: 77.h,
+              fit: BoxFit.contain,
+            ),
           ],
         ),
       ),
