@@ -51,7 +51,10 @@ class HistoryDetails extends StatelessWidget {
                     builder: (context) => ShareBottomSheet(),
                   );
                 },
-                icon: SvgPicture.asset(Assets.icons.insidesShare)),
+                icon: SvgPicture.asset(
+                  Assets.icons.insidesShare,
+                  color: AppColors.cFFFFFF,
+                )),
           )
           // Padding(
           //   padding: EdgeInsets.only(right: 24.w),
@@ -89,30 +92,28 @@ class HistoryDetails extends StatelessWidget {
                     radius: 70.0,
                     lineWidth: 10.0,
                     percent: 0.63,
-                    center: Center(
-                      child: Column(
-                        children: [
-                          Text(
-                            "63",
-                            textAlign: TextAlign.center,
-                            style: TextFontStyle.textStylec212121OpenSansW600
-                                .copyWith(
-                                    fontSize: 64.sp,
-                                    letterSpacing: -0.64.sp,
-                                    color: AppColors.cFFFFFF),
-                          ),
-                          Text(
-                            "Out of 100",
-                            textAlign: TextAlign.center,
-                            style: TextFontStyle.textStylec212121OpenSansW600
-                                .copyWith(
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w400,
-                                    letterSpacing: -0.64.sp,
-                                    color: AppColors.c034057),
-                          ),
-                        ],
-                      ),
+                    center: Column(
+                      children: [
+                        Text(
+                          "63",
+                          textAlign: TextAlign.center,
+                          style: TextFontStyle.textStylec212121OpenSansW600
+                              .copyWith(
+                                  fontSize: 64.sp,
+                                  letterSpacing: -0.64.sp,
+                                  color: AppColors.cFFFFFF),
+                        ),
+                        Text(
+                          "Out of 100",
+                          textAlign: TextAlign.center,
+                          style: TextFontStyle.textStylec212121OpenSansW600
+                              .copyWith(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: -0.64.sp,
+                                  color: AppColors.c034057),
+                        ),
+                      ],
                     ),
                     progressColor: Colors.yellow,
                     backgroundColor: Colors.white,

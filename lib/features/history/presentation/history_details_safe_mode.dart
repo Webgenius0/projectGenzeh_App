@@ -71,14 +71,28 @@ class HistoryDetailsSafeMode extends StatelessWidget {
                     radius: 70.0,
                     lineWidth: 10.0,
                     percent: 0.63,
-                    center: Text(
-                      "23\n",
-                      textAlign: TextAlign.center,
-                      style: TextFontStyle.textStylec212121OpenSansW600
-                          .copyWith(
-                              fontSize: 64.sp,
-                              letterSpacing: -0.64.sp,
-                              color: AppColors.cFFFFFF),
+                    center: Column(
+                      children: [
+                        Text(
+                          "23",
+                          textAlign: TextAlign.center,
+                          style: TextFontStyle.textStylec212121OpenSansW600
+                              .copyWith(
+                                  fontSize: 64.sp,
+                                  letterSpacing: -0.64.sp,
+                                  color: AppColors.cFFFFFF),
+                        ),
+                        Text(
+                          "Out of 100",
+                          textAlign: TextAlign.center,
+                          style: TextFontStyle.textStylec212121OpenSansW600
+                              .copyWith(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  letterSpacing: -0.64.sp,
+                                  color: AppColors.c034057),
+                        ),
+                      ],
                     ),
                     progressColor: Colors.yellow,
                     backgroundColor: Colors.white,

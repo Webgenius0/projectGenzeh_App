@@ -91,7 +91,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     UIHelper.verticalSpace(15.h),
                     CustomInputFieldWidget(
-                      labelText: "User Name 0r Email",
+                      labelText: "Username 0r Email",
                       isPasswordField: false,
                       showSuffixIcon: false,
                       hintText: 'Azizul Hakim',

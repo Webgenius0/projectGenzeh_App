@@ -50,7 +50,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: false,
             showSuffixIcon: false,
             hintText: 'Enter username',
-            inputType: TextInputType.emailAddress,
+            inputType: TextInputType.name,
             controller: nameController,
           ),
           UIHelper.verticalSpace(20.h),
@@ -59,7 +59,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: false,
             showSuffixIcon: false,
             hintText: 'Enter email',
-            inputType: TextInputType.text,
+            inputType: TextInputType.emailAddress,
             controller: emailController,
           ),
           UIHelper.verticalSpace(20.h),
@@ -68,7 +68,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: true,
             showSuffixIcon: true,
             hintText: 'Enter password',
-            inputType: TextInputType.text,
+            inputType: TextInputType.visiblePassword,
             controller: passwordController,
           ),
           UIHelper.verticalSpace(20.h),
@@ -77,7 +77,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: true,
             showSuffixIcon: true,
             hintText: 'Re enter password',
-            inputType: TextInputType.text,
+            inputType: TextInputType.visiblePassword,
             controller: confirmPasswordController,
           ),
           UIHelper.verticalSpace(16.h),
@@ -85,15 +85,15 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const RememberMeCheckbox(),
-              TextButton(
-                  onPressed: () {
-                    NavigationService.navigateTo(Routes.forgetPasswordScreen);
-                  },
-                  child: Text(
-                    'Forgot password?',
-                    style: TextFontStyle.textStyle24c222222UrbanistW600
-                        .copyWith(fontSize: 12.sp, fontWeight: FontWeight.w500),
-                  ))
+              // TextButton(
+              //     onPressed: () {
+              //       NavigationService.navigateTo(Routes.forgetPasswordScreen);
+              //     },
+              //     child: Text(
+              //       'Forgot password?',
+              //       style: TextFontStyle.textStyle24c222222UrbanistW600
+              //           .copyWith(fontSize: 12.sp, fontWeight: FontWeight.w500),
+              //     ))
             ],
           ),
 

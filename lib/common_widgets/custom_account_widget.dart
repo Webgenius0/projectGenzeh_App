@@ -12,7 +12,7 @@ class CustomAccountWidget extends StatelessWidget {
   final String icon;
   final Color iconColor;
   final String text;
-  final VoidCallback onTap;
+  final void Function()? onTap;
   final bool showDivider;
 
   const CustomAccountWidget({
@@ -29,6 +29,7 @@ class CustomAccountWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        color: Colors.transparent,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

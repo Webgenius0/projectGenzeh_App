@@ -47,7 +47,7 @@ class ShareBottomSheet extends StatelessWidget {
                       radius: 24,
                       child: SvgPicture.asset(shareOptions[index]['icon']),
                     ),
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height: 6.0),
                     Text(
                       shareOptions[index]['label'],
                       textAlign: TextAlign.center,

@@ -22,6 +22,9 @@ class $AssetsColorGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Camera.svg
+  String get camera => 'assets/icons/Camera.svg';
+
   /// File path: assets/icons/Camera1.svg
   String get camera1 => 'assets/icons/Camera1.svg';
 
@@ -83,11 +86,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/editProfile.svg
   String get editProfile => 'assets/icons/editProfile.svg';
 
+  /// File path: assets/icons/email.svg
+  String get email => 'assets/icons/email.svg';
+
   /// File path: assets/icons/facebook.svg
   String get facebook => 'assets/icons/facebook.svg';
 
   /// File path: assets/icons/feet.svg
   String get feet => 'assets/icons/feet.svg';
+
+  /// File path: assets/icons/flash_off.svg
+  String get flashOff => 'assets/icons/flash_off.svg';
 
   /// File path: assets/icons/google.svg
   String get google => 'assets/icons/google.svg';
@@ -205,6 +214,7 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<String> get values => [
+        camera,
         camera1,
         aboutUs,
         activity,
@@ -225,8 +235,10 @@ class $AssetsIconsGen {
         delete,
         dotIcon,
         editProfile,
+        email,
         facebook,
         feet,
+        flashOff,
         google,
         heart,
         heart1,

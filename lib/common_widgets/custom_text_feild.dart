@@ -40,7 +40,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         controller: widget.controller,
         textAlign: TextAlign.start,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 9.h),
+          contentPadding: EdgeInsets.symmetric(vertical: 12.5.h),
           prefixIcon: widget.isPrefixIcon ? widget.prefixIcon : null,
           hintText: widget.hintText,
           hintStyle: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(

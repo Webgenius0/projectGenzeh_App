@@ -160,37 +160,39 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10.sp),
-                    child: _currentIndex == totalSteps - 1
-                        ? const SizedBox.shrink()
-                        : customElevatedButton(
-                            onPressed: () {
-                              if (_currentIndex == totalSteps - 1) {
-                                widget.onDone();
-                              } else {
-                                context
-                                    .read<PageViewProvider>()
-                                    .controller
-                                    .nextPage(
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      curve: Curves.linear,
-                                    );
-                              }
-                            },
-                            child: Text(
-                              'Continue',
-                              style: TextFontStyle
-                                  .textStyle14c252C2EOpenSansW400
-                                  .copyWith(
-                                fontSize: 12.sp,
-                                color: AppColors.cFFFFFF,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            bgColor: AppColors.allPrimaryColor),
-                  ),
+                  _currentIndex == 8
+                      ? SizedBox.shrink()
+                      : Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.sp),
+                          child: _currentIndex == totalSteps - 1
+                              ? const SizedBox.shrink()
+                              : customElevatedButton(
+                                  onPressed: () {
+                                    if (_currentIndex == totalSteps - 1) {
+                                      widget.onDone();
+                                    } else {
+                                      context
+                                          .read<PageViewProvider>()
+                                          .controller
+                                          .nextPage(
+                                            duration: const Duration(
+                                                milliseconds: 300),
+                                            curve: Curves.linear,
+                                          );
+                                    }
+                                  },
+                                  child: Text(
+                                    'Continue',
+                                    style: TextFontStyle
+                                        .textStyle14c252C2EOpenSansW400
+                                        .copyWith(
+                                      fontSize: 12.sp,
+                                      color: AppColors.cFFFFFF,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  bgColor: AppColors.allPrimaryColor),
+                        ),
                   UIHelper.verticalSpace(48.h),
                 ],
               ),

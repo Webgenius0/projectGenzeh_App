@@ -90,9 +90,7 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
           ),
           UIHelper.verticalSpace(16.h),
           GestureDetector(
-            onTap: () {
-              NavigationService.navigateTo(Routes.historyDetails);
-            },
+            onTap: () => NavigationService.navigateTo(Routes.historyDetails),
             child: CustomRecentScanCard(
               imageUrl: Assets.images.productImg.path,
               title: "ABC skin care solution",
@@ -105,15 +103,18 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
             ),
           ),
           UIHelper.verticalSpace(12.h),
-          CustomRecentScanCard(
-              imageUrl: Assets.images.productImg.path,
-              title: "ABC hair solution",
-              date: "17 Dec 2024",
-              status: "Safe",
-              statusColor: AppColors.c00B822,
-              // icon: Assets.icons.safe,
-              time: '09:42',
-              statusIconColor: AppColors.c00B822),
+          GestureDetector(
+            onTap: () => NavigationService.navigateTo(Routes.historyDetails),
+            child: CustomRecentScanCard(
+                imageUrl: Assets.images.productImg.path,
+                title: "ABC hair solution",
+                date: "17 Dec 2024",
+                status: "Safe",
+                statusColor: AppColors.c00B822,
+                // icon: Assets.icons.safe,
+                time: '09:42',
+                statusIconColor: AppColors.c00B822),
+          ),
           UIHelper.verticalSpace(24.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

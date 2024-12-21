@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 
 class QuickScanScreen extends StatelessWidget {
   const QuickScanScreen({Key? key}) : super(key: key);
@@ -11,12 +15,10 @@ class QuickScanScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Camera Preview Background (Replace this with actual CameraPreview if using a camera package)
           Container(
-            color: Colors.grey[900], // Placeholder color for camera preview
+            color: AppColors.c000000
+                .withOpacity(0.4.sp), // Placeholder color for camera preview
           ),
-
-          // Scanning Overlay
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.8,
@@ -36,25 +38,35 @@ class QuickScanScreen extends StatelessWidget {
               ),
             ),
           ),
-
-          // Top Text
           Positioned(
-            top: 60,
-            left: 20,
-            child: Text(
-              "Scanning",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            top: 53,
+            left: 10,
+            child: IconButton(
+              padding: EdgeInsets.zero,
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                Assets.icons.flashOff,
+                fit: BoxFit.contain,
               ),
             ),
           ),
-
-          // Close Button
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 60.0),
+              child: Text(
+                "Scanning",
+                style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
+                  color: AppColors.cFFFFFF,
+                  fontSize: 20.sp,
+                  letterSpacing: -0.4.sp,
+                ),
+              ),
+            ),
+          ),
           Positioned(
-            top: 40,
-            right: 20,
+            top: 50,
+            right: 10,
             child: IconButton(
               onPressed: () => Navigator.pop(context),
               icon: Icon(
@@ -63,8 +75,6 @@ class QuickScanScreen extends StatelessWidget {
               ),
             ),
           ),
-
-          // Bottom Camera Controls
           Positioned(
             bottom: 20,
             left: 0,
@@ -89,29 +99,34 @@ class QuickScanScreen extends StatelessWidget {
                         Image.asset(
                           Assets.images.pic
                               .path, // Placeholder for carousel images
-                          width: 80,
-                          height: 80,
+                          width: 48.w,
+                          height: 48.h,
                         ),
                         GestureDetector(
-                          onTap: () {
-                            // Add functionality for capture
-                          },
-                          child: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
+                          onTap: () => NavigationService.navigateTo(
+                              Routes.scanningReportScreen),
+                          child: Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: SvgPicture.asset(
+                              Assets.icons.camera,
+                              width: 70.w,
+                              height: 70.h,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ),
-                        IconButton(
-                          onPressed: () {
-                            // Add functionality for camera switching
-                          },
-                          icon: Icon(
-                            Icons.cameraswitch,
-                            color: Colors.white,
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100.r),
+                              color: AppColors.c000000.withOpacity(0.1)),
+                          child: IconButton(
+                            onPressed: () {
+                              // Add functionality for camera switching
+                            },
+                            icon: Icon(
+                              Icons.cameraswitch,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],

@@ -11,6 +11,7 @@ import 'package:genzeh911/features/auth/sign_in/presentation/sign_in_screen.dart
 import 'package:genzeh911/features/history/presentation/history_details.dart';
 import 'package:genzeh911/features/insight/presentation/insight_details.dart';
 import 'package:genzeh911/features/quick_scan/presentation/quick_scan_screen.dart';
+import 'package:genzeh911/features/quick_scan/presentation/scanning_report_screen.dart';
 import 'package:genzeh911/features/subscription_plan/presentation/congratulation_screen.dart';
 import 'package:genzeh911/features/subscription_plan/presentation/process_payment_screen.dart';
 import 'package:genzeh911/features/subscription_plan/presentation/subscription_plan_screen.dart';
@@ -38,6 +39,7 @@ final class Routes {
   static const String subscriptionPlanScreen = '/subscriptionPlanScreen';
   static const String processPaymentScreen = '/processPaymentScreen';
   static const String congratulationScreen = '/congratulationScreen';
+  static const String scanningReportScreen = '/scanningReportScreen';
 }
 
 final class RouteGenerator {
@@ -132,6 +134,12 @@ final class RouteGenerator {
             ? _FadedTransitionRoute(
                 widget: CongratulationScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => CongratulationScreen());
+
+      case Routes.scanningReportScreen:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: ScanningReportScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => ScanningReportScreen());
 
       case Routes.bottomNav:
         final args = settings.arguments as Map;

@@ -108,7 +108,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                 prefixIcon: Padding(
                   padding: EdgeInsets.all(3.sp),
                   child: SvgPicture.asset(
-                    Assets.icons.profile,
+                    Assets.icons.email,
                     height: 24.sp,
                     width: 24.sp,
                   ),

@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/common_widgets/custom_account_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/account_and_setting/presentation/faq_screen.dart';
-import 'package:genzeh911/features/account_and_setting/presentation/personal_info_screen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
@@ -24,7 +22,7 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
       'icon': Assets.icons.notification, // Replace with your asset path
       'text': 'Personal Info',
       'iconColor': Colors.blue,
-      'route': PersonalInfoScreen(),
+      // 'route': PersonalInfoScreen(),
       // Replace with your actual screen.
     },
     // {
@@ -38,16 +36,16 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
       'icon': Assets.icons.helpCenter, // Replace with your asset path
       'text': 'Help Center',
       'iconColor': Colors.blue,
-      'route': FaqScreen(),
+      // 'route': FaqScreen(),
       // Replace with your actual screen.
     },
-    // {
-    //   'icon': Assets.icons.aboutUs, // Replace with your asset path
-    //   'text': 'About Us',
-    //   'iconColor': Colors.blue,
-    //   'route': FaqScreen(),
-    //   // Replace with your actual screen.
-    // },
+    {
+      'icon': Assets.icons.aboutUs, // Replace with your asset path
+      'text': 'About Us',
+      'iconColor': Colors.blue,
+      // 'route': FaqScreen(),
+      // Replace with your actual screen.
+    },
   ];
 
   @override
@@ -156,10 +154,9 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
                               NavigationService.navigateTo(
                                   Routes.personalInfoScreen);
                             } else if (index == 1) {
-                              NavigationService.navigateTo(
-                                  Routes.notificationScreeen);
-                            } else if (index == 2) {
                               NavigationService.navigateTo(Routes.faqScreen);
+                            } else if (index == 2) {
+                              // NavigationService.navigateTo(Routes.faqScreen);
                             }
                           },
                           showDivider: !isLastItem,

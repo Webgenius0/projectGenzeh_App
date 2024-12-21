@@ -60,7 +60,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           constraints: const BoxConstraints(),
           padding: EdgeInsets.only(left: 20.w),
         ),
-        actions: (currentTab != 1 && currentTab != 2)
+        actions: (currentTab != 1 && currentTab != 2 && currentTab != 3)
             ? [
                 Padding(
                   padding: EdgeInsets.only(right: 20.w),
