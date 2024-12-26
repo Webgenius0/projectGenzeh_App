@@ -22,14 +22,12 @@ class _OnboardingPageNineState extends State<OnboardingPageNine> {
   @override
   Widget build(BuildContext context) {
     final List<String> options = [
-      'Prevent LOng-Term Chronic Conditions',
+      'Prevent Long-Term Chronic Conditions',
       'Promote Reproductive Health',
       'Support Detoxification and Body Health',
       'Improve Skin and Respiratory Health',
       'Educate on Product Safety',
-      'Reduce Personal use of Plastics'
-          'Through a Friedn',
-      'Other'
+      'Reduce Personal use of Microplastics',
     ];
 
     return SafeArea(
@@ -86,23 +84,27 @@ class CustomButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue : Colors.transparent,
+          color: isSelected ? AppColors.c3689FD : Colors.transparent,
           border: Border.all(
-            color: Colors.blue,
-            width: 1,
+            color: AppColors.c3689FD,
+            width: 1.5.w,
           ),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(37.r),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
         child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: isSelected ? Colors.white : Colors.blue,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+            child: Text(text,
+                style: isSelected
+                    ? TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.cFFFFFF,
+                        fontSize: 12.sp,
+                      )
+                    : TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.c3689FD,
+                        fontSize: 12.sp,
+                      ))),
       ),
     );
   }

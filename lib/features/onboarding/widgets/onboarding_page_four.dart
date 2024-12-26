@@ -33,19 +33,19 @@ class _OnboardingPageFourState extends State<OnboardingPageFour> {
               widget.title,
               textAlign: TextAlign.center,
               style: TextFontStyle.textStyle24c222222QuandoW400
-                  .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
+                  .copyWith(letterSpacing: -0.48.sp, color: AppColors.c222222),
             ),
             UIHelper.verticalSpace(13.h),
             Text(
               widget.description!,
               textAlign: TextAlign.center,
               style: TextFontStyle.textStyle14c252C2EOpenSansW400
-                  .copyWith(color: AppColors.c252C2E),
+                  .copyWith(color: AppColors.c252C2E, fontSize: 16.sp),
             ),
-            UIHelper.verticalSpace(32.h),
+            UIHelper.verticalSpace(30.h),
             Image.asset(
-              Assets.images.cocooil.path,
-              height: 343.h,
+              Assets.images.phone.path,
+              height: 355.h,
             )
           ],
         ),

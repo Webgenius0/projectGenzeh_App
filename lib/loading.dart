@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genzeh911/features/onboarding/onboarding_screen.dart';
-import 'package:genzeh911/helpers/helper_methods.dart';
+import 'package:genzeh911/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:genzeh911/splash_screen.dart';
 
 final class Loading extends StatefulWidget {
@@ -12,16 +11,22 @@ final class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
   bool _isLoading = true;
+  // bool isFirstTime = true;
 
   @override
   void initState() {
     loadInitialData();
+
     super.initState();
   }
 
   loadInitialData() async {
-    await setInitValue();
-
+    _isLoading = true;
+    //AutoAppUpdateUtil.instance.checkAppUpdate();
+    // await setInitValue();
+    await Future.delayed(Duration(
+      seconds: 3,
+    ));
     setState(() {
       _isLoading = false;
     });
@@ -32,7 +37,7 @@ class _LoadingState extends State<Loading> {
     if (_isLoading) {
       return const SplashScreen();
     } else {
-      return const OnBoardingScreen();
+      return OnBoardingScreen();
     }
   }
 }
