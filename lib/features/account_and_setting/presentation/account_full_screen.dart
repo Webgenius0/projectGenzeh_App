@@ -78,9 +78,8 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
             children: [
               UIHelper.verticalSpace(24.h),
               GestureDetector(
-                onTap: () {
-                  NavigationService.navigateTo(Routes.personalInfoScreen);
-                },
+                onTap: () =>
+                    NavigationService.navigateTo(Routes.personalInfoScreen),
                 child: Container(
                   height: 90.h,
                   padding:

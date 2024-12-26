@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 
 class NotificationListScreen extends StatefulWidget {
@@ -69,7 +70,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => NavigationService.goBack,
           icon: Padding(
             padding: const EdgeInsets.all(10.0),
             child: SvgPicture.asset(

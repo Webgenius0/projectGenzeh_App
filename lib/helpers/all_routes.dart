@@ -28,7 +28,7 @@ final class Routes {
   static const String signInScreen = '/signInScreen';
   // static const String signUpScreen = '/signUpScreen';
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
-  static const String otpVerificationScreen = '/forgetPasswordScreen';
+  static const String otpVerificationScreen = '/otpVerificationScreen';
   static const String bottomNav = '/bottomNav';
   static const String insightDetailsScreen = '/insightDetailsScreen';
   static const String personalInfoScreen = '/personalInfoScreen';

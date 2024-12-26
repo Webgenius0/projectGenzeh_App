@@ -7,6 +7,7 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/features/auth/create_new_password/presentation/create_new_password_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:get/get.dart';
 import '../../../../common_widgets/custom_elevated_button.dart';
@@ -25,7 +26,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => NavigationService.goBack,
           icon: Padding(
             padding: const EdgeInsets.all(10.0),
             child: SvgPicture.asset(

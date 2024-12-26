@@ -68,7 +68,7 @@ class QuickScanScreen extends StatelessWidget {
             top: 50,
             right: 10,
             child: IconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => NavigationService.goBack,
               icon: Icon(
                 Icons.close,
                 color: Colors.white,

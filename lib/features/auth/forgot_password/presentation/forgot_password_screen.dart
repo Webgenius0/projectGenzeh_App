@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:genzeh911/common_widgets/custom_input_field_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/auth/otp_verification/presentation/otp_verification_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
 import '../../../../common_widgets/custom_elevated_button.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -26,7 +26,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => NavigationService.goBack,
           icon: Padding(
             padding: const EdgeInsets.all(10.0),
             child: SvgPicture.asset(
@@ -82,9 +82,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   const Spacer(),
                   customElevatedButton(
                       onPressed: () {
-                        Get.to(() => const OtpVerificationScreen());
-                        // NavigationService.navigateTo(
-                        //     Routes.otpVerificationScreen);
+                        // Get.to(() => const OtpVerificationScreen());
+                        NavigationService.navigateTo(
+                            Routes.otpVerificationScreen);
                       },
                       child: Text(
                         'Continue',

@@ -113,9 +113,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 return Padding(
                   padding: EdgeInsets.only(bottom: 12.h),
                   child: GestureDetector(
-                    onTap: () {
-                      NavigationService.navigateTo(Routes.historyDetails);
-                    },
                     child: CustomRecentScanCard(
                       imageUrl: scanData["imageUrl"],
                       title: scanData["title"],
