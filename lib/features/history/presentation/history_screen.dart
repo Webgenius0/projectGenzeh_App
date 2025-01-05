@@ -4,8 +4,6 @@ import 'package:genzeh911/common_widgets/custom_recent_scan_card_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
-import 'package:genzeh911/helpers/all_routes.dart';
-import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 
 class HistoryScreen extends StatefulWidget {
