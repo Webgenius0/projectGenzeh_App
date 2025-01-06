@@ -109,7 +109,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
               children: [
                 Text(
                   "A cleaner future starts here —\ncheck your scan results",
-                  style: TextFontStyle.textStyle18c4A80E1PoppinsW500,
+                  style: TextFontStyle.textStyle18c4A80E1PoppinsW700
+                      .copyWith(fontSize: 20),
                 ),
               ],
             ),

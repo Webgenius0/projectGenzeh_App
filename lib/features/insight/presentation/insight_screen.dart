@@ -104,7 +104,8 @@ class _InsightScreenState extends State<InsightScreen> {
               children: [
                 Text(
                   "Small steps, big change —\nlet’s finish this microplastic discovery",
-                  style: TextFontStyle.textStyle18c4A80E1PoppinsW500,
+                  style: TextFontStyle.textStyle18c4A80E1PoppinsW700
+                      .copyWith(fontSize: 20),
                 ),
               ],
             ),
