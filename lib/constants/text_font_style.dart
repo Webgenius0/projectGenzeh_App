@@ -28,8 +28,11 @@ class TextFontStyle {
   static final textStyle12c0A3004PoppinsW500 = GoogleFonts.poppins(
       color: AppColors.c0A3004, fontSize: 12.sp, fontWeight: FontWeight.w500);
 
-  static final textStyle18c4A80E1PoppinsW500 = GoogleFonts.urbanist(
+  static final textStyle18c4A80E1PoppinsW600 = GoogleFonts.urbanist(
       color: AppColors.c4A80E1, fontSize: 18.sp, fontWeight: FontWeight.w600);
+
+  static final textStyle18c4A80E1PoppinsW700 = GoogleFonts.urbanist(
+      color: AppColors.c4A80E1, fontSize: 20.sp, fontWeight: FontWeight.w700);
 
   static final textStyle18cffffffOpenSansW600 = GoogleFonts.openSans(
       color: AppColors.cffffff, fontSize: 18.sp, fontWeight: FontWeight.w600);
