@@ -102,9 +102,30 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
                         ),
                       ],
                     ),
-                    SvgPicture.asset(
-                      Assets.icons.notification,
-                      color: AppColors.cffffff,
+                    // SvgPicture.asset(
+                    //   Assets.icons.notification,
+                    //   color: AppColors.cffffff,
+                    // ),
+                    InkWell(
+                      // onTap: () {
+                      //   NavigationService.navigateTo(
+                      //       Routes.notificationScreeen);
+                      // },
+                      child: Container(
+                        width: 40, // Width of the circular container
+                        height: 40, // Height of the circular container
+                        decoration: BoxDecoration(
+                          color: AppColors.cC5EAFF4D.withOpacity(
+                              .3), // Background color of the circle
+                          shape:
+                              BoxShape.circle, // Makes the container circular
+                        ),
+                        child: Icon(
+                          Icons.notifications_none, // Notification bell icon
+                          color: Colors.white, // Icon color
+                          size: 20, // Icon size
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -150,8 +171,8 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
                 ),
                 UIHelper.verticalSpace(12.h),
                 GestureDetector(
-                  onTap: () =>
-                      NavigationService.navigateTo(Routes.historyDetails),
+                  onTap: () => NavigationService.navigateTo(
+                      Routes.historyDetailsSafeMode),
                   child: CustomRecentScanCard(
                       icon: Assets.icons.safe,
                       imageUrl: Assets.images.productImg.path,

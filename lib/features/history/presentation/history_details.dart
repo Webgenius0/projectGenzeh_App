@@ -23,7 +23,8 @@ class HistoryDetails extends StatelessWidget {
           style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
               fontSize: 20.sp,
               letterSpacing: -0.4.sp,
-              color: AppColors.c00340D),
+              overflow: TextOverflow.ellipsis,
+              color: AppColors.cffffff),
         ),
         leading: IconButton(
           onPressed: () => NavigationService.goBack,
@@ -57,14 +58,6 @@ class HistoryDetails extends StatelessWidget {
                   color: AppColors.cFFFFFF,
                 )),
           )
-          // Padding(
-          //   padding: EdgeInsets.only(right: 24.w),
-          //   child: SvgPicture.asset(
-          //     Assets.icons.editProfile,
-          //     height: 24.h,
-          //     width: 24.w,
-          //   ),
-          // )
         ],
       ),
       body: SingleChildScrollView(
@@ -73,7 +66,7 @@ class HistoryDetails extends StatelessWidget {
             // Header section
             Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 20.h),
+              padding: EdgeInsets.symmetric(vertical: 25.h),
               decoration: BoxDecoration(
                   color: AppColors.c3689FD,
                   borderRadius: BorderRadius.only(
@@ -81,14 +74,6 @@ class HistoryDetails extends StatelessWidget {
                       bottomRight: Radius.circular(32.r))),
               child: Column(
                 children: [
-                  Text(
-                    'Microplastic Found',
-                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
-                        fontSize: 18.sp,
-                        letterSpacing: -0.36.sp,
-                        color: AppColors.cFFFFFF),
-                  ),
-                  UIHelper.verticalSpace(12.h),
                   CircularPercentIndicator(
                     radius: 70.0,
                     lineWidth: 10.0,
@@ -112,14 +97,22 @@ class HistoryDetails extends StatelessWidget {
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w400,
                                   letterSpacing: -0.64.sp,
-                                  color: AppColors.c034057),
+                                  color: AppColors.cffffff),
                         ),
                       ],
                     ),
-                    progressColor: Colors.yellow,
-                    backgroundColor: Colors.white,
+                    progressColor: AppColors.cC4ECFC,
+                    backgroundColor: AppColors.c2A2A2A1A.withOpacity(.4),
                   ),
-                  SizedBox(height: 10),
+                  UIHelper.verticalSpace(12.h),
+                  Text(
+                    'Microplastic Found',
+                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
+                        fontSize: 18.sp,
+                        letterSpacing: -0.36.sp,
+                        color: AppColors.cFFFFFF),
+                  ),
+                  UIHelper.verticalSpace(15.h),
                   Container(
                     height: 42.h,
                     width: 113.w,
@@ -153,7 +146,8 @@ class HistoryDetails extends StatelessWidget {
                     style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        color: AppColors.c000000),
+                        color: AppColors.c000000,
+                        height: 1.5),
                   ),
                   UIHelper.verticalSpace(24.h),
                   ExpandableTile(
@@ -233,6 +227,7 @@ class _ExpandableTileState extends State<ExpandableTile> {
             style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
               color: AppColors.c7B7B7B,
               fontSize: 14.sp,
+              height: 1.5.h,
               fontWeight: FontWeight.w400,
             ),
           ),

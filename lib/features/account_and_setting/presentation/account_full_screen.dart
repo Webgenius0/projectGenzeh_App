@@ -60,9 +60,6 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
             },
             icon: SvgPicture.asset(
               Assets.icons.logos,
-              width: 58.w,
-              height: 58.h,
-              fit: BoxFit.contain,
             ),
           ),
           centerTitle: true,

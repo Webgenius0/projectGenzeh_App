@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:genzeh911/common_widgets/share_bottom_sheet_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
@@ -21,7 +22,8 @@ class HistoryDetailsSafeMode extends StatelessWidget {
           style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
               fontSize: 20.sp,
               letterSpacing: -0.4.sp,
-              color: AppColors.c00340D),
+              overflow: TextOverflow.ellipsis,
+              color: AppColors.cffffff),
         ),
         leading: IconButton(
           onPressed: () => NavigationService.goBack,
@@ -37,12 +39,23 @@ class HistoryDetailsSafeMode extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 24.w),
-            child: SvgPicture.asset(
-              Assets.icons.editProfile,
-              height: 24.h,
-              width: 24.w,
-            ),
+            padding: EdgeInsets.only(right: 4.w),
+            child: IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(16.0),
+                      ),
+                    ),
+                    builder: (context) => ShareBottomSheet(),
+                  );
+                },
+                icon: SvgPicture.asset(
+                  Assets.icons.insidesShare,
+                  color: AppColors.cFFFFFF,
+                )),
           )
         ],
       ),
@@ -52,7 +65,7 @@ class HistoryDetailsSafeMode extends StatelessWidget {
             // Header section
             Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 20.h),
+              padding: EdgeInsets.symmetric(vertical: 25.h),
               decoration: BoxDecoration(
                   color: AppColors.c3689FD,
                   borderRadius: BorderRadius.only(
@@ -60,18 +73,10 @@ class HistoryDetailsSafeMode extends StatelessWidget {
                       bottomRight: Radius.circular(32.r))),
               child: Column(
                 children: [
-                  Text(
-                    'Microplastic not found',
-                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
-                        fontSize: 18.sp,
-                        letterSpacing: -0.36.sp,
-                        color: AppColors.cFFFFFF),
-                  ),
-                  UIHelper.verticalSpace(12.h),
                   CircularPercentIndicator(
                     radius: 70.0,
                     lineWidth: 10.0,
-                    percent: 0.63,
+                    percent: 0.23,
                     center: Column(
                       children: [
                         Text(
@@ -91,17 +96,25 @@ class HistoryDetailsSafeMode extends StatelessWidget {
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w400,
                                   letterSpacing: -0.64.sp,
-                                  color: AppColors.c034057),
+                                  color: AppColors.cffffff),
                         ),
                       ],
                     ),
-                    progressColor: Colors.yellow,
-                    backgroundColor: Colors.white,
+                    progressColor: AppColors.cC4ECFC,
+                    backgroundColor: AppColors.c2A2A2A1A.withOpacity(.4),
                   ),
-                  SizedBox(height: 10),
+                  UIHelper.verticalSpace(12.h),
+                  Text(
+                    'Microplastics Not Found',
+                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
+                        fontSize: 18.sp,
+                        letterSpacing: -0.36.sp,
+                        color: AppColors.cFFFFFF),
+                  ),
+                  UIHelper.verticalSpace(15.h),
                   Container(
                     height: 42.h,
-                    width: 81.w,
+                    width: 113.w,
                     padding:
                         EdgeInsets.symmetric(vertical: 8.h, horizontal: 24.w),
                     alignment: Alignment.center,
@@ -115,7 +128,7 @@ class HistoryDetailsSafeMode extends StatelessWidget {
                           .copyWith(
                               fontWeight: FontWeight.w400,
                               fontSize: 15.sp,
-                              color: AppColors.cFFFFFF),
+                              color: AppColors.c000000),
                     ),
                   ),
                 ],
@@ -132,7 +145,8 @@ class HistoryDetailsSafeMode extends StatelessWidget {
                     style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        color: AppColors.c000000),
+                        color: AppColors.c000000,
+                        height: 1.5),
                   ),
                   UIHelper.verticalSpace(24.h),
                   ExpandableTile(
