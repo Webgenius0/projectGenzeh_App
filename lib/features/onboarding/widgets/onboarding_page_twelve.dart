@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:genzeh911/common_widgets/custom_elevated_button.dart';
 import 'package:genzeh911/common_widgets/custom_input_field_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/subscription_plan/presentation/subscription_plan_screen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
-import 'package:get/get.dart';
 
 class OnboardingPageTwelve extends StatefulWidget {
   const OnboardingPageTwelve({super.key});
@@ -37,7 +37,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
           ),
           UIHelper.verticalSpace(16.h),
           Text(
-            "Please enter your username, email and password. If you forget it, then you have to do forgot password.",
+            "Please enter your username, email and password.",
             style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
               color: AppColors.c4B586B,
               fontWeight: FontWeight.w400,
@@ -50,7 +50,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: false,
             showSuffixIcon: false,
             hintText: 'Enter username',
-            inputType: TextInputType.emailAddress,
+            inputType: TextInputType.name,
             controller: nameController,
           ),
           UIHelper.verticalSpace(20.h),
@@ -59,7 +59,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: false,
             showSuffixIcon: false,
             hintText: 'Enter email',
-            inputType: TextInputType.text,
+            inputType: TextInputType.emailAddress,
             controller: emailController,
           ),
           UIHelper.verticalSpace(20.h),
@@ -68,7 +68,7 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: true,
             showSuffixIcon: true,
             hintText: 'Enter password',
-            inputType: TextInputType.text,
+            inputType: TextInputType.visiblePassword,
             controller: passwordController,
           ),
           UIHelper.verticalSpace(20.h),
@@ -77,21 +77,30 @@ class _OnboardingPageTwelveState extends State<OnboardingPageTwelve> {
             isPasswordField: true,
             showSuffixIcon: true,
             hintText: 'Re enter password',
-            inputType: TextInputType.text,
+            inputType: TextInputType.visiblePassword,
             controller: confirmPasswordController,
           ),
           UIHelper.verticalSpace(16.h),
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const RememberMeCheckbox(),
+              // TextButton(
+              //     onPressed: () {
+              //       NavigationService.navigateTo(Routes.forgetPasswordScreen);
+              //     },
+              //     child: Text(
+              //       'Forgot password?',
+              //       style: TextFontStyle.textStyle24c222222UrbanistW600
+              //           .copyWith(fontSize: 12.sp, fontWeight: FontWeight.w500),
+              //     ))
             ],
           ),
 
-          UIHelper.verticalSpace(10.h),
+          UIHelper.verticalSpace(12.h),
           customElevatedButton(
               onPressed: () {
-                Get.to(() => SubscriptionPlanScreen());
+                NavigationService.navigateTo(Routes.subscriptionPlanScreen);
               },
               child: Text(
                 'Continue',

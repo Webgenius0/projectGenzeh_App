@@ -36,7 +36,7 @@ class _OnboardingPageOneState extends State<OnboardingPageOne> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            UIHelper.verticalSpace(34.h),
+            // UIHelper.verticalSpace(34.h),
             Text(
               widget.title,
               textAlign: TextAlign.center,
@@ -93,7 +93,7 @@ class CustomButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue : Colors.transparent,
+          color: isSelected ? AppColors.c3689FD : Colors.transparent,
           border: Border.all(
             color: AppColors.c3689FD,
             width: 1.5.r,

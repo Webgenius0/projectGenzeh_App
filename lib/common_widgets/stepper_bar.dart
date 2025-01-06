@@ -14,7 +14,7 @@ class PerformanceBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 5.h,
+        height: 6.h,
         width: 100.w,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r), color: Colors.white),

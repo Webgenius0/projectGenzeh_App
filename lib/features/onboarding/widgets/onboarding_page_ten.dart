@@ -55,7 +55,7 @@ class _OnboardingPageTenState extends State<OnboardingPageTen> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            UIHelper.verticalSpace(100.h),
+            UIHelper.verticalSpace(85.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -147,12 +147,10 @@ class CustomButton extends StatelessWidget {
             color: Colors.transparent,
             border: Border.all(
               color: AppColors.c3689FD,
-              width: 1,
+              width: 1.w,
             ),
             borderRadius: BorderRadius.circular(100.r),
           ),
-          padding:
-              EdgeInsets.only(top: 4.h, right: 4.w, bottom: 4.h, left: 0.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

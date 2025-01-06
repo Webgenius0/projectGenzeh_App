@@ -2,9 +2,6 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:genzeh911/features/home/presentation/home_screen.dart';
-import 'package:genzeh911/features/notification/presentation/notification_screen.dart';
-import 'package:genzeh911/features/subscription_plan/presentation/subscription_plan_screen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/di.dart';
@@ -88,7 +85,7 @@ class UtillScreenMobile extends StatelessWidget {
                 },
                 navigatorKey: NavigationService.navigatorKey,
                 onGenerateRoute: RouteGenerator.generateRoute,
-                home: HomeScreen()));
+                home: Loading()));
       },
     );
   }

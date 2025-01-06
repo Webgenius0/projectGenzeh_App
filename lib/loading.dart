@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:genzeh911/features/onboarding/onboarding_screen.dart';
+import 'package:genzeh911/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:genzeh911/splash_screen.dart';
 
 final class Loading extends StatefulWidget {
