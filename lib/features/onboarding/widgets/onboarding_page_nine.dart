@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/provider/page_view_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../helpers/ui_helpers.dart';
 
@@ -18,18 +22,8 @@ class OnboardingPageNine extends StatefulWidget {
 }
 
 class _OnboardingPageNineState extends State<OnboardingPageNine> {
-  int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
-    final List<String> options = [
-      'Prevent Long-Term Chronic Conditions',
-      'Promote Reproductive Health',
-      'Support Detoxification and Body Health',
-      'Improve Skin and Respiratory Health',
-      'Educate on Product Safety',
-      'Reduce Personal use of Microplastics',
-    ];
-
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -44,16 +38,19 @@ class _OnboardingPageNineState extends State<OnboardingPageNine> {
             UIHelper.verticalSpace(42.h),
             Column(
               mainAxisSize: MainAxisSize.min,
-              children: List.generate(options.length, (index) {
+              children: List.generate(
+                  context.read<PageViewProvider>().maingoal.length, (index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: CustomButton(
-                    text: options[index],
-                    isSelected: selectedIndex == index,
+                    text: context.read<PageViewProvider>().maingoal[index],
+                    isSelected:
+                        context.read<PageViewProvider>().selectedgoal == index,
                     onPressed: () {
                       setState(() {
-                        selectedIndex = index;
+                        context.read<PageViewProvider>().selectedgoal = index;
                       });
+                      log("${context.read<PageViewProvider>().maingoal[context.read<PageViewProvider>().selectedgoal]}");
                     },
                   ),
                 );

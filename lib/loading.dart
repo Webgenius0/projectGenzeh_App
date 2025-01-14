@@ -25,7 +25,7 @@ class _LoadingState extends State<Loading> {
     //AutoAppUpdateUtil.instance.checkAppUpdate();
     // await setInitValue();
     await Future.delayed(Duration(
-      seconds: 3,
+      seconds: 1,
     ));
     setState(() {
       _isLoading = false;

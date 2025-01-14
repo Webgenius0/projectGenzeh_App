@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_null_comparison
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:genzeh911/common_widgets/custom_elevated_button.dart';
@@ -16,6 +17,7 @@ import 'package:genzeh911/features/onboarding/widgets/onboarding_page_three.dart
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_twelve.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_two.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/toast.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:genzeh911/provider/page_view_provider.dart';
 import 'package:provider/provider.dart';
@@ -52,6 +54,11 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
 
   @override
   Widget build(BuildContext context) {
+    int selectedIndex = context.read<PageViewProvider>().selectedIndex;
+    List options = context.read<PageViewProvider>().options;
+    int selectedFindus = context.read<PageViewProvider>().selectedFindus;
+    List findus = context.read<PageViewProvider>().findus;
+
     return DynamicStatusBarWidget(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
@@ -104,63 +111,70 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                       // scrollBehavior: ScrollBehavior,
                       allowImplicitScrolling: false,
                       controller: context.read<PageViewProvider>().controller,
-                      children: const [
-                        OnboardingPageOne(
+                      children: [
+                        const OnboardingPageOne(
                           title: 'How Old Are You?',
                           description: '',
                         ),
-                        OnboardingPageTwo(
-                          title: 'How did you find us?',
-                        ),
-                        OnboardingPageThree(
-                          title: 'Discover Hidden MICROPLASTICS',
-                          description:
-                              'Powered by AI to Detect Microplastic Ingredients in Cosmetics, Skincare, and Household Products with Precision.',
-                        ),
-                        OnboardingPageFour(
+                        if (selectedIndex >= 0 &&
+                            selectedIndex < options.length)
+                          OnboardingPageTwo(
+                            title: 'How did you find us?',
+                            old: options[selectedIndex],
+                          ),
+                        if (selectedFindus >= 0 &&
+                            selectedFindus < findus.length)
+                          OnboardingPageThree(
+                            title: 'Discover Hidden MICROPLASTICS',
+                            description:
+                                'Powered by AI to Detect Microplastic Ingredients in Cosmetics, Skincare, and Household Products with Precision.',
+                            findus: findus[selectedFindus],
+                          ),
+                        const OnboardingPageFour(
                           title: 'SCAN GET AI \nANALYSIS RECOMMENDATIONS',
                           description:
                               'Our AI technology analyzes products for microplastic content in seconds.',
                         ),
-                        OnboardingPageFive(
+                        const OnboardingPageFive(
                           title: 'MicroPlastics are Harmful to Our Health',
                           descriptionOne:
                               'Studies have shown that exposure to microplastics reduced sperm motility and viability by up to 20% in controlled laboratory experiments.',
                           descriptionTwo:
                               'A study detected microplastics in 90% of tested human brain samples, raising concerns about their role in cognitive decline and neurological disorders.',
                         ),
-                        OnboardingPageSix(
+                        const OnboardingPageSix(
                           title: 'MicroPlastics are Harmful to Our Health',
                           descriptionOne:
                               'Microplastics can accumulate in lung tissue and potentially impair respiratory health',
                           descriptionTwo:
                               'Microplastics increase the risk of heart disease, stroke, and death.',
                         ),
-                        OnboardingPageSeven(
+                        const OnboardingPageSeven(
                           title: 'MicroPlastics are Harmful to Our Health',
                           descriptionOne:
                               'Microplastics can be found in the maternal and fetal sides of the placenta, as well as in the amniochorial membranes.',
                           descriptionTwo:
                               'A study found microplastics in the blood samples of 77% individuals. Microplastics can circulate through the body, lodging in organs and affecting their function over time.',
                         ),
-                        OnboardingPageNine(title: 'What is your main goal?'),
-                        OnboardingPageTen(
+                        const OnboardingPageNine(
+                            title: 'What is your main goal?'),
+                        const OnboardingPageTen(
                           titleOne: 'Welcome to ',
                           titleTwo: ' BMAi',
                           icon: '👋',
                           description:
                               'Your AI-powered Agent Helping You Detect Microplastic Ingredients in Personal And Household Products. A Must Have in Your Path to Longevity.',
                         ),
-                        OnboardingPageEleven(
+                        const OnboardingPageEleven(
                           title: 'Complete Your Profile',
                           description:
                               'Don\'t worry, only you can see your personal data.',
                         ),
-                        OnboardingPageTwelve(),
+                        const OnboardingPageTwelve(),
                       ],
                     ),
                   ),
-                  _currentIndex == 8
+                  _currentIndex == 7
                       ? SizedBox.shrink()
                       : Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10.sp),
@@ -168,17 +182,28 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                               ? const SizedBox.shrink()
                               : customElevatedButton(
                                   onPressed: () {
-                                    if (_currentIndex == totalSteps - 1) {
-                                      widget.onDone();
+                                    if (context
+                                            .read<PageViewProvider>()
+                                            .selectedIndex ==
+                                        -1) {
+                                      ToastUtil.showShortToast(
+                                          "Please select an age before proceeding.");
+                                    } else if (selectedFindus == null) {
+                                      ToastUtil.showShortToast(
+                                          "Invalid selection for findus");
                                     } else {
-                                      context
-                                          .read<PageViewProvider>()
-                                          .controller
-                                          .nextPage(
-                                            duration: const Duration(
-                                                milliseconds: 300),
-                                            curve: Curves.linear,
-                                          );
+                                      if (_currentIndex == totalSteps - 1) {
+                                        widget.onDone();
+                                      } else {
+                                        context
+                                            .read<PageViewProvider>()
+                                            .controller
+                                            .nextPage(
+                                              duration: const Duration(
+                                                  milliseconds: 300),
+                                              curve: Curves.linear,
+                                            );
+                                      }
                                     }
                                   },
                                   child: Text(
