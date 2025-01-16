@@ -7,7 +7,10 @@ import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
+import 'package:genzeh911/helpers/toast.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/networks/api_acess.dart';
+import 'package:genzeh911/networks/stream_cleaner.dart';
 
 class AccountFullScreen extends StatefulWidget {
   const AccountFullScreen({Key? key}) : super(key: key);
@@ -188,10 +191,26 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
                             Assets.icons.logout,
                           )),
                       UIHelper.horizontalSpace(16.w), // Horizontal spacing
-                      Text('Log Out',
-                          style: TextFontStyle.textStyle24c222222UrbanistW600
-                              .copyWith(
-                                  fontSize: 14.sp, color: AppColors.cFF0000)),
+                      GestureDetector(
+                        onTap: () async {
+                          await getLogoutResponseRX.logout().then((_) {
+                            if (getLogoutResponseRX.dataFetcher.hasValue) {
+                              ToastUtil.showShortToast("Logout Successful ✔");
+                              totalDataClean();
+                              // Navigate to the login screen after successful logout
+                              NavigationService.navigateToUntilReplacement(
+                                  Routes.loadingScreen);
+                            }
+                          }, onError: (error) {
+                            ToastUtil.showShortToast(error);
+                            return null;
+                          });
+                        },
+                        child: Text('Log Out',
+                            style: TextFontStyle.textStyle24c222222UrbanistW600
+                                .copyWith(
+                                    fontSize: 14.sp, color: AppColors.cFF0000)),
+                      ),
                     ],
                   ),
                 ),

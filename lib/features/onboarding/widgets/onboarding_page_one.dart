@@ -58,7 +58,7 @@ class _OnboardingPageOneState extends State<OnboardingPageOne> {
                         context.read<PageViewProvider>().selectedIndex = index;
                       });
                       print(
-                          "Selected option: ${context.read<PageViewProvider>().selectedIndex}");
+                          "Selected option: ${context.read<PageViewProvider>().options[context.read<PageViewProvider>().selectedIndex]}");
                     },
                   ),
                 );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PageViewProvider extends ChangeNotifier {
-  final PageController controller = PageController();
+  late final PageController controller = PageController();
 
   final List<String> options = [
     'Under 24',

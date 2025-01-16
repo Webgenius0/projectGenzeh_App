@@ -8,6 +8,8 @@ import 'package:genzeh911/features/account_and_setting/presentation/personal_inf
 import 'package:genzeh911/features/auth/forgot_password/presentation/forgot_password_screen.dart';
 import 'package:genzeh911/features/auth/otp_verification/presentation/otp_verification_screen.dart';
 import 'package:genzeh911/features/auth/sign_in/presentation/sign_in_screen.dart';
+import 'package:genzeh911/features/auth/sign_up/presentation/sign_up_screen.dart';
+import 'package:genzeh911/features/auth/sign_up/presentation/sign_up_two_screen.dart';
 import 'package:genzeh911/features/history/presentation/history_details.dart';
 import 'package:genzeh911/features/history/presentation/history_details_safe_mode.dart';
 import 'package:genzeh911/features/insight/presentation/insight_details.dart';
@@ -42,6 +44,8 @@ final class Routes {
   static const String congratulationScreen = '/congratulationScreen';
   static const String scanningReportScreen = '/scanningReportScreen';
   static const String historyDetailsSafeMode = '/historyDetailsSafeMode';
+  static const String signup = '/signup';
+  static const String signup2 = '/signup2';
 }
 
 final class RouteGenerator {
@@ -62,11 +66,17 @@ final class RouteGenerator {
                 widget: const SignInScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const SignInScreen());
 
-      // case Routes.signUpScreen:
-      //   return Platform.isAndroid
-      //       ? _FadedTransitionRoute(
-      //           widget: const SignUpScreen(), settings: settings)
-      //       : CupertinoPageRoute(builder: (context) => const SignUpScreen());
+      case Routes.signup:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const SignUpScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => const SignUpScreen());
+
+      case Routes.signup2:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const SignUpTwoScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => const SignUpTwoScreen());
 
       case Routes.forgetPasswordScreen:
         return Platform.isAndroid

@@ -26,4 +26,7 @@ final class Endpoints {
   Endpoints._();
   //onboard
   static String onboard() => "/api/onboard";
+  static String signup() => "/api/register";
+  static String login() => "/api/login";
+  static String logout() => "/api/logout";
 }

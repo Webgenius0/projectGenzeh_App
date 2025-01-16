@@ -7,7 +7,9 @@ import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
+import 'package:genzeh911/helpers/toast.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/networks/api_acess.dart';
 
 import '../../../../common_widgets/custom_elevated_button.dart';
 
@@ -32,11 +34,11 @@ class _SignInScreenState extends State<SignInScreen> {
       'icon': Assets.icons.google,
       'title': 'Continue with Google',
     },
-    // {
-    //   'icon': null,
-    //   'title': 'Other Email',
-    // },
   ];
+
+  final formKey = GlobalKey<FormState>();
+  ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,146 +69,165 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    UIHelper.verticalSpace(55.h),
-                    Text(
-                      "Hello there 👋",
-                      style: TextFontStyle.textStyle24c222222UrbanistW600
-                          .copyWith(
-                              letterSpacing: -0.48.sp,
-                              color: AppColors.c000000),
-                    ),
-                    UIHelper.verticalSpace(10.h),
-                    Text(
-                      "Please enter your username/email and \npassword to sign in",
-                      style:
-                          TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
-                        color: AppColors.c4B586B,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
+                child: Form(
+                  key: formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      UIHelper.verticalSpace(55.h),
+                      Text(
+                        "Hello there 👋",
+                        style: TextFontStyle.textStyle24c222222UrbanistW600
+                            .copyWith(
+                                letterSpacing: -0.48.sp,
+                                color: AppColors.c000000),
                       ),
-                    ),
-                    UIHelper.verticalSpace(15.h),
-                    CustomInputFieldWidget(
-                      labelText: "Username 0r Email",
-                      isPasswordField: false,
-                      showSuffixIcon: false,
-                      hintText: 'Azizul Hakim',
-                      inputType: TextInputType.emailAddress,
-                      controller: nameOrEmailController,
-                    ),
-                    UIHelper.verticalSpace(15.h),
-                    CustomInputFieldWidget(
-                      labelText: "Password",
-                      isPasswordField: true,
-                      showSuffixIcon: true,
-                      hintText: '******',
-                      inputType: TextInputType.text,
-                      controller: passwordController,
-                    ),
-                    UIHelper.verticalSpace(10.h),
-                    const RememberMeCheckbox(),
-                    UIHelper.verticalSpace(20.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        GestureDetector(
-                          onTap: () => NavigationService.navigateTo(
-                              Routes.forgetPasswordScreen),
-                          child: Text("Forgot Password",
-                              style: TextFontStyle
-                                  .textStyle24c222222UrbanistW600
-                                  .copyWith(
-                                      fontSize: 18.sp,
-                                      color: AppColors.c222222)),
+                      UIHelper.verticalSpace(10.h),
+                      Text(
+                        "Please enter your username/email and \npassword to sign in",
+                        style: TextFontStyle.textStyle24c222222UrbanistW600
+                            .copyWith(
+                          color: AppColors.c4B586B,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14.sp,
                         ),
-                      ],
-                    ),
-                    UIHelper.verticalSpace(15.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            color: Colors.grey.withOpacity(0.5),
-                            thickness: 1,
-                            indent: 6,
-                            endIndent: 6,
-                          ),
-                        ),
-
-                        // Text in the center
-                        Text(
-                          'or continue with',
-                          style: TextFontStyle.textStyle24c222222UrbanistW600
-                              .copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: AppColors.c222222.withOpacity(0.4),
-                            fontSize: 12.sp,
-                          ),
-                        ),
-
-                        // Right Divider
-                        Expanded(
-                          child: Divider(
-                            color:
-                                Colors.grey.withOpacity(0.5), // Divider color
-                            thickness: 1,
-                            indent: 6,
-                            endIndent: 6,
-                          ),
-                        ),
-                      ],
-                    ),
-                    UIHelper.verticalSpace(17.h),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: List.generate(signInOption.length, (index) {
-                        final option = signInOption[index];
-                        return CustomButton(
-                          text: option['title'],
-                          loginIcon: option['icon'],
-                          isSelected: selectedIndex == index,
-                          backgroundColor: selectedIndex == index
-                              ? AppColors.c3689FD // Selected button background
-                              : Colors.transparent, // Default background
-                          textColor: selectedIndex == index
-                              ? Colors.white // Selected button text color
-                              : AppColors.c252C2E, // Default text color
-                          onPressed: () {
-                            if (index == signInOption.length - 1) {
-                              // NavigationService.navigateTo(Routes.signInScreen);
-                            } else if (index == signInOption.length - 2) {
-                              // NavigationService.navigateTo(Routes.signUpScreen);
-                            } else {
-                              setState(() {
-                                selectedIndex = index;
-                              });
-                            }
-                          },
-                        );
-                      }),
-                    ),
-                    UIHelper.verticalSpace(18.h),
-                    customElevatedButton(
-                        onPressed: () {
-                          NavigationService.navigateToWithArgs(
-                              Routes.bottomNav, {"pageNum": 0});
+                      ),
+                      UIHelper.verticalSpace(15.h),
+                      CustomInputFieldWidget(
+                        labelText: "Username 0r Email",
+                        isPasswordField: false,
+                        showSuffixIcon: false,
+                        hintText: 'Name',
+                        inputType: TextInputType.emailAddress,
+                        controller: nameOrEmailController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Please Enter user or email";
+                          }
+                          return null;
                         },
-                        child: Text(
-                          'Sign In',
-                          style: TextFontStyle.textStyle24c222222UrbanistW600
-                              .copyWith(
-                            fontSize: 16.sp,
-                            color: AppColors.cFFFFFF,
-                            fontWeight: FontWeight.w600,
+                      ),
+                      UIHelper.verticalSpace(15.h),
+                      CustomInputFieldWidget(
+                        labelText: "Password",
+                        isPasswordField: true,
+                        showSuffixIcon: true,
+                        hintText: '******',
+                        inputType: TextInputType.text,
+                        controller: passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password';
+                          }
+                          if (value.length < 8) {
+                            return 'Password must be at least 8 characters long';
+                          }
+                          return null;
+                        },
+                      ),
+                      UIHelper.verticalSpace(10.h),
+                      // const RememberMeCheckbox(),
+                      UIHelper.verticalSpace(20.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () => NavigationService.navigateTo(
+                                Routes.forgetPasswordScreen),
+                            child: Text("Forgot Password",
+                                style: TextFontStyle
+                                    .textStyle24c222222UrbanistW600
+                                    .copyWith(
+                                        fontSize: 18.sp,
+                                        color: AppColors.c222222)),
                           ),
-                        ),
-                        bgColor: AppColors.allPrimaryColor),
-                  ],
+                        ],
+                      ),
+                      UIHelper.verticalSpace(15.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Divider(
+                              color: Colors.grey.withOpacity(0.5),
+                              thickness: 1,
+                              indent: 6,
+                              endIndent: 6,
+                            ),
+                          ),
+
+                          // Text in the center
+                          Text(
+                            'or continue with',
+                            style: TextFontStyle.textStyle24c222222UrbanistW600
+                                .copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.c222222.withOpacity(0.4),
+                              fontSize: 12.sp,
+                            ),
+                          ),
+
+                          // Right Divider
+                          Expanded(
+                            child: Divider(
+                              color:
+                                  Colors.grey.withOpacity(0.5), // Divider color
+                              thickness: 1,
+                              indent: 6,
+                              endIndent: 6,
+                            ),
+                          ),
+                        ],
+                      ),
+                      UIHelper.verticalSpace(17.h),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: List.generate(signInOption.length, (index) {
+                          final option = signInOption[index];
+                          return CustomButton(
+                            text: option['title'],
+                            loginIcon: option['icon'],
+                            isSelected: selectedIndex == index,
+                            backgroundColor: selectedIndex == index
+                                ? AppColors
+                                    .c3689FD // Selected button background
+                                : Colors.transparent, // Default background
+                            textColor: selectedIndex == index
+                                ? Colors.white // Selected button text color
+                                : AppColors.c252C2E, // Default text color
+                            onPressed: () {
+                              if (index == signInOption.length - 1) {
+                                // NavigationService.navigateTo(Routes.signInScreen);
+                              } else if (index == signInOption.length - 2) {
+                                // NavigationService.navigateTo(Routes.signUpScreen);
+                              } else {
+                                setState(() {
+                                  selectedIndex = index;
+                                });
+                              }
+                            },
+                          );
+                        }),
+                      ),
+                      UIHelper.verticalSpace(18.h),
+                      customElevatedButton(
+                          onPressed: () {
+                            _loginMethod();
+                          },
+                          child: Text(
+                            'Sign In',
+                            style: TextFontStyle.textStyle24c222222UrbanistW600
+                                .copyWith(
+                              fontSize: 16.sp,
+                              color: AppColors.cFFFFFF,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          bgColor: AppColors.allPrimaryColor),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -214,6 +235,33 @@ class _SignInScreenState extends State<SignInScreen> {
         ],
       ),
     );
+  }
+
+  void _loginMethod() async {
+    if (formKey.currentState?.validate() ?? false) {
+      isLoading.value = true;
+
+      await loginRx.Login(
+              email: nameOrEmailController.text.trim(),
+              password: passwordController.text.trim())
+          .then((success) {
+        if (success) {
+          isLoading.value = false;
+
+          // Authenticated Successfully then Navigate To Desired Screen
+          NavigationService.navigateToWithArgs(
+              Routes.bottomNav, {"pageNum": 0});
+          ToastUtil.showShortToast("User logged in successfully ✔");
+        }
+        isLoading.value = false;
+      }, onError: (error) {
+        isLoading.value = false;
+        ToastUtil.showShortToast(error);
+        return null;
+      });
+    } else {
+      isLoading.value = false;
+    }
   }
 }
 

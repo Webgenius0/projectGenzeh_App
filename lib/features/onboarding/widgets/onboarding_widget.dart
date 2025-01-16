@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:genzeh911/common_widgets/custom_elevated_button.dart';
 import 'package:genzeh911/common_widgets/dynamic_status_bar_widget.dart';
 import 'package:genzeh911/common_widgets/stepper_bar.dart';
+import 'package:genzeh911/constants/app_constants.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/onboarding/widgets/onboarding_page_eleven.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_five.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_four.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_nine.dart';
@@ -14,11 +14,11 @@ import 'package:genzeh911/features/onboarding/widgets/onboarding_page_seven.dart
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_six.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_ten.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_three.dart';
-import 'package:genzeh911/features/onboarding/widgets/onboarding_page_twelve.dart';
 import 'package:genzeh911/features/onboarding/widgets/onboarding_page_two.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
-import 'package:genzeh911/helpers/toast.dart';
+import 'package:genzeh911/helpers/di.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/networks/api_acess.dart';
 import 'package:genzeh911/provider/page_view_provider.dart';
 import 'package:provider/provider.dart';
 import '../../../../gen/assets.gen.dart';
@@ -165,16 +165,10 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                           description:
                               'Your AI-powered Agent Helping You Detect Microplastic Ingredients in Personal And Household Products. A Must Have in Your Path to Longevity.',
                         ),
-                        const OnboardingPageEleven(
-                          title: 'Complete Your Profile',
-                          description:
-                              'Don\'t worry, only you can see your personal data.',
-                        ),
-                        const OnboardingPageTwelve(),
                       ],
                     ),
                   ),
-                  _currentIndex == 7
+                  _currentIndex == 8
                       ? SizedBox.shrink()
                       : Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10.sp),
@@ -182,19 +176,45 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                               ? const SizedBox.shrink()
                               : customElevatedButton(
                                   onPressed: () {
-                                    if (context
-                                            .read<PageViewProvider>()
-                                            .selectedIndex ==
-                                        -1) {
-                                      ToastUtil.showShortToast(
-                                          "Please select an age before proceeding.");
-                                    } else if (selectedFindus == null) {
-                                      ToastUtil.showShortToast(
-                                          "Invalid selection for findus");
+                                    if (_currentIndex == totalSteps - 1) {
+                                      widget.onDone();
                                     } else {
-                                      if (_currentIndex == totalSteps - 1) {
-                                        widget.onDone();
+                                      if (_currentIndex == 7) {
+                                        appData.write(kKeyfirstTime, false);
+                                        if (selectedIndex >= 0 &&
+                                            selectedIndex < options.length) {
+                                          onboardRx.onboard(
+                                            old: context
+                                                    .read<PageViewProvider>()
+                                                    .options[
+                                                context
+                                                    .read<PageViewProvider>()
+                                                    .selectedIndex],
+                                            findus: context
+                                                    .read<PageViewProvider>()
+                                                    .findus[
+                                                context
+                                                    .read<PageViewProvider>()
+                                                    .selectedFindus],
+                                            maingoal: context
+                                                    .read<PageViewProvider>()
+                                                    .maingoal[
+                                                context
+                                                    .read<PageViewProvider>()
+                                                    .selectedgoal],
+                                          );
+                                        }
+                                        context
+                                            .read<PageViewProvider>()
+                                            .controller
+                                            .nextPage(
+                                              duration: const Duration(
+                                                  milliseconds: 300),
+                                              curve: Curves.linear,
+                                            );
                                       } else {
+                                        appData.write(kKeyfirstTime, false);
+
                                         context
                                             .read<PageViewProvider>()
                                             .controller

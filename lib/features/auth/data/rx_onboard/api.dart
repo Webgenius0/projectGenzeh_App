@@ -1,31 +1,33 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:genzeh911/features/auth/model/login_model.dart';
+import 'package:genzeh911/features/auth/model/onboard_model.dart';
 
 import '../../../../networks/dio/dio.dart';
 import '../../../../networks/endpoints.dart';
 import '../../../../networks/exception_handler/data_source.dart';
 
-final class LoginApi {
-  static final LoginApi _singleton = LoginApi._internal();
-  LoginApi._internal();
-  static LoginApi get instance => _singleton;
+final class OnboardApi {
+  static final OnboardApi _singleton = OnboardApi._internal();
+  OnboardApi._internal();
+  static OnboardApi get instance => _singleton;
 
-  Future<LoginModel> Login({
-    required String email,
-    required String password,
+  Future<OnboardModel> onboard({
+    required String old,
+    required String findus,
+    required String maingoal,
   }) async {
     try {
       Map data = {
-        "email": email,
-        "password": password,
+        "old": old,
+        "find_us": findus,
+        "main_goal": maingoal,
       };
 
-      Response response = await postHttp(Endpoints.login(), data);
+      Response response = await postHttp(Endpoints.onboard(), data);
 
       if (response.statusCode == 200) {
-        final data = LoginModel.fromRawJson(json.encode(response.data));
+        final data = OnboardModel.fromRawJson(json.encode(response.data));
         return data;
       } else {
         // Handle non-200 status code errors

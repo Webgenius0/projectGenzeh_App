@@ -6,6 +6,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/provider/auth_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:country_picker/country_picker.dart';
 
 class CustomBirthDayAndCountryPickWidget extends StatefulWidget {
   final String labelText;
@@ -34,14 +37,12 @@ class CustomBirthDayAndCountryPickWidget extends StatefulWidget {
 class _CustomDateOrCountryPickWidgetState
     extends State<CustomBirthDayAndCountryPickWidget> {
   bool isIconVisible = false; // To manage dynamic icon display
-  String displayedHintText = "";
   bool isDateSelected = false;
-  String selectedCountry = "";
 
   @override
   void initState() {
     super.initState();
-    displayedHintText = widget.hintText;
+    context.read<AuthProvider>().displayedHintText = widget.hintText;
   }
 
   @override
@@ -62,7 +63,17 @@ class _CustomDateOrCountryPickWidgetState
             if (widget.isDatePicker) {
               await selectDate(context); // Show the DatePicker
             } else {
-              await selectCountry(context); // Show the Country Picker
+              showCountryPicker(
+                context: context,
+                showPhoneCode:
+                    true, // optional. Shows phone code next to the country name.
+                onSelect: (Country country) {
+                  setState(() {
+                    context.read<AuthProvider>().selectedCountry =
+                        '${country.name}';
+                  });
+                },
+              );
             }
             if (widget.onButtonPressed != null) {
               widget.onButtonPressed(); // Trigger the callback if provided
@@ -91,7 +102,12 @@ class _CustomDateOrCountryPickWidgetState
             children: [
               Expanded(
                 child: Text(
-                  displayedHintText,
+                  widget.isDatePicker
+                      ? context.read<AuthProvider>().displayedHintText
+                      : context
+                          .read<AuthProvider>()
+                          .selectedCountry
+                          .toLowerCase(),
                   style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                     color: AppColors.c4B586B, // Text color
                     fontSize: 14.sp,
@@ -124,64 +140,9 @@ class _CustomDateOrCountryPickWidgetState
     if (selectedDate != null) {
       setState(() {
         // Format the date to display in the widget
-        displayedHintText = "${selectedDate.toLocal()}".split(' ')[0];
+        context.read<AuthProvider>().displayedHintText =
+            "${selectedDate.toLocal()}".split(' ')[0];
         isDateSelected = true;
-      });
-    }
-  }
-
-  Future<void> selectCountry(BuildContext context) async {
-    String? selected = await showDialog<String>(
-      context: context,
-      builder: (BuildContext context) {
-        return SimpleDialog(
-          title: Text("Select Country"),
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Bangladesh');
-                    },
-                    child: Text("Bangladesh"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'India');
-                    },
-                    child: Text("India"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Australia');
-                    },
-                    child: Text("Australia"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'USA');
-                    },
-                    child: Text("USA"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Nepal');
-                    },
-                    child: Text("Nepal"),
-                  ),
-                ],
-              ),
-            )
-          ],
-        );
-      },
-    );
-
-    if (selected != null) {
-      setState(() {
-        displayedHintText = selected;
       });
     }
   }

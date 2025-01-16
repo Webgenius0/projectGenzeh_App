@@ -45,6 +45,7 @@ dependencies:
   flutter_switch: ^0.3.2
   camera: ^0.11.0+2
   fluttertoast: ^8.2.10
+  country_picker: ^2.0.27
   # qr_code_scanner: ^1.0.1
 
 
