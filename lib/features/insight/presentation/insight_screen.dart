@@ -3,11 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/common_widgets/custom_educational_insight_card_widget.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
+import 'package:genzeh911/features/home/model/insight_model.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/loading.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/networks/api_acess.dart';
 
 class InsightScreen extends StatefulWidget {
   const InsightScreen({Key? key}) : super(key: key);
@@ -17,63 +20,6 @@ class InsightScreen extends StatefulWidget {
 }
 
 class _InsightScreenState extends State<InsightScreen> {
-  final List<Map<String, dynamic>> insightDataList = [
-    {
-      "imageUrl": Assets.images.fruits.path,
-      "title": "Food price rise fears amid staff shortages",
-      "time": "4min ago",
-      "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
-      "icon": Assets.icons.dotIcon,
-    },
-    {
-      "imageUrl": Assets.images.winter.path,
-      "title": "2021's most brilliant horror movie",
-      "time": "4min ago",
-      "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
-      "icon": Assets.icons.dotIcon,
-    },
-    {
-      "imageUrl": Assets.images.computer.path,
-      "title": "US jobs growth disappoints as recovery falters",
-      "time": "4min ago",
-      "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
-      "icon": Assets.icons.dotIcon,
-    },
-    {
-      "imageUrl": Assets.images.computer.path,
-      "title": "US jobs growth disappoints as recovery falters",
-      "time": "4min ago",
-      "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
-      "icon": Assets.icons.dotIcon,
-    },
-    {
-      "imageUrl": Assets.images.computer.path,
-      "title": "US jobs growth disappoints as recovery falters",
-      "time": "4min ago",
-      "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
-      "icon": Assets.icons.dotIcon,
-    },
-    {
-      "imageUrl": Assets.images.computer.path,
-      "title": "US jobs growth disappoints as recovery falters",
-      "time": "4min ago",
-      "source": "Nature Channel",
-      "sourceColor": AppColors.cFFD21E,
-      "statusIconColor": AppColors.cC4C4C4,
-      "icon": Assets.icons.dotIcon,
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,29 +74,55 @@ class _InsightScreenState extends State<InsightScreen> {
                   children: [
                     UIHelper.verticalSpace(24.h),
                     Text(
-                      "Educational Insights",
+                      "Educational ",
                       style: TextFontStyle.textStyle18cffffffOpenSansW600,
                     ),
                     UIHelper.verticalSpace(16.h),
                     Expanded(
-                      child: ListView.builder(
-                        itemCount: insightDataList.length,
-                        itemBuilder: (context, index) {
-                          final scanData = insightDataList[index];
-                          return Padding(
-                            padding: EdgeInsets.only(bottom: 12.h),
-                            child: CustomEducationalInsightCardWidget(
-                              onTap: () => NavigationService.navigateTo(
-                                  Routes.insightDetailsScreen),
-                              imageUrl: scanData["imageUrl"],
-                              title: scanData["title"],
-                              time: scanData["time"],
-                              source: scanData["source"],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+                        child: StreamBuilder(
+                            stream: insightRx.dataFetcher,
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return shimmer(
+                                  context: context,
+                                );
+                              } else if (snapshot.hasError) {
+                                return Text("");
+                              } else if (snapshot.hasData) {
+                                InsightModel insightModel = snapshot.data!;
+                                final data = insightModel.data!;
+
+                                return ListView.builder(
+                                  shrinkWrap: true,
+                                  primary: false,
+                                  itemCount: data.length,
+                                  itemBuilder: (context, index) {
+                                    final eduData = data[index];
+                                    return Padding(
+                                      padding: EdgeInsets.only(bottom: 10.h),
+                                      child: CustomEducationalInsightCardWidget(
+                                        onTap: () {
+                                          NavigationService.navigateToWithArgs(
+                                              Routes.insightDetailsScreen, {
+                                            "title": eduData.title,
+                                            "id": eduData.id
+                                          });
+                                        },
+                                        // onTap: () => NavigationService.navigateTo(),
+                                        backgroundColor: AppColors.cF7F7F7,
+                                        imageUrl: "${eduData.image}",
+                                        title: "${eduData.title}",
+                                        time: "4 min ago",
+                                        source: "${eduData.description}",
+                                      ),
+                                    );
+                                  },
+                                );
+                              } else {
+                                return SizedBox.shrink();
+                              }
+                            }))
                   ],
                 ),
               ),

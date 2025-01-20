@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:genzeh911/common_widgets/custome_network_image.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
@@ -50,24 +51,22 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
                     style: TextFontStyle.textStyle12c0A3004PoppinsW500,
                   ),
                   UIHelper.verticalSpace(3.h),
-                  Text(
-                    'The new Candyman and how horror is',
-                    style: TextFontStyle.textStyle12c0A3004PoppinsW500.copyWith(
-                        color: AppColors.c757575,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w400),
-                  ),
+                  // Text(
+                  //   'The new Candyman and how horror is',
+                  //   style: TextFontStyle.textStyle12c0A3004PoppinsW500.copyWith(
+                  //       color: AppColors.c757575,
+                  //       fontSize: 10.sp,
+                  //       fontWeight: FontWeight.w400),
+                  // ),
                   UIHelper.verticalSpace(8.h),
                   Row(
                     children: [
-                      Text(
-                        source,
-                        style: TextFontStyle.textStyle12c0A3004PoppinsW500
-                            .copyWith(
-                                fontSize: 9.sp,
-                                color: AppColors.cF98121,
-                                fontWeight: FontWeight.w300),
-                      ),
+                      // SizedBox(
+                      //   width: 180.w,
+                      //   child: HtmlWidget(
+                      //     source,
+                      //   ),
+                      // ),
                       UIHelper.horizontalSpace(7.h),
                       Row(
                         children: [
@@ -91,12 +90,11 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Image.asset(
-              imageUrl,
+            CustomNetworkImageWidget(
+              urls: imageUrl,
               width: 77.w,
               height: 77.h,
-              fit: BoxFit.contain,
-            ),
+            )
           ],
         ),
       ),

@@ -46,6 +46,10 @@ dependencies:
   camera: ^0.11.0+2
   fluttertoast: ^8.2.10
   country_picker: ^2.0.27
+  cached_network_image: ^3.4.1
+  flutter_widget_from_html: ^0.15.3
+  shimmer: ^3.0.0
+
   # qr_code_scanner: ^1.0.1
 
 
@@ -92,4 +96,7 @@ flutter:
     - assets/color/
     - assets/icons/
     - assets/images/
+    - assets/images/
+    - assets/json/
+
 

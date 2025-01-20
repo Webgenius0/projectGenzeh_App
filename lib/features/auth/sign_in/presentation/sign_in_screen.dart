@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,8 +7,8 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/loading_helper.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
-import 'package:genzeh911/helpers/toast.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:genzeh911/networks/api_acess.dart';
 
@@ -213,8 +214,19 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       UIHelper.verticalSpace(18.h),
                       customElevatedButton(
-                          onPressed: () {
-                            _loginMethod();
+                          onPressed: () async {
+                            if (formKey.currentState!.validate()) {
+                              bool isLogIn = await loginRx.Login(
+                                      email: nameOrEmailController.text.trim(),
+                                      password: passwordController.text.trim())
+                                  .waitingForFutureWithoutBg();
+
+                              if (isLogIn) {
+                                NavigationService.navigateToWithArgs(
+                                    Routes.bottomNav, {"pageNum": 0});
+                              } else {}
+                            }
+                            // _loginMethod();
                           },
                           child: Text(
                             'Sign In',
@@ -226,6 +238,35 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ),
                           bgColor: AppColors.allPrimaryColor),
+                      UIHelper.verticalSpace(8.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RichText(
+                              text: TextSpan(
+                                  text: "Don't have an account? ",
+                                  style: TextFontStyle
+                                      .textStyle24c222222UrbanistW600
+                                      .copyWith(
+                                          fontSize: 14.sp,
+                                          color: AppColors.c222222),
+                                  children: [
+                                TextSpan(
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      NavigationService.navigateToReplacement(
+                                          Routes.signup);
+                                    },
+                                  text: "Sign up",
+                                  style: TextFontStyle
+                                      .textStyle24c222222UrbanistW600
+                                      .copyWith(
+                                          fontSize: 16.sp,
+                                          color: AppColors.allPrimaryColor),
+                                )
+                              ])),
+                        ],
+                      )
                     ],
                   ),
                 ),
@@ -235,33 +276,6 @@ class _SignInScreenState extends State<SignInScreen> {
         ],
       ),
     );
-  }
-
-  void _loginMethod() async {
-    if (formKey.currentState?.validate() ?? false) {
-      isLoading.value = true;
-
-      await loginRx.Login(
-              email: nameOrEmailController.text.trim(),
-              password: passwordController.text.trim())
-          .then((success) {
-        if (success) {
-          isLoading.value = false;
-
-          // Authenticated Successfully then Navigate To Desired Screen
-          NavigationService.navigateToWithArgs(
-              Routes.bottomNav, {"pageNum": 0});
-          ToastUtil.showShortToast("User logged in successfully ✔");
-        }
-        isLoading.value = false;
-      }, onError: (error) {
-        isLoading.value = false;
-        ToastUtil.showShortToast(error);
-        return null;
-      });
-    } else {
-      isLoading.value = false;
-    }
   }
 }
 

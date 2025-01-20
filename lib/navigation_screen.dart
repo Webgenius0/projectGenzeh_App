@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/account_full_screen.dart';
 import 'package:genzeh911/features/history/presentation/history_screen.dart';
-import 'package:genzeh911/features/home/presentation/home_body_screen.dart';
+import 'package:genzeh911/features/home/presentation/home_screen.dart';
 import 'package:genzeh911/features/insight/presentation/insight_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';

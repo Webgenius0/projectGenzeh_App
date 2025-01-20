@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/faq_screen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/notification_screeen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/personal_info_screen.dart';
+import 'package:genzeh911/features/auth/create_new_password/presentation/create_new_password_screen.dart';
 import 'package:genzeh911/features/auth/forgot_password/presentation/forgot_password_screen.dart';
 import 'package:genzeh911/features/auth/otp_verification/presentation/otp_verification_screen.dart';
 import 'package:genzeh911/features/auth/sign_in/presentation/sign_in_screen.dart';
@@ -46,6 +47,7 @@ final class Routes {
   static const String historyDetailsSafeMode = '/historyDetailsSafeMode';
   static const String signup = '/signup';
   static const String signup2 = '/signup2';
+  static const String createNewPassword = '/createNewPassword';
 }
 
 final class RouteGenerator {
@@ -92,12 +94,27 @@ final class RouteGenerator {
             : CupertinoPageRoute(
                 builder: (context) => const OtpVerificationScreen());
 
-      case Routes.insightDetailsScreen:
+      case Routes.createNewPassword:
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: const InsightDetailsScreen(), settings: settings)
+                widget: const CreateNewPasswordScreen(), settings: settings)
             : CupertinoPageRoute(
-                builder: (context) => const InsightDetailsScreen());
+                builder: (context) => const CreateNewPasswordScreen());
+
+      case Routes.insightDetailsScreen:
+        final args = settings.arguments as Map;
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: InsightDetailsScreen(
+                  title: args['title'],
+                  id: args['id'],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => InsightDetailsScreen(
+                      title: args['title'],
+                      id: args['id'],
+                    ));
 
       case Routes.personalInfoScreen:
         return Platform.isAndroid

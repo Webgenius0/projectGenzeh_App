@@ -5,8 +5,6 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
-import 'package:genzeh911/provider/page_view_provider.dart';
-import 'package:provider/provider.dart';
 import '../../../../helpers/ui_helpers.dart';
 import '../../../gen/assets.gen.dart';
 
@@ -99,10 +97,7 @@ class _OnboardingPageTenState extends State<OnboardingPageTen> {
                     if (index == signInOption.length - 1) {
                       NavigationService.navigateTo(Routes.signInScreen);
                     } else if (index == 2) {
-                      context.read<PageViewProvider>().controller.nextPage(
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.linear,
-                          );
+                      NavigationService.navigateTo(Routes.signup);
                     } else {
                       setState(() {
                         selectedIndex = index;

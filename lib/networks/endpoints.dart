@@ -29,4 +29,13 @@ final class Endpoints {
   static String signup() => "/api/register";
   static String login() => "/api/login";
   static String logout() => "/api/logout";
+  static String otpSend() => "/api/request-reset";
+  static String otpVerify() => "/api/matchOtp";
+
+  //educational Insight
+  static String insights() => "/api/education_insights";
+  static String insightDetails(int id) => "/api/education_insights/$id";
+
+  //profile
+  static String profile() => "/api/user";
 }

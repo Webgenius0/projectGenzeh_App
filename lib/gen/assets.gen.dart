@@ -321,6 +321,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/pic.png
   AssetGenImage get pic => const AssetGenImage('assets/images/pic.png');
 
+  /// File path: assets/images/placeholder_image.jpeg
+  AssetGenImage get placeholderImage =>
+      const AssetGenImage('assets/images/placeholder_image.jpeg');
+
   /// File path: assets/images/product_img.png
   AssetGenImage get productImg =>
       const AssetGenImage('assets/images/product_img.png');
@@ -348,11 +352,28 @@ class $AssetsImagesGen {
         personImg,
         phone,
         pic,
+        placeholderImage,
         productImg,
         profile,
         splashScreen,
         winter
       ];
+}
+
+class $AssetsJsonGen {
+  const $AssetsJsonGen();
+
+  /// File path: assets/json/loading.json
+  String get loading => 'assets/json/loading.json';
+
+  /// File path: assets/json/no_data.json
+  String get noData => 'assets/json/no_data.json';
+
+  /// File path: assets/json/shimmer.json
+  String get shimmer => 'assets/json/shimmer.json';
+
+  /// List of all assets
+  List<String> get values => [loading, noData, shimmer];
 }
 
 class Assets {
@@ -361,6 +382,7 @@ class Assets {
   static const $AssetsColorGen color = $AssetsColorGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsJsonGen json = $AssetsJsonGen();
 }
 
 class AssetGenImage {
