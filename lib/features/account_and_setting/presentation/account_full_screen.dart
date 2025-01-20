@@ -54,6 +54,12 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    profileRx.getProfile();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.cF4F5F6,
@@ -79,8 +85,9 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
           child: Column(children: [
             UIHelper.verticalSpace(24.h),
             GestureDetector(
-              onTap: () =>
-                  NavigationService.navigateTo(Routes.personalInfoScreen),
+              onTap: () {
+                NavigationService.navigateTo(Routes.personalInfoScreen);
+              },
               child: Container(
                 height: 90.h,
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
@@ -134,13 +141,13 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
                             ],
                           ),
                           UIHelper.horizontalSpace(12.w),
-                          Spacer(),
-                          SvgPicture.asset(
-                            Assets.icons.profileEdit,
-                            width: 24.w,
-                            height: 24.h,
-                            fit: BoxFit.contain,
-                          )
+                          // Spacer(),
+                          // SvgPicture.asset(
+                          //   Assets.icons.profileEdit,
+                          //   width: 24.w,
+                          //   height: 24.h,
+                          //   fit: BoxFit.contain,
+                          // )
                         ],
                       );
                     } else if (snapshot.connectionState ==

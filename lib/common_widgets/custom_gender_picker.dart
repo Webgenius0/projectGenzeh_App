@@ -6,6 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/provider/edit_profile.dart';
+import 'package:provider/provider.dart';
 
 class CustomGenderPicker extends StatefulWidget {
   final String labelText;
@@ -32,14 +34,13 @@ class CustomGenderPicker extends StatefulWidget {
 
 class _CustomGenderPickerState extends State<CustomGenderPicker> {
   bool isIconVisible = false; // To manage dynamic icon display
-  String displayedHintText = "";
   bool isDateSelected = false;
-  String selectedCountry = "";
+  // String selectedCountry = "";
 
   @override
   void initState() {
     super.initState();
-    displayedHintText = widget.hintText;
+    context.read<EditProfileProvider>().displayedHintText = widget.hintText;
   }
 
   @override
@@ -87,7 +88,7 @@ class _CustomGenderPickerState extends State<CustomGenderPicker> {
             children: [
               Expanded(
                 child: Text(
-                  displayedHintText,
+                  context.read<EditProfileProvider>().displayedHintText,
                   style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                     color: AppColors.c4B586B, // Text color
                     fontSize: 14.sp,
@@ -120,7 +121,8 @@ class _CustomGenderPickerState extends State<CustomGenderPicker> {
     if (selectedDate != null) {
       setState(() {
         // Format the date to display in the widget
-        displayedHintText = "${selectedDate.toLocal()}".split(' ')[0];
+        context.read<EditProfileProvider>().displayedHintText =
+            "${selectedDate.toLocal()}".split(' ')[0];
         isDateSelected = true;
       });
     }
@@ -139,21 +141,21 @@ class _CustomGenderPickerState extends State<CustomGenderPicker> {
                 children: [
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'Male');
+                      Navigator.pop(context, 'male');
                     },
-                    child: Text("Male"),
+                    child: Text("male"),
                   ),
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'Female');
+                      Navigator.pop(context, 'female');
                     },
-                    child: Text("Female"),
+                    child: Text("female"),
                   ),
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'Non-Binary');
+                      Navigator.pop(context, 'others');
                     },
-                    child: Text("Non-Binary"),
+                    child: Text("others"),
                   ),
                 ],
               ),
@@ -165,7 +167,7 @@ class _CustomGenderPickerState extends State<CustomGenderPicker> {
 
     if (selected != null) {
       setState(() {
-        displayedHintText = selected;
+        context.read<EditProfileProvider>().displayedHintText = selected;
       });
     }
   }

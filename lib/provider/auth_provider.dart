@@ -4,6 +4,7 @@ final class AuthProvider extends ChangeNotifier {
   //signup
   final TextEditingController name = TextEditingController();
   String displayedHintText = "";
+  String displayedHintText2 = "";
   String selectedCountry = "";
 
   final TextEditingController country = TextEditingController();

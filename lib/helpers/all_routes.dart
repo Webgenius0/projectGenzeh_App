@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:genzeh911/features/account_and_setting/presentation/edit_profile_screen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/faq_screen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/notification_screeen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/personal_info_screen.dart';
@@ -36,6 +37,7 @@ final class Routes {
   static const String bottomNav = '/bottomNav';
   static const String insightDetailsScreen = '/insightDetailsScreen';
   static const String personalInfoScreen = '/personalInfoScreen';
+  static const String editprofile = '/editprofile';
   static const String historyDetails = '/historyDetails';
   static const String notificationScreeen = '/notificationScreeen';
   static const String faqScreen = '/faqScreen';
@@ -122,6 +124,14 @@ final class RouteGenerator {
                 widget: const PersonalInfoScreen(), settings: settings)
             : CupertinoPageRoute(
                 builder: (context) => const PersonalInfoScreen());
+
+      case Routes.editprofile:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const EditProfileScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => const EditProfileScreen());
+
       case Routes.historyDetails:
         return Platform.isAndroid
             ? _FadedTransitionRoute(

@@ -1,3 +1,4 @@
+import 'package:genzeh911/features/account_and_setting/data/rx_edit_profile/rx.dart';
 import 'package:genzeh911/features/account_and_setting/data/rx_profile/rx.dart';
 import 'package:genzeh911/features/account_and_setting/model/profile_model.dart';
 import 'package:genzeh911/features/auth/data/rx_login/rx.dart';
@@ -41,3 +42,6 @@ InsightDetailsRx insightDetailsRx = InsightDetailsRx(
 
 GetProfileRx profileRx = GetProfileRx(
     empty: ProfileModel(), dataFetcher: BehaviorSubject<ProfileModel>());
+
+GetEditProfileResponseRX getEditProfileResponseRX =
+    GetEditProfileResponseRX(empty: {}, dataFetcher: BehaviorSubject<Map>());

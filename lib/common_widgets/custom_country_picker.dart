@@ -5,8 +5,10 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 
 // Custom TextFormField
 class CustomCountryPicker extends StatefulWidget {
+  final TextEditingController textEditingController;
   const CustomCountryPicker({
     super.key,
+    required this.textEditingController,
   });
 
   @override
@@ -25,6 +27,7 @@ class _CustomTextFormFieldState extends State<CustomCountryPicker> {
         borderRadius: BorderRadius.circular(8.r), // Rounded corners
       ),
       child: IntlPhoneField(
+        controller: widget.textEditingController,
         dropdownTextStyle: TextStyle(
           fontSize: 14.sp,
           color: Colors.black,

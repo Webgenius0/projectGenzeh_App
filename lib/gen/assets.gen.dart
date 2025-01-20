@@ -283,6 +283,13 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/6648537.png
+  AssetGenImage get a6648537 =>
+      const AssetGenImage('assets/images/6648537.png');
+
+  /// File path: assets/images/calll.png
+  AssetGenImage get calll => const AssetGenImage('assets/images/calll.png');
+
   /// File path: assets/images/cocooil.png
   AssetGenImage get cocooil => const AssetGenImage('assets/images/cocooil.png');
 
@@ -293,6 +300,12 @@ class $AssetsImagesGen {
   /// File path: assets/images/cosmetics.png
   AssetGenImage get cosmetics =>
       const AssetGenImage('assets/images/cosmetics.png');
+
+  /// File path: assets/images/date-of-birth-icon-date-of-birth-icon-transparent-11563206066kwsyxdavui.png
+  AssetGenImage
+      get dateOfBirthIconDateOfBirthIconTransparent11563206066kwsyxdavui =>
+          const AssetGenImage(
+              'assets/images/date-of-birth-icon-date-of-birth-icon-transparent-11563206066kwsyxdavui.png');
 
   /// File path: assets/images/fruits.png
   AssetGenImage get fruits => const AssetGenImage('assets/images/fruits.png');
@@ -341,9 +354,12 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        a6648537,
+        calll,
         cocooil,
         computer,
         cosmetics,
+        dateOfBirthIconDateOfBirthIconTransparent11563206066kwsyxdavui,
         fruits,
         img1,
         imgDetails,

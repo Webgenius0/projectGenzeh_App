@@ -38,4 +38,5 @@ final class Endpoints {
 
   //profile
   static String profile() => "/api/user";
+  static String editprofile() => "/api/profile";
 }
