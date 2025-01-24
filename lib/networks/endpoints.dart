@@ -1,7 +1,8 @@
 // ignore_for_file: constant_identifier_names, unnecessary_string_interpolations
 
 // const String url = String.fromEnvironment("BASE_URL");
-const String url = "https://genzeh911.softvencefsd.xyz";
+// const String url = "https://genzeh911.softvencefsd.xyz";
+const String url = "https://byemicroplastics.xyz";
 // ignore: unnecessary_brace_in_string_interps
 const String imageUrl = "${url}";
 
@@ -39,4 +40,9 @@ final class Endpoints {
   //profile
   static String profile() => "/api/user";
   static String editprofile() => "/api/profile";
+
+  //scanResult
+    static String scan() => "/api/product-scan?image";
+
+
 }

@@ -185,7 +185,7 @@ class _SignUpTwoScreenState extends State<SignUpTwoScreen> {
         await signupRx
             .signup(
                 name: provider.name.text.trim(),
-                dateofbirth: provider.displayedHintText.toString(),
+                dateofbirth: provider.displayedHintText2.toString(),
                 country: provider.selectedCountry.toString(),
                 username: provider.username.text.trim(),
                 email: provider.email.text.trim(),

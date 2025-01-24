@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -169,6 +171,7 @@ class _CustomGenderPickerState extends State<CustomGenderPicker> {
       setState(() {
         context.read<EditProfileProvider>().displayedHintText = selected;
       });
+      log("${context.read<EditProfileProvider>().displayedHintText}");
     }
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison
 
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -92,8 +93,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               right: 3,
                               top: 90,
                               child: GestureDetector(
-                                onTap: () => _showImageSourceDialog(
-                                    context), // Call the method to pick an image
+                                onTap: () {
+                                  _showImageSourceDialog(context);
+                                }, // Call the method to pick an image
                                 child: Container(
                                   height: 28.h,
                                   width: 28.w,
@@ -196,6 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       builder: (_) => ImageSourceDialog(
         onImageSelected: (String imagePath) {
           context.read<AuthProvider>().imageFileNotifier.value = imagePath;
+          log("========> imagePath ${imagePath}");
         },
       ),
     );

@@ -18,7 +18,9 @@ import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:genzeh911/networks/api_acess.dart';
+import 'package:genzeh911/provider/edit_profile.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
@@ -266,7 +268,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           getEditProfileResponseRX
                               .editProfile(
                                   name: nameController.text.trim(),
-                                  gender: gender.toString(),
+                                  gender: context
+                                      .read<EditProfileProvider>()
+                                      .displayedHintText,
                                   number: phone.text.trim(),
                                   avaterImage: imageFile)
                               .then((success) {

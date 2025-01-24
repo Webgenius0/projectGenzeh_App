@@ -13,6 +13,9 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../../common_widgets/share_bottom_sheet_widget.dart';
 
 class ScanningReportScreen extends StatelessWidget {
+  final dynamic responseData;
+
+  ScanningReportScreen({this.responseData});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -14,6 +14,8 @@ import 'package:genzeh911/features/home/data/rx_educational_insight/rx.dart';
 import 'package:genzeh911/features/home/data/rx_educational_insight_details/rx.dart';
 import 'package:genzeh911/features/home/model/insight_model.dart';
 import 'package:genzeh911/features/home/model/single_insight_model.dart';
+import 'package:genzeh911/features/quick_scan/data/rx_scan_result/rx.dart';
+import 'package:genzeh911/features/quick_scan/data/scan_result_model.dart';
 import 'package:rxdart/rxdart.dart';
 
 OnboardRx onboardRx = OnboardRx(
@@ -45,3 +47,6 @@ GetProfileRx profileRx = GetProfileRx(
 
 GetEditProfileResponseRX getEditProfileResponseRX =
     GetEditProfileResponseRX(empty: {}, dataFetcher: BehaviorSubject<Map>());
+
+ScanResultRx scanResultRx = ScanResultRx(
+    empty: ScanResultModel(), dataFetcher: BehaviorSubject<ScanResultModel>());

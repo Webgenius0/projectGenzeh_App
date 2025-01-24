@@ -50,6 +50,7 @@ final class Routes {
   static const String signup = '/signup';
   static const String signup2 = '/signup2';
   static const String createNewPassword = '/createNewPassword';
+  static const String ScanningReportScreen = '/ScanningReportScreen';
 }
 
 final class RouteGenerator {
@@ -198,6 +199,19 @@ final class RouteGenerator {
             : CupertinoPageRoute(
                 builder: (context) => BottomNavBar(
                       pageNum: args["pageNum"],
+                    ));
+
+      case Routes.ScanningReportScreen:
+        final args = settings.arguments as Map;
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: ScanningReportScreen(
+                  responseData: args["responseData"],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => ScanningReportScreen(
+                      responseData: args["responseData"],
                     ));
 
       // case Routes.onboardingPageEleven:
