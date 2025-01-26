@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:genzeh911/features/quick_scan/data/scan_result_model.dart';
+import 'package:genzeh911/features/quick_scan/model/scan_result_model.dart';
 import '../../../../networks/dio/dio.dart';
 import '../../../../networks/endpoints.dart';
 import '../../../../networks/exception_handler/data_source.dart';

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:genzeh911/common_widgets/custome_network_image.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
@@ -42,7 +43,12 @@ class CustomRecentScanCard extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
         child: Row(
           children: [
-            Image.asset(imageUrl, width: 90.w, height: 90.h),
+            // Image.asset(imageUrl, width: 90.w, height: 90.h),
+            CustomNetworkImageWidget(
+              urls: imageUrl,
+              width: 90.w,
+              height: 90.h,
+            ),
             UIHelper.horizontalSpace(12.w),
             Expanded(
               child: Column(

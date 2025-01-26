@@ -11,6 +11,7 @@ import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/loading_helper.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
+import 'package:genzeh911/helpers/toast.dart';
 import 'package:genzeh911/networks/api_acess.dart';
 
 class QuickScanScreen extends StatefulWidget {
@@ -192,26 +193,38 @@ class _QuickScanScreenState extends State<QuickScanScreen> {
     );
   }
 
-  Future<void> _captureImage() async {
-    if (_cameraController == null || !_cameraController!.value.isInitialized) {
-      return;
+Future<void> _captureImage() async {
+  if (_cameraController == null || !_cameraController!.value.isInitialized) {
+    return;
+  }
+
+  try {
+    final XFile image = await _cameraController!.takePicture();
+    final result = await scanResultRx
+        .scan(image: File(image.path))
+        .waitingForFutureWithoutBg();
+
+    scanHistoryRx.scanHistory();
+
+    log("Scan result: $result");
+    log("Image Path: ${image.path}");
+
+    if (result != null) {
+      // Navigate to scan report screen
+      NavigationService.navigateToWithArgs(
+          Routes.scanningReportScreen, {"responseData": result});
+    } else {
+      ToastUtil.showShortToast("No valid scan result found. Please try again.");
     }
-
-    try {
-      final XFile image = await _cameraController!.takePicture();
-      final result = await scanResultRx
-          .scan(image: File(image.path))
-          .waitingForFutureWithoutBg();
-
-      log("Scan result: $result");
-
-      if (result != null) {
-        // Navigate to scan report screen
-        NavigationService.navigateToWithArgs(
-            Routes.scanningReportScreen, {"responseData": result});
-      }
-    } catch (e) {
-      print("Error capturing image: $e");
+  } catch (e) {
+    log("Error capturing image: $e");
+    
+    if (e.toString().contains("422")) {
+      ToastUtil.showShortToast("Failed to scan the image. Please use a clearer image.");
+    } else {
+      ToastUtil.showShortToast("An unexpected error occurred. Please try again.");
     }
   }
+}
+
 }

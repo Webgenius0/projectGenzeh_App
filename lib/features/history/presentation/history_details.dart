@@ -4,22 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
+import 'package:genzeh911/features/home/model/history_details_model.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/networks/api_acess.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../../../common_widgets/share_bottom_sheet_widget.dart';
 
 class HistoryDetails extends StatelessWidget {
+  final String text;
+  HistoryDetails({required this.text});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.c3689FD,
         title: Text(
-          'Monac population soars...',
+          '${text}',
           style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
               fontSize: 20.sp,
               letterSpacing: -0.4.sp,
@@ -61,121 +65,136 @@ class HistoryDetails extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // Header section
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 25.h),
-              decoration: BoxDecoration(
-                  color: AppColors.c3689FD,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(32.r),
-                      bottomRight: Radius.circular(32.r))),
-              child: Column(
-                children: [
-                  CircularPercentIndicator(
-                    radius: 70.0,
-                    lineWidth: 10.0,
-                    percent: 0.63,
-                    center: Column(
-                      children: [
-                        Text(
-                          "63",
-                          textAlign: TextAlign.center,
-                          style: TextFontStyle.textStylec212121OpenSansW600
-                              .copyWith(
-                                  fontSize: 64.sp,
-                                  letterSpacing: -0.64.sp,
-                                  color: AppColors.cFFFFFF),
+          child: StreamBuilder(
+              stream: scanDatDetailsaRx.dataFetcher,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  HistoryDetailsModel historyDetailsModel = snapshot.data!;
+                  return Column(
+                    children: [
+                      // Header section
+                      Container(
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(vertical: 25.h),
+                        decoration: BoxDecoration(
+                            color: AppColors.c3689FD,
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(32.r),
+                                bottomRight: Radius.circular(32.r))),
+                        child: Column(
+                          children: [
+                            CircularPercentIndicator(
+                              radius: 70.0,
+                              lineWidth: 10.0,
+                              percent: 0.63,
+                              center: Column(
+                                children: [
+                                  Text(
+                                    "63",
+                                    textAlign: TextAlign.center,
+                                    style: TextFontStyle
+                                        .textStylec212121OpenSansW600
+                                        .copyWith(
+                                            fontSize: 64.sp,
+                                            letterSpacing: -0.64.sp,
+                                            color: AppColors.cFFFFFF),
+                                  ),
+                                  Text(
+                                    "Out of 100",
+                                    textAlign: TextAlign.center,
+                                    style: TextFontStyle
+                                        .textStylec212121OpenSansW600
+                                        .copyWith(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w400,
+                                            letterSpacing: -0.64.sp,
+                                            color: AppColors.cffffff),
+                                  ),
+                                ],
+                              ),
+                              progressColor: AppColors.cC4ECFC,
+                              backgroundColor:
+                                  AppColors.c2A2A2A1A.withOpacity(.4),
+                            ),
+                            UIHelper.verticalSpace(12.h),
+                            Text(
+                              'Microplastic Found',
+                              style: TextFontStyle.textStylec212121OpenSansW600
+                                  .copyWith(
+                                      fontSize: 18.sp,
+                                      letterSpacing: -0.36.sp,
+                                      color: AppColors.cFFFFFF),
+                            ),
+                            UIHelper.verticalSpace(15.h),
+                            Container(
+                              height: 42.h,
+                              width: 113.w,
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 8.h, horizontal: 24.w),
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: AppColors.cFFC300,
+                                borderRadius: BorderRadius.circular(33.r),
+                              ),
+                              child: Text(
+                                "Low Risk",
+                                style: TextFontStyle
+                                    .textStylec212121OpenSansW600
+                                    .copyWith(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 15.sp,
+                                        color: AppColors.cFFFFFF),
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          "Out of 100",
-                          textAlign: TextAlign.center,
-                          style: TextFontStyle.textStylec212121OpenSansW600
-                              .copyWith(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  letterSpacing: -0.64.sp,
-                                  color: AppColors.cffffff),
+                      ),
+                      // Content section
+                      Padding(
+                        padding: EdgeInsets.all(16.0.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Total serum calcium is a blood test done to measure the free and bound forms of calcium. It is often a part of screening tests to detect abnormally high and low levels of calcium, as both can affect health.",
+                              style: TextFontStyle.textStylec212121OpenSansW600
+                                  .copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14.sp,
+                                      color: AppColors.c000000,
+                                      height: 1.5),
+                            ),
+                            UIHelper.verticalSpace(24.h),
+                            ExpandableTile(
+                              title: "Impact on overall health?",
+                              content:
+                                  "Abnormal levels of calcium can occur due to problems in calcium absorption, bone diseases, overactive thyroid gland, parathyroid disease, kidney or liver diseases.",
+                            ),
+                            ExpandableTile(
+                              title: "How to improve health conditions?",
+                              content:
+                                  "For low calcium levels, a diet with calcium-rich foods is recommended. See a doctor and discuss the need for calcium supplements.",
+                            ),
+                            ExpandableTile(
+                              title:
+                                  "What will happen if you use it for long time?",
+                              content:
+                                  "Prolonged exposure or usage without monitoring can lead to adverse effects. It’s best to consult with a specialist for a long-term plan.",
+                            ),
+                            ExpandableTile(
+                              title: "Recommended Tips",
+                              content:
+                                  "Maintain a balanced diet, stay hydrated, and get regular health check-ups.",
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    progressColor: AppColors.cC4ECFC,
-                    backgroundColor: AppColors.c2A2A2A1A.withOpacity(.4),
-                  ),
-                  UIHelper.verticalSpace(12.h),
-                  Text(
-                    'Microplastic Found',
-                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
-                        fontSize: 18.sp,
-                        letterSpacing: -0.36.sp,
-                        color: AppColors.cFFFFFF),
-                  ),
-                  UIHelper.verticalSpace(15.h),
-                  Container(
-                    height: 42.h,
-                    width: 113.w,
-                    padding:
-                        EdgeInsets.symmetric(vertical: 8.h, horizontal: 24.w),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: AppColors.cFFC300,
-                      borderRadius: BorderRadius.circular(33.r),
-                    ),
-                    child: Text(
-                      "Low Risk",
-                      style: TextFontStyle.textStylec212121OpenSansW600
-                          .copyWith(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 15.sp,
-                              color: AppColors.cFFFFFF),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Content section
-            Padding(
-              padding: EdgeInsets.all(16.0.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Total serum calcium is a blood test done to measure the free and bound forms of calcium. It is often a part of screening tests to detect abnormally high and low levels of calcium, as both can affect health.",
-                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
-                        color: AppColors.c000000,
-                        height: 1.5),
-                  ),
-                  UIHelper.verticalSpace(24.h),
-                  ExpandableTile(
-                    title: "Impact on overall health?",
-                    content:
-                        "Abnormal levels of calcium can occur due to problems in calcium absorption, bone diseases, overactive thyroid gland, parathyroid disease, kidney or liver diseases.",
-                  ),
-                  ExpandableTile(
-                    title: "How to improve health conditions?",
-                    content:
-                        "For low calcium levels, a diet with calcium-rich foods is recommended. See a doctor and discuss the need for calcium supplements.",
-                  ),
-                  ExpandableTile(
-                    title: "What will happen if you use it for long time?",
-                    content:
-                        "Prolonged exposure or usage without monitoring can lead to adverse effects. It’s best to consult with a specialist for a long-term plan.",
-                  ),
-                  ExpandableTile(
-                    title: "Recommended Tips",
-                    content:
-                        "Maintain a balanced diet, stay hydrated, and get regular health check-ups.",
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return SizedBox.shrink();
+                }
+              })),
     );
   }
 }

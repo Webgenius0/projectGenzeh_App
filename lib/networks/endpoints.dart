@@ -42,7 +42,10 @@ final class Endpoints {
   static String editprofile() => "/api/profile";
 
   //scanResult
-    static String scan() => "/api/product-scan?image";
+  static String scan() => "/api/product-scan?image";
+  static String scanHistory() => "/api/single-product";
 
-
+  // scan product
+  static String scanProductData() => "/api/product-scan";
+  static String singleProduct(int id) => "/api/product-scan/$id";
 }

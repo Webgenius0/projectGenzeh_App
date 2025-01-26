@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       appBar: CustomAppBar(
           title: Text(
-        "complete your profile",
+        "Complete Your Profile",
         style: TextFontStyle.textStyle24c222222QuandoW400.copyWith(
           letterSpacing: -0.48.sp,
         ),

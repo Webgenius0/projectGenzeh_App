@@ -50,13 +50,15 @@ class _SignUpTwoScreenState extends State<SignUpTwoScreen> {
                             letterSpacing: -0.5.sp, color: AppColors.c000000),
                   ),
                   UIHelper.verticalSpace(16.h),
-                  Text(
-                    "Please enter your username, email and password.",
-                    style:
-                        TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
-                      color: AppColors.c4B586B,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14.sp,
+                  Center(
+                    child: Text(
+                      "Enter your username, email and password.If you forget return to the forgot password screen ",
+                      style:
+                          TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
+                        color: AppColors.c4B586B,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                      ),
                     ),
                   ),
                   UIHelper.verticalSpace(24.h),

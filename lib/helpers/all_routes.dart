@@ -134,10 +134,17 @@ final class RouteGenerator {
                 builder: (context) => const EditProfileScreen());
 
       case Routes.historyDetails:
+        final args = settings.arguments as Map;
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: HistoryDetails(), settings: settings)
-            : CupertinoPageRoute(builder: (context) => HistoryDetails());
+                widget: HistoryDetails(
+                  text: args["text"],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => HistoryDetails(
+                      text: args["text"],
+                    ));
 
       case Routes.notificationScreeen:
         return Platform.isAndroid

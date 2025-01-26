@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:genzeh911/features/quick_scan/data/rx_scan_result/api.dart';
-import 'package:genzeh911/features/quick_scan/data/scan_result_model.dart';
+import 'package:genzeh911/features/quick_scan/model/scan_result_model.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../../networks/rx_base.dart';
 

@@ -64,23 +64,6 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
       statusBarIconBrightness: Brightness.dark,
       child: Scaffold(
         extendBodyBehindAppBar: true,
-        // appBar: AppBar(
-        //   leading: IconButton(
-        //     onPressed: () {
-        //       NavigationService.goBack;
-        //     },
-        //     icon: Padding(
-        //       padding: const EdgeInsets.all(10.0),
-        //       child: SvgPicture.asset(
-        //         Assets.icons.arrowBack,
-        //         height: 24.h,
-        //         width: 24.w,
-        //       ),
-        //     ),
-        //   ),
-        //   backgroundColor: Colors.transparent,
-        //   elevation: 0,
-        // ),
         body: Stack(
           children: [
             Positioned.fill(
@@ -179,7 +162,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                     if (_currentIndex == totalSteps - 1) {
                                       widget.onDone();
                                     } else {
-                                      if (_currentIndex == 7) {
+                                      if (_currentIndex == 8) {
                                         appData.write(kKeyfirstTime, false);
                                         if (selectedIndex >= 0 &&
                                             selectedIndex < options.length) {

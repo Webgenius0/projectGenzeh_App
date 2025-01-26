@@ -12,10 +12,17 @@ import 'package:genzeh911/features/auth/model/onboard_model.dart';
 import 'package:genzeh911/features/auth/model/signup_model.dart';
 import 'package:genzeh911/features/home/data/rx_educational_insight/rx.dart';
 import 'package:genzeh911/features/home/data/rx_educational_insight_details/rx.dart';
+import 'package:genzeh911/features/home/data/rx_get_scan_data/rx.dart';
+import 'package:genzeh911/features/home/data/rx_get_scan_details.dart/api.dart';
+import 'package:genzeh911/features/home/data/rx_get_scan_details.dart/rx.dart';
+import 'package:genzeh911/features/home/model/history_details_model.dart';
 import 'package:genzeh911/features/home/model/insight_model.dart';
+import 'package:genzeh911/features/home/model/scan_model.dart';
 import 'package:genzeh911/features/home/model/single_insight_model.dart';
+import 'package:genzeh911/features/quick_scan/data/rx_scan_history/rx.dart';
 import 'package:genzeh911/features/quick_scan/data/rx_scan_result/rx.dart';
-import 'package:genzeh911/features/quick_scan/data/scan_result_model.dart';
+import 'package:genzeh911/features/quick_scan/model/scan_history_model.dart';
+import 'package:genzeh911/features/quick_scan/model/scan_result_model.dart';
 import 'package:rxdart/rxdart.dart';
 
 OnboardRx onboardRx = OnboardRx(
@@ -50,3 +57,14 @@ GetEditProfileResponseRX getEditProfileResponseRX =
 
 ScanResultRx scanResultRx = ScanResultRx(
     empty: ScanResultModel(), dataFetcher: BehaviorSubject<ScanResultModel>());
+
+ScanHistoryRx scanHistoryRx = ScanHistoryRx(
+    empty: ScanHistoryModel(),
+    dataFetcher: BehaviorSubject<ScanHistoryModel>());
+
+ScanDataRx scanDataRx =
+    ScanDataRx(empty: ScanModel(), dataFetcher: BehaviorSubject<ScanModel>());
+
+ScanDatDetailsaRx scanDatDetailsaRx = ScanDatDetailsaRx(
+    empty: HistoryDetailsModel(),
+    dataFetcher: BehaviorSubject<HistoryDetailsModel>());
