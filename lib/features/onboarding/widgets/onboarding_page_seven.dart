@@ -11,12 +11,14 @@ class OnboardingPageSeven extends StatefulWidget {
   final String title;
   final String? descriptionOne;
   final String? descriptionTwo;
+  final String? data;
 
   const OnboardingPageSeven(
       {super.key,
       required this.title,
       this.descriptionOne,
-      this.descriptionTwo});
+      this.descriptionTwo,
+      this.data});
 
   @override
   State<OnboardingPageSeven> createState() => _OnboardingPageSevenState();

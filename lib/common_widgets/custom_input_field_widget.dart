@@ -11,16 +11,16 @@ class CustomInputFieldWidget extends StatefulWidget {
   final bool showSuffixIcon;
   final TextInputType inputType;
   final TextEditingController? controller;
-
-  const CustomInputFieldWidget({
-    super.key,
-    required this.labelText,
-    required this.hintText,
-    this.isPasswordField = false,
-    this.showSuffixIcon = true,
-    this.inputType = TextInputType.text,
-    this.controller,
-  });
+  final String? Function(String?)? validator;
+  const CustomInputFieldWidget(
+      {super.key,
+      required this.labelText,
+      required this.hintText,
+      this.isPasswordField = false,
+      this.showSuffixIcon = true,
+      this.inputType = TextInputType.text,
+      this.controller,
+      this.validator});
 
   @override
   State<CustomInputFieldWidget> createState() => _CustomInputFieldWidgetState();
@@ -42,45 +42,64 @@ class _CustomInputFieldWidgetState extends State<CustomInputFieldWidget> {
           ),
         ),
         UIHelper.verticalSpace(12.h),
-        TextFormField(
-          controller: widget.controller,
-          obscureText: widget.isPasswordField && !isPasswordVisible,
-          keyboardType: widget.inputType,
-          decoration: InputDecoration(
-            hintText: widget.hintText,
-            hintStyle: TextFontStyle.textStyle14c252C2EOpenSansW400
-                .copyWith(color: AppColors.c4B586B),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.c3689FD, // Default border color
-                width: 1, // Border width
+        Container(
+          child: TextFormField(
+            validator: widget.validator,
+            controller: widget.controller,
+            obscureText: widget.isPasswordField && !isPasswordVisible,
+            keyboardType: widget.inputType,
+            decoration: InputDecoration(
+              hintText: widget.hintText,
+              hintStyle: TextFontStyle.textStyle14c252C2EOpenSansW400
+                  .copyWith(color: AppColors.c4B586B),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: AppColors.c3689FD, // Default border color
+                  width: 1, // Border width
+                ),
+                borderRadius:
+                    BorderRadius.circular(4.0.r), // Optional rounded border
               ),
-              borderRadius:
-                  BorderRadius.circular(4.0.r), // Optional rounded border
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.c3689FD, // Border color when focused
-                width: 1, // Border width when focused
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: AppColors.c3689FD, // Border color when focused
+                  width: 1, // Border width when focused
+                ),
+                borderRadius: BorderRadius.circular(4.0.r),
               ),
-              borderRadius: BorderRadius.circular(4.0.r),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: AppColors.c3689FD, // Border color when focused
+                  width: 1, // Border width when focused
+                ),
+                borderRadius: BorderRadius.circular(4.0.r),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(
+                  4.0.r,
+                ),
+                borderSide: const BorderSide(
+                  color: Colors.red,
+                ),
+              ),
+              disabledBorder: InputBorder.none,
+              suffixIcon: widget.showSuffixIcon
+                  ? widget.isPasswordField
+                      ? IconButton(
+                          icon: Icon(
+                            isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isPasswordVisible = !isPasswordVisible;
+                            });
+                          },
+                        )
+                      : null
+                  : null,
             ),
-            suffixIcon: widget.showSuffixIcon
-                ? widget.isPasswordField
-                    ? IconButton(
-                        icon: Icon(
-                          isPasswordVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            isPasswordVisible = !isPasswordVisible;
-                          });
-                        },
-                      )
-                    : null
-                : null,
           ),
         ),
       ],

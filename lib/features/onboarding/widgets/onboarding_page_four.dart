@@ -9,11 +9,13 @@ import '../../../../helpers/ui_helpers.dart';
 class OnboardingPageFour extends StatefulWidget {
   final String title;
   final String? description;
+  final String? data;
 
   const OnboardingPageFour({
     super.key,
     required this.title,
     this.description,
+    this.data,
   });
 
   @override

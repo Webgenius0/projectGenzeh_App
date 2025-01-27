@@ -1,16 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/provider/page_view_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../helpers/ui_helpers.dart';
 
 class OnboardingPageTwo extends StatefulWidget {
   final String title;
+  final String old;
 
   const OnboardingPageTwo({
     super.key,
     required this.title,
+    required this.old,
   });
 
   @override
@@ -18,18 +24,8 @@ class OnboardingPageTwo extends StatefulWidget {
 }
 
 class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
-  int selectedIndex = -1;
   @override
   Widget build(BuildContext context) {
-    final List<String> options = [
-      'Google Search',
-      'TikTok',
-      'Searched on App Store',
-      'Instagram',
-      'Facebook',
-      'Through a Friend',
-    ];
-
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -44,16 +40,20 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             UIHelper.verticalSpace(42.h),
             Column(
               mainAxisSize: MainAxisSize.min,
-              children: List.generate(options.length, (index) {
+              children: List.generate(
+                  context.read<PageViewProvider>().findus.length, (index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: CustomButton(
-                    text: options[index],
-                    isSelected: selectedIndex == index,
+                    text: context.read<PageViewProvider>().findus[index],
+                    isSelected:
+                        context.read<PageViewProvider>().selectedFindus ==
+                            index,
                     onPressed: () {
                       setState(() {
-                        selectedIndex = index;
+                        context.read<PageViewProvider>().selectedFindus = index;
                       });
+                      log("${context.read<PageViewProvider>().findus[context.read<PageViewProvider>().selectedFindus]}");
                     },
                   ),
                 );

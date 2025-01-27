@@ -1,65 +1,70 @@
-// import 'package:genzeh911/features/artical_details/data/rx_single_article/rx.dart';
-// import 'package:genzeh911/features/artical_details/model/single_article_model.dart';
-// import 'package:genzeh911/features/authentication/model/login_response_model.dart';
-// import 'package:genzeh911/features/authentication/model/signup_response_model.dart';
-// import 'package:genzeh911/features/chose_course/data/rx_get_course/rx.dart';
-// import 'package:genzeh911/features/chose_course/model/course_type_model.dart';
-// import 'package:genzeh911/features/course_details/data/rx_get_articles/rx.dart';
-// import 'package:genzeh911/features/course_details/data/rx_get_daily_read_articles/rx.dart';
-// import 'package:genzeh911/features/course_details/model/course_article_response_model.dart';
-// import 'package:genzeh911/features/course_details/model/daily_read_article_response_model.dart';
-// import 'package:genzeh911/features/question/data/rx_bookmark/rx.dart';
-// import 'package:genzeh911/features/course_details/data/rx_get_modules/rx.dart';
-// import 'package:genzeh911/features/course_details/model/course_module_response_model.dart';
-// import 'package:genzeh911/features/home/data/rx_get_all_courses/rx.dart';
-// import 'package:genzeh911/features/home/data/rx_get_recommended_courses/rx.dart';
-// import 'package:genzeh911/features/home/model/all_couses_response_model.dart';
-// import 'package:genzeh911/features/home/model/recommended_courses_response_model.dart';
-// import 'package:genzeh911/features/profile/data/rx_get_profiles/rx.dart';
-// import 'package:genzeh911/features/profile/model/profile_response_model.dart';
-// import 'package:genzeh911/features/question/data/rx_survey/rx.dart';
-// import 'package:genzeh911/features/question/data/rx_survey_mark/rx.dart';
-// import 'package:genzeh911/features/question/model/survey_mark_model.dart';
-// import 'package:genzeh911/features/question/model/survey_model.dart';
-// import 'package:genzeh911/features/recommended_plan/data/rx_recomended_course/rx.dart';
-// import 'package:genzeh911/features/recommended_plan/model/recomended_course.dart';
-// import 'package:genzeh911/features/saved_artical/data/rx_get_bookmark/rx.dart';
-// import 'package:genzeh911/features/saved_artical/model/bookmark_model.dart';
-// import 'package:rxdart/subjects.dart';
-// import '../features/authentication/data/rx_login/rx.dart';
-// import '../features/authentication/data/rx_logout/rx.dart';
-// import '../features/authentication/data/rx_signup/rx.dart';
+import 'package:genzeh911/features/account_and_setting/data/rx_edit_profile/rx.dart';
+import 'package:genzeh911/features/account_and_setting/data/rx_profile/rx.dart';
+import 'package:genzeh911/features/account_and_setting/model/profile_model.dart';
+import 'package:genzeh911/features/auth/data/rx_login/rx.dart';
+import 'package:genzeh911/features/auth/data/rx_logout/rx.dart';
+import 'package:genzeh911/features/auth/data/rx_onboard/rx.dart';
+import 'package:genzeh911/features/auth/data/rx_signup/rx.dart';
+import 'package:genzeh911/features/auth/data/rx_send_otp/rx.dart';
+import 'package:genzeh911/features/auth/data/rx_verify_otp/rx.dart';
+import 'package:genzeh911/features/auth/model/login_model.dart';
+import 'package:genzeh911/features/auth/model/onboard_model.dart';
+import 'package:genzeh911/features/auth/model/signup_model.dart';
+import 'package:genzeh911/features/home/data/rx_educational_insight/rx.dart';
+import 'package:genzeh911/features/home/data/rx_educational_insight_details/rx.dart';
+import 'package:genzeh911/features/home/data/rx_get_scan_data/rx.dart';
+import 'package:genzeh911/features/home/data/rx_get_scan_details.dart/api.dart';
+import 'package:genzeh911/features/home/data/rx_get_scan_details.dart/rx.dart';
+import 'package:genzeh911/features/home/model/history_details_model.dart';
+import 'package:genzeh911/features/home/model/insight_model.dart';
+import 'package:genzeh911/features/home/model/scan_model.dart';
+import 'package:genzeh911/features/home/model/single_insight_model.dart';
+import 'package:genzeh911/features/quick_scan/data/rx_scan_history/rx.dart';
+import 'package:genzeh911/features/quick_scan/data/rx_scan_result/rx.dart';
+import 'package:genzeh911/features/quick_scan/model/scan_history_model.dart';
+import 'package:genzeh911/features/quick_scan/model/scan_result_model.dart';
+import 'package:rxdart/rxdart.dart';
 
-// GetSignupResponseRX getSignupResponseRXObj = GetSignupResponseRX(
-//     empty: SignUpResponseModel(),
-//     dataFetcher: BehaviorSubject<SignUpResponseModel>());
+OnboardRx onboardRx = OnboardRx(
+    empty: OnboardModel(), dataFetcher: BehaviorSubject<OnboardModel>());
 
-// GetLoginResponseRX getLoginResponseRXObj = GetLoginResponseRX(
-//     empty: LoginResponseModel(),
-//     dataFetcher: BehaviorSubject<LoginResponseModel>());
+SignupRx signupRx =
+    SignupRx(empty: SignupModel(), dataFetcher: BehaviorSubject<SignupModel>());
 
-// GetLogOutRX logOutRXObj = GetLogOutRX(
-//     empty: {},
-//     dataFetcher: BehaviorSubject<Map>());
+LoginRx loginRx =
+    LoginRx(empty: LoginModel(), dataFetcher: BehaviorSubject<LoginModel>());
 
+GetLogoutResponseRX getLogoutResponseRX =
+    GetLogoutResponseRX(empty: {}, dataFetcher: BehaviorSubject<Map>());
 
-// GetCourseTypeRx getCourseTypeRxObj = GetCourseTypeRx(empty: GetCourseType(), dataFetcher: BehaviorSubject<GetCourseType>());
+OtpSendRx otpSendRx = OtpSendRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 
-// GetSurveyRx getSurveyRxObj= GetSurveyRx(empty: SurveyModel(), dataFetcher: BehaviorSubject<SurveyModel>());
-// GetProfileRX getProfileRXOBJ= GetProfileRX(empty: ProfileResponseModel(), dataFetcher: BehaviorSubject<ProfileResponseModel>());
-// GetAllCoursesRX getAllCoursesRXOBJ= GetAllCoursesRX(empty: AllCoursesResponseModel(), dataFetcher: BehaviorSubject<AllCoursesResponseModel>());
-// GetRecommendedCoursesRX getRecommendedCoursesRXOBJ= GetRecommendedCoursesRX(empty: RecommendedResponseModel(), dataFetcher: BehaviorSubject<RecommendedResponseModel>());
-// GetCourseModuleRX getCourseModuleRXOBJ = GetCourseModuleRX(empty: CoursesModuleResponseModel(), dataFetcher: BehaviorSubject<CoursesModuleResponseModel>());
+OtpVerifyRx otpVerifyRx =
+    OtpVerifyRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 
-// PostSurveyResponseRX postSurveyRXobj= PostSurveyResponseRX(empty: {}, dataFetcher: BehaviorSubject<Map>());
+InsightRx insightRx = InsightRx(
+    empty: InsightModel(), dataFetcher: BehaviorSubject<InsightModel>());
 
-// GetSurveyMarkRx getSurveyMarkRxObj= GetSurveyMarkRx(empty: SurveyMarkModel(),dataFetcher: BehaviorSubject<SurveyMarkModel>());
+InsightDetailsRx insightDetailsRx = InsightDetailsRx(
+    empty: SingleInsightModel(),
+    dataFetcher: BehaviorSubject<SingleInsightModel>());
 
-// GetRecomendedCourseRx getRecomendedCourseRxObj= GetRecomendedCourseRx(empty: Recomendedcourse(), dataFetcher: BehaviorSubject<Recomendedcourse>());
+GetProfileRx profileRx = GetProfileRx(
+    empty: ProfileModel(), dataFetcher: BehaviorSubject<ProfileModel>());
 
-// GetBookMarkResponseRx getBookMarkResponseRx= GetBookMarkResponseRx(empty: BookmarkModel(), dataFetcher: BehaviorSubject<BookmarkModel>());
+GetEditProfileResponseRX getEditProfileResponseRX =
+    GetEditProfileResponseRX(empty: {}, dataFetcher: BehaviorSubject<Map>());
 
-// GetSingleArticleRx getSingleArticleRx= GetSingleArticleRx(empty: SingleArticleModel(), dataFetcher: BehaviorSubject<SingleArticleModel>());
+ScanResultRx scanResultRx = ScanResultRx(
+    empty: ScanResultModel(), dataFetcher: BehaviorSubject<ScanResultModel>());
 
-// GetCourseArticleRX getCourseArticleRXOBJ= GetCourseArticleRX(empty: CoursesArticleResponseModel(), dataFetcher: BehaviorSubject<CoursesArticleResponseModel>());
-// GetDailyReadArticleRX getDailyReadArticleRXOBJ= GetDailyReadArticleRX(empty: DailyReadArticleResponseModel(), dataFetcher: BehaviorSubject<DailyReadArticleResponseModel>());
+ScanHistoryRx scanHistoryRx = ScanHistoryRx(
+    empty: ScanHistoryModel(),
+    dataFetcher: BehaviorSubject<ScanHistoryModel>());
+
+ScanDataRx scanDataRx =
+    ScanDataRx(empty: ScanModel(), dataFetcher: BehaviorSubject<ScanModel>());
+
+ScanDatDetailsaRx scanDatDetailsaRx = ScanDatDetailsaRx(
+    empty: HistoryDetailsModel(),
+    dataFetcher: BehaviorSubject<HistoryDetailsModel>());

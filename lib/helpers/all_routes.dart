@@ -2,12 +2,16 @@
 
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:genzeh911/features/account_and_setting/presentation/edit_profile_screen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/faq_screen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/notification_screeen.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/personal_info_screen.dart';
+import 'package:genzeh911/features/auth/create_new_password/presentation/create_new_password_screen.dart';
 import 'package:genzeh911/features/auth/forgot_password/presentation/forgot_password_screen.dart';
 import 'package:genzeh911/features/auth/otp_verification/presentation/otp_verification_screen.dart';
 import 'package:genzeh911/features/auth/sign_in/presentation/sign_in_screen.dart';
+import 'package:genzeh911/features/auth/sign_up/presentation/sign_up_screen.dart';
+import 'package:genzeh911/features/auth/sign_up/presentation/sign_up_two_screen.dart';
 import 'package:genzeh911/features/history/presentation/history_details.dart';
 import 'package:genzeh911/features/history/presentation/history_details_safe_mode.dart';
 import 'package:genzeh911/features/insight/presentation/insight_details.dart';
@@ -33,6 +37,7 @@ final class Routes {
   static const String bottomNav = '/bottomNav';
   static const String insightDetailsScreen = '/insightDetailsScreen';
   static const String personalInfoScreen = '/personalInfoScreen';
+  static const String editprofile = '/editprofile';
   static const String historyDetails = '/historyDetails';
   static const String notificationScreeen = '/notificationScreeen';
   static const String faqScreen = '/faqScreen';
@@ -42,6 +47,10 @@ final class Routes {
   static const String congratulationScreen = '/congratulationScreen';
   static const String scanningReportScreen = '/scanningReportScreen';
   static const String historyDetailsSafeMode = '/historyDetailsSafeMode';
+  static const String signup = '/signup';
+  static const String signup2 = '/signup2';
+  static const String createNewPassword = '/createNewPassword';
+  static const String ScanningReportScreen = '/ScanningReportScreen';
 }
 
 final class RouteGenerator {
@@ -62,11 +71,17 @@ final class RouteGenerator {
                 widget: const SignInScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => const SignInScreen());
 
-      // case Routes.signUpScreen:
-      //   return Platform.isAndroid
-      //       ? _FadedTransitionRoute(
-      //           widget: const SignUpScreen(), settings: settings)
-      //       : CupertinoPageRoute(builder: (context) => const SignUpScreen());
+      case Routes.signup:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const SignUpScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => const SignUpScreen());
+
+      case Routes.signup2:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: const SignUpTwoScreen(), settings: settings)
+            : CupertinoPageRoute(builder: (context) => const SignUpTwoScreen());
 
       case Routes.forgetPasswordScreen:
         return Platform.isAndroid
@@ -82,12 +97,27 @@ final class RouteGenerator {
             : CupertinoPageRoute(
                 builder: (context) => const OtpVerificationScreen());
 
-      case Routes.insightDetailsScreen:
+      case Routes.createNewPassword:
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: const InsightDetailsScreen(), settings: settings)
+                widget: const CreateNewPasswordScreen(), settings: settings)
             : CupertinoPageRoute(
-                builder: (context) => const InsightDetailsScreen());
+                builder: (context) => const CreateNewPasswordScreen());
+
+      case Routes.insightDetailsScreen:
+        final args = settings.arguments as Map;
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: InsightDetailsScreen(
+                  title: args['title'],
+                  id: args['id'],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => InsightDetailsScreen(
+                      title: args['title'],
+                      id: args['id'],
+                    ));
 
       case Routes.personalInfoScreen:
         return Platform.isAndroid
@@ -95,11 +125,26 @@ final class RouteGenerator {
                 widget: const PersonalInfoScreen(), settings: settings)
             : CupertinoPageRoute(
                 builder: (context) => const PersonalInfoScreen());
-      case Routes.historyDetails:
+
+      case Routes.editprofile:
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: HistoryDetails(), settings: settings)
-            : CupertinoPageRoute(builder: (context) => HistoryDetails());
+                widget: const EditProfileScreen(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => const EditProfileScreen());
+
+      case Routes.historyDetails:
+        final args = settings.arguments as Map;
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: HistoryDetails(
+                  text: args["text"],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => HistoryDetails(
+                      text: args["text"],
+                    ));
 
       case Routes.notificationScreeen:
         return Platform.isAndroid
@@ -161,6 +206,19 @@ final class RouteGenerator {
             : CupertinoPageRoute(
                 builder: (context) => BottomNavBar(
                       pageNum: args["pageNum"],
+                    ));
+
+      case Routes.ScanningReportScreen:
+        final args = settings.arguments as Map;
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: ScanningReportScreen(
+                  responseData: args["responseData"],
+                ),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => ScanningReportScreen(
+                      responseData: args["responseData"],
                     ));
 
       // case Routes.onboardingPageEleven:

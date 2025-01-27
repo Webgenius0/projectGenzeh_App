@@ -7,11 +7,13 @@ import '../../../../helpers/ui_helpers.dart';
 class OnboardingPageThree extends StatefulWidget {
   final String title;
   final String? description;
+  final String? findus;
 
   const OnboardingPageThree({
     super.key,
     required this.title,
     this.description,
+    this.findus,
   });
 
   @override

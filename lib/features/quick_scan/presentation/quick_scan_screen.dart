@@ -1,3 +1,6 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +9,10 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/loading_helper.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
+import 'package:genzeh911/helpers/toast.dart';
+import 'package:genzeh911/networks/api_acess.dart';
 
 class QuickScanScreen extends StatefulWidget {
   const QuickScanScreen({Key? key}) : super(key: key);
@@ -69,8 +75,8 @@ class _QuickScanScreenState extends State<QuickScanScreen> {
           // Centered Frame
           Center(
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: MediaQuery.of(context).size.width * 0.8,
+              width: 320.w,
+              height: 530.h,
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.white,
@@ -152,24 +158,18 @@ class _QuickScanScreenState extends State<QuickScanScreen> {
                     ),
                     height: 70.0.h,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Placeholder for carousel image
-                        Image.asset(
-                          Assets.images.pic.path,
-                          width: 48.w,
-                          height: 48.h,
-                        ),
-
                         // Camera button
                         GestureDetector(
                           onTap: () {
-                            if (_cameraController != null &&
-                                _cameraController!.value.isInitialized) {
-                              // Implement capture logic here
-                              NavigationService.navigateTo(
-                                  Routes.scanningReportScreen);
-                            }
+                            // if (_cameraController != null &&
+                            //     _cameraController!.value.isInitialized) {
+                            //   // Implement capture logic here
+                            //   NavigationService.navigateTo(
+                            //       Routes.scanningReportScreen);
+                            // }
+                            _captureImage();
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(5.0),
@@ -178,32 +178,6 @@ class _QuickScanScreenState extends State<QuickScanScreen> {
                               width: 70.w,
                               height: 70.h,
                               fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-
-                        // Switch Camera Button
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100.r),
-                            color: AppColors.c000000.withOpacity(0.1),
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              // Logic to switch between front and rear cameras
-                              if (_cameras != null && _cameras!.length > 1) {
-                                setState(() {
-                                  _cameraController = CameraController(
-                                    _cameras!.last,
-                                    ResolutionPreset.high,
-                                  );
-                                  _cameraController!.initialize();
-                                });
-                              }
-                            },
-                            icon: const Icon(
-                              Icons.cameraswitch,
-                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -218,4 +192,39 @@ class _QuickScanScreenState extends State<QuickScanScreen> {
       ),
     );
   }
+
+Future<void> _captureImage() async {
+  if (_cameraController == null || !_cameraController!.value.isInitialized) {
+    return;
+  }
+
+  try {
+    final XFile image = await _cameraController!.takePicture();
+    final result = await scanResultRx
+        .scan(image: File(image.path))
+        .waitingForFutureWithoutBg();
+
+    scanHistoryRx.scanHistory();
+
+    log("Scan result: $result");
+    log("Image Path: ${image.path}");
+
+    if (result != null) {
+      // Navigate to scan report screen
+      NavigationService.navigateToWithArgs(
+          Routes.scanningReportScreen, {"responseData": result});
+    } else {
+      ToastUtil.showShortToast("No valid scan result found. Please try again.");
+    }
+  } catch (e) {
+    log("Error capturing image: $e");
+    
+    if (e.toString().contains("422")) {
+      ToastUtil.showShortToast("Failed to scan the image. Please use a clearer image.");
+    } else {
+      ToastUtil.showShortToast("An unexpected error occurred. Please try again.");
+    }
+  }
+}
+
 }

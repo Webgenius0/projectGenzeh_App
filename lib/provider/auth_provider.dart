@@ -1,48 +1,26 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 final class AuthProvider extends ChangeNotifier {
-  bool _isLoading = false;
-  bool _showPassword = true;
-  bool _showConfirmPassword = true;
-  String _forgotPasswordEmail = '';
-  String _registerEmail = '';
-  String _otp = '';
+  //signup
+  final TextEditingController name = TextEditingController();
+  String displayedHintText = "";
+  String displayedHintText2 = "";
+  String selectedCountry = "";
 
-  bool get isLoading => _isLoading;
-  bool get showPassword => _showPassword;
-  bool get showConfirmPassword => _showConfirmPassword;
-  String get forgotPasswordEmail => _forgotPasswordEmail;
-  String get registerEmail => _registerEmail;
-  String get otpCode => _otp;
+  final TextEditingController country = TextEditingController();
+  final TextEditingController username = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final TextEditingController confirmpassword = TextEditingController();
 
-  void toogleShowPassword(){
-    _showPassword = !_showPassword;
+  bool isChecked = false;
+
+  final formkey = GlobalKey<FormState>();
+
+  final ValueNotifier<String?> imageFileNotifier = ValueNotifier<String?>(null);
+
+  void toogleCheck(bool value) {
+    isChecked = !isChecked;
     notifyListeners();
   }
-  void toogleShowConfirmPassword(){
-    _showConfirmPassword = !_showConfirmPassword;
-    notifyListeners();
-  }
-
-  void toggleLoading({required bool isLoading}){
-    _isLoading = isLoading;
-    notifyListeners();
-  }
-
-  void setForgotPasswordEmail({required String email}){
-    _forgotPasswordEmail = email;
-    notifyListeners();
-  }
-  void setOtp({required String otp}){
-    _otp = otp;
-    notifyListeners();
-  }
-  void setRegisterEmail({required String email}){
-    _registerEmail = email;
-    notifyListeners();
-  }
-
-
-
-  
 }

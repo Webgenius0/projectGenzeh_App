@@ -4,11 +4,12 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
-import 'package:genzeh911/features/auth/create_new_password/presentation/create_new_password_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
+import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/networks/api_acess.dart';
 import 'package:get/get.dart';
 import '../../../../common_widgets/custom_elevated_button.dart';
 
@@ -20,6 +21,8 @@ class OtpVerificationScreen extends StatefulWidget {
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+  String otp = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,8 +111,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     onCodeChanged: (String code) {},
                     onSubmit: (String verificationCode) {
                       if (verificationCode.length == 4) {
-                        // otp = verificationCode;
-                        // Proceed with further validation (like sending the OTP for verification)
+                        otp = verificationCode;
                       } else {
                         // Display error (for example, using a snackbar or toast)
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -148,7 +150,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   UIHelper.verticalSpace(42.h),
                   customElevatedButton(
                       onPressed: () {
-                        Get.to(() => const CreateNewPasswordScreen());
+                        otpVerifyRx.otpVerify(otp: otp).then((success) {
+                          if (success) {
+                            NavigationService.navigateToReplacement(
+                                Routes.createNewPassword);
+                          }
+                        });
                       },
                       child: Text(
                         'Confirm',

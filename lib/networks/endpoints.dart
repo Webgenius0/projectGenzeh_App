@@ -1,7 +1,8 @@
 // ignore_for_file: constant_identifier_names, unnecessary_string_interpolations
 
 // const String url = String.fromEnvironment("BASE_URL");
-const String url = "https://poswell.app";
+// const String url = "https://genzeh911.softvencefsd.xyz";
+const String url = "https://byemicroplastics.xyz";
 // ignore: unnecessary_brace_in_string_interps
 const String imageUrl = "${url}";
 
@@ -15,7 +16,6 @@ final class NetworkConstants {
   static const ACCEPT_TYPE = "application/json";
   static const AUTHORIZATION = "Authorization";
   static const CONTENT_TYPE = "content-Type";
-
 }
 
 // final class PaymentGateway {
@@ -25,43 +25,27 @@ final class NetworkConstants {
 
 final class Endpoints {
   Endpoints._();
-  //backend_url
-  //New
-  static String signUp() => "/api/register";
-  static String logIn() => "/api/login";
+  //onboard
+  static String onboard() => "/api/onboard";
+  static String signup() => "/api/register";
+  static String login() => "/api/login";
   static String logout() => "/api/logout";
-  static String getBabyProfile() => "/api/baby/profile/show";
-  static String getProfile() => "/api/user/data";
-  static String getCourseModules(String id) => "/api/course/module/$id";
-  static String getCourseArticle(String id) => "/api/course/article/$id";
-  static String getDailyReadArticle(String id) => "/api/course/daily-read/article/$id";
-  static String getAllCourses() => "/api/courses";
-  static String getRecommendedCourses() => "/api/recommend/course";
-  static String addBabyProfile() => "/api/baby/profile/store";
-  static String updateBabyProfile(String id) => "/api/baby/profile/update/$id";
-  static String updateProfile() => "/api/update-profile";
-  static String getMyCloset() => "/api/user/clothing/show";
-  static String addCloset() => "/api/user/clothing/store";
-  static String forgotPassword() => "/api/forgot-password";
-  static String setPassword() => "/api/reset-password";
-  static String verifyOtp() => "/api/verify-otp";
-  static String registrationOtpVerify() => "/api/verify/registration";
-  static String getAvaiableItems(int temp) => "/api/clothing/filter?temperature=$temp";
-  static String getAdvices(String perams) => "/api/clothing/select?$perams";
+  static String otpSend() => "/api/request-reset";
+  static String otpVerify() => "/api/matchOtp";
 
+  //educational Insight
+  static String insights() => "/api/education_insights";
+  static String insightDetails(int id) => "/api/education_insights/$id";
 
-  // course
-  static String courseType() => "/api/course/types";
-  static String survey(int id) => "/api/survay/questions/$id";
-  static String postsurvey(int id) => "/api/survay/questions/answer/store/$id";
-  static String surveyMark(int id) => "/api/survay/marks/$id";
-  static String recomendedCourse() => "/api/recommend/course";
+  //profile
+  static String profile() => "/api/user";
+  static String editprofile() => "/api/profile";
 
+  //scanResult
+  static String scan() => "/api/product-scan?image";
+  static String scanHistory() => "/api/single-product";
 
-  //article
-    static String getBookmark() => "/api/bookmarks";
-    static String getSingleArticle(int id) => "/api/course/single-article/$id";
-
-
-
+  // scan product
+  static String scanProductData() => "/api/product-scan";
+  static String singleProduct(int id) => "/api/product-scan/$id";
 }

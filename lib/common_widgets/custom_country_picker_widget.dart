@@ -6,6 +6,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/provider/auth_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:country_picker/country_picker.dart';
 
 class CustomBirthDayAndCountryPickWidget extends StatefulWidget {
   final String labelText;
@@ -28,20 +31,18 @@ class CustomBirthDayAndCountryPickWidget extends StatefulWidget {
 
   @override
   State<CustomBirthDayAndCountryPickWidget> createState() =>
-      _CustomDateOrCountryPickWidgetState();
+      _CustomBirthDayAndCountryPickWidgetState();
 }
 
-class _CustomDateOrCountryPickWidgetState
+class _CustomBirthDayAndCountryPickWidgetState
     extends State<CustomBirthDayAndCountryPickWidget> {
   bool isIconVisible = false; // To manage dynamic icon display
-  String displayedHintText = "";
   bool isDateSelected = false;
-  String selectedCountry = "";
 
   @override
   void initState() {
     super.initState();
-    displayedHintText = widget.hintText;
+    context.read<AuthProvider>().displayedHintText2 = widget.hintText;
   }
 
   @override
@@ -62,7 +63,17 @@ class _CustomDateOrCountryPickWidgetState
             if (widget.isDatePicker) {
               await selectDate(context); // Show the DatePicker
             } else {
-              await selectCountry(context); // Show the Country Picker
+              showCountryPicker(
+                context: context,
+                showPhoneCode:
+                    true, // optional. Shows phone code next to the country name.
+                onSelect: (Country country) {
+                  setState(() {
+                    context.read<AuthProvider>().selectedCountry =
+                        '${country.name}';
+                  });
+                },
+              );
             }
             if (widget.onButtonPressed != null) {
               widget.onButtonPressed(); // Trigger the callback if provided
@@ -91,7 +102,12 @@ class _CustomDateOrCountryPickWidgetState
             children: [
               Expanded(
                 child: Text(
-                  displayedHintText,
+                  widget.isDatePicker
+                      ? context.read<AuthProvider>().displayedHintText2
+                      : context
+                          .read<AuthProvider>()
+                          .selectedCountry
+                          .toLowerCase(),
                   style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
                     color: AppColors.c4B586B, // Text color
                     fontSize: 14.sp,
@@ -124,64 +140,147 @@ class _CustomDateOrCountryPickWidgetState
     if (selectedDate != null) {
       setState(() {
         // Format the date to display in the widget
-        displayedHintText = "${selectedDate.toLocal()}".split(' ')[0];
+        context.read<AuthProvider>().displayedHintText2 =
+            "${selectedDate.toLocal()}".split(' ')[0];
         isDateSelected = true;
       });
     }
   }
+}
 
-  Future<void> selectCountry(BuildContext context) async {
-    String? selected = await showDialog<String>(
-      context: context,
-      builder: (BuildContext context) {
-        return SimpleDialog(
-          title: Text("Select Country"),
-          children: [
-            SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Bangladesh');
-                    },
-                    child: Text("Bangladesh"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'India');
-                    },
-                    child: Text("India"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Australia');
-                    },
-                    child: Text("Australia"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'USA');
-                    },
-                    child: Text("USA"),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.pop(context, 'Nepal');
-                    },
-                    child: Text("Nepal"),
-                  ),
-                ],
+class BirthDayAndCountryPickWidget extends StatefulWidget {
+  final String labelText;
+  final String hintText;
+  final bool showSuffixIcon;
+  final String? suffixIcon;
+  final VoidCallback onButtonPressed;
+  // Callback when button is pressed
+  final bool isDatePicker;
+
+  const BirthDayAndCountryPickWidget({
+    super.key,
+    required this.labelText,
+    required this.hintText,
+    this.suffixIcon,
+    this.showSuffixIcon = true,
+    required this.onButtonPressed, // Callback
+    required this.isDatePicker,
+  });
+
+  @override
+  State<BirthDayAndCountryPickWidget> createState() =>
+      _BirthDayAndCountryPickWidgetState();
+}
+
+class _BirthDayAndCountryPickWidgetState
+    extends State<BirthDayAndCountryPickWidget> {
+  bool isIconVisible = false; // To manage dynamic icon display
+  bool isDateSelected = false;
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<AuthProvider>().displayedHintText2 = widget.hintText;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.labelText,
+          style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
+            color: AppColors.c212121,
+            fontSize: 14.sp,
+          ),
+        ),
+        UIHelper.verticalSpace(12.h),
+        ElevatedButton(
+          onPressed: () async {
+            if (widget.isDatePicker) {
+              await selectDate(context); // Show the DatePicker
+            } else {
+              showCountryPicker(
+                context: context,
+                showPhoneCode:
+                    true, // optional. Shows phone code next to the country name.
+                onSelect: (Country country) {
+                  setState(() {
+                    context.read<AuthProvider>().selectedCountry =
+                        '${country.name}';
+                  });
+                },
+              );
+            }
+            if (widget.onButtonPressed != null) {
+              widget.onButtonPressed(); // Trigger the callback if provided
+            }
+            setState(() {
+              isIconVisible =
+                  !isIconVisible; // Toggle the icon state (optional)
+            });
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent, // Transparent background
+            padding: EdgeInsets.all(15.sp), // Padding of 14 pixels on all sides
+            elevation: 0,
+            shadowColor: Colors.transparent, // Remove shadow if desired
+            shape: RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(4.r), // Optional rounded corners
+              side: BorderSide(
+                width: 1.sp,
+                color: AppColors.c3689FD, // Border color
               ),
-            )
-          ],
-        );
-      },
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  widget.isDatePicker
+                      ? context.read<AuthProvider>().displayedHintText2
+                      : context
+                          .read<AuthProvider>()
+                          .selectedCountry
+                          .toLowerCase(),
+                  style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                    color: AppColors.c4B586B, // Text color
+                    fontSize: 14.sp,
+                  ),
+                  textAlign: TextAlign.left,
+                  overflow: TextOverflow.ellipsis, // In case text overflows
+                ),
+              ),
+              Container(
+                  height: 24.h,
+                  width: 24.w,
+                  child: SvgPicture.asset(
+                    widget.suffixIcon!,
+                  )),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    DateTime? selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2100),
     );
 
-    if (selected != null) {
+    if (selectedDate != null) {
       setState(() {
-        displayedHintText = selected;
+        // Format the date to display in the widget
+        context.read<AuthProvider>().displayedHintText2 =
+            "${selectedDate.toLocal()}".split(' ')[0];
+        isDateSelected = true;
       });
     }
   }
