@@ -2,7 +2,6 @@
 import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:genzeh911/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/di.dart';

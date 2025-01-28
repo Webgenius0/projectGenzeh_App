@@ -217,7 +217,7 @@ class _SignUpTwoScreenState extends State<SignUpTwoScreen> {
 
           if (succcess) {
             NavigationService.navigateTo(
-              Routes.subscriptionPlanScreen,
+              Routes.ratingScreen,
             );
           }
         }, onError: (error) {

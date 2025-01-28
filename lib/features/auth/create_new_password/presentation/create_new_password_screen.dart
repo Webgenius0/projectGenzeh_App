@@ -8,10 +8,12 @@ import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
+import 'package:genzeh911/networks/api_acess.dart';
 import '../../../../common_widgets/custom_elevated_button.dart';
 
 class CreateNewPasswordScreen extends StatefulWidget {
-  const CreateNewPasswordScreen({super.key});
+  final String email;
+  const CreateNewPasswordScreen({super.key, required this.email});
 
   @override
   State<CreateNewPasswordScreen> createState() =>
@@ -48,68 +50,71 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
             Assets.images.splashScreen.path,
             fit: BoxFit.cover,
           )),
-          SafeArea(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  UIHelper.verticalSpace(32.h),
-                  Text(
-                    "Create New Password",
-                    style: TextFontStyle.textStyle24c222222UrbanistW600
-                        .copyWith(
-                            letterSpacing: -0.5.sp, color: AppColors.c000000),
-                  ),
-                  UIHelper.verticalSpace(16.h),
-                  Text("Enter your new password.",
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                UIHelper.verticalSpace(32.h),
+                Text(
+                  "Create New Password",
+                  style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
+                      letterSpacing: -0.5.sp, color: AppColors.c000000),
+                ),
+                UIHelper.verticalSpace(16.h),
+                Text("Enter your new password.",
+                    style:
+                        TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
+                      color: AppColors.c4B586B,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14.sp,
+                    ),
+                    textAlign: TextAlign.center),
+                UIHelper.verticalSpace(24.h),
+                CustomInputFieldWidget(
+                  labelText: "Password",
+                  isPasswordField: true,
+                  showSuffixIcon: true,
+                  hintText: '******',
+                  inputType: TextInputType.emailAddress,
+                  controller: passwordController,
+                ),
+                UIHelper.verticalSpace(20.h),
+                CustomInputFieldWidget(
+                  labelText: "Confirm Password",
+                  isPasswordField: true,
+                  showSuffixIcon: true,
+                  hintText: '******',
+                  inputType: TextInputType.emailAddress,
+                  controller: confirmPasswordController,
+                ),
+                const Spacer(),
+                customElevatedButton(
+                    onPressed: () {
+                      setPasswordRx
+                          .setPassword(
+                              email: widget.email,
+                              password: passwordController.text)
+                          .then((success) {
+                        if (success) {
+                          NavigationService.navigateToUntilReplacement(
+                              Routes.loadingScreen);
+                        }
+                      });
+                    },
+                    child: Text(
+                      'Confirm',
                       style:
-                          TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
-                        color: AppColors.c4B586B,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14.sp,
+                          TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                        fontSize: 12.sp,
+                        color: AppColors.cFFFFFF,
+                        fontWeight: FontWeight.w600,
                       ),
-                      textAlign: TextAlign.center),
-                  UIHelper.verticalSpace(24.h),
-                  CustomInputFieldWidget(
-                    labelText: "Password",
-                    isPasswordField: true,
-                    showSuffixIcon: true,
-                    hintText: '******',
-                    inputType: TextInputType.emailAddress,
-                    controller: passwordController,
-                  ),
-                  UIHelper.verticalSpace(20.h),
-                  CustomInputFieldWidget(
-                    labelText: "Confirm Password",
-                    isPasswordField: true,
-                    showSuffixIcon: true,
-                    hintText: '******',
-                    inputType: TextInputType.emailAddress,
-                    controller: confirmPasswordController,
-                  ),
-                  const Spacer(),
-                  customElevatedButton(
-                      onPressed: () {
-                        // NavigationService.navigateTo(
-                        //     Routes.otpVerificationScreen);
-                        NavigationService.navigateToWithArgs(
-                            Routes.bottomNav, {"pageNum": 0});
-                      },
-                      child: Text(
-                        'Confirm',
-                        style: TextFontStyle.textStyle14c252C2EOpenSansW400
-                            .copyWith(
-                          fontSize: 12.sp,
-                          color: AppColors.cFFFFFF,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      bgColor: AppColors.allPrimaryColor),
-                  UIHelper.verticalSpace(42.h),
-                ],
-              ),
+                    ),
+                    bgColor: AppColors.allPrimaryColor),
+                UIHelper.verticalSpace(42.h),
+              ],
             ),
           )
         ],

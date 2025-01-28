@@ -77,6 +77,7 @@ class ScanningReportScreen extends StatelessWidget {
                   return Column(
                     children: [
                       // Header section
+
                       Container(
                         width: double.infinity,
                         padding: EdgeInsets.symmetric(vertical: 25.h),
@@ -93,7 +94,7 @@ class ScanningReportScreen extends StatelessWidget {
                               percent: 0.63,
                               center: Column(
                                 children: [
-                                  UIHelper.verticalSpace(12.h),
+                                  UIHelper.verticalSpace(25.h),
                                   Text(
                                     "${historyData.score?.split('/')[0]}",
                                     textAlign: TextAlign.center,
@@ -137,18 +138,23 @@ class ScanningReportScreen extends StatelessWidget {
                                   vertical: 8.h, horizontal: 24.w),
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
-                                color: historyData.riskLevel == "Safe"
-                                    ? AppColors.c00B822: historyData.riskLevel == "high"? Colors.red
-                                    : Colors.amber,
+                                color: historyData.riskLevel == "safe"
+                                    ? AppColors.c00B822
+                                    : historyData.riskLevel == "Moderate" ||
+                                            historyData.riskLevel == "medium"
+                                        ? Colors.amber
+                                        : historyData.riskLevel == "high"
+                                            ? Colors.red
+                                            : AppColors.c00B822,
                                 borderRadius: BorderRadius.circular(33.r),
                               ),
                               child: Text(
-                                "${historyData.riskLevel}",
+                                "${historyData.riskLevel?.toUpperCase()}",
                                 style: TextFontStyle
                                     .textStylec212121OpenSansW600
                                     .copyWith(
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 15.sp,
+                                        fontSize: 14.sp,
                                         color: AppColors.cFFFFFF),
                               ),
                             ),

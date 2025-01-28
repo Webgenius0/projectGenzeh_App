@@ -32,6 +32,7 @@ final class Endpoints {
   static String logout() => "/api/logout";
   static String otpSend() => "/api/request-reset";
   static String otpVerify() => "/api/matchOtp";
+  static String setPassword() => "/api/reset-password";
 
   //educational Insight
   static String insights() => "/api/education_insights";

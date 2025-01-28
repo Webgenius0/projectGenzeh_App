@@ -17,6 +17,7 @@ import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:genzeh911/networks/api_acess.dart';
+import 'package:genzeh911/provider/auth_provider.dart';
 import 'package:genzeh911/provider/edit_profile.dart';
 import 'package:intl/intl.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -246,10 +247,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           ),
                         );
                       }),
-     
+
                       // ),
                       UIHelper.verticalSpace(12.h),
-  
 
                       CustomGenderPicker(
                         hintText: '${gender}',
@@ -285,7 +285,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                       .read<EditProfileProvider>()
                                       .displayedHintText,
                                   number: phone.text.trim(),
-                                  avaterImage: imageFile)
+                                  avaterImage: imageFile,
+                                  date: context
+                                      .read<AuthProvider>()
+                                      .displayedHintText2)
                               .then((success) {
                             profileRx.getProfile();
                             NavigationService.goBack;

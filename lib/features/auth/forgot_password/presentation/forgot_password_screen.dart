@@ -6,6 +6,7 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/loading_helper.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:genzeh911/networks/api_acess.dart';
@@ -96,11 +97,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         onPressed: () {
                           if (_formkey.currentState?.validate() ?? false) {
                             otpSendRx
-                                .otpSend(email: emailController.text.trim())
+                                .otpSend(email: emailController.text.trim()).waitingForFutureWithoutBg()
                                 .then((success) {
                               if (success) {
-                                NavigationService.navigateTo(
-                                    Routes.otpVerificationScreen);
+                                NavigationService.navigateToWithArgs(
+                                    Routes.otpVerificationScreen, {
+                                  'email':
+                                      emailController.text.trim().toString()
+                                });
                               }
                             });
                           }

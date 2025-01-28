@@ -16,12 +16,14 @@ final class EditProfileApi {
     required String gender,
     required String number,
     required File? imagefile,
+    required String? date,
   }) async {
     try {
       FormData data = FormData.fromMap({
         "fullname": name,
         "phone": number,
         "gender": gender,
+        "date_of_birth": date
       });
 
       if (imagefile != null) {

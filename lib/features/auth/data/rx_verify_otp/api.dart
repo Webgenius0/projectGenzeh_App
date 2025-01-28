@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:genzeh911/helpers/toast.dart';
 
 import '../../../../networks/dio/dio.dart';
 import '../../../../networks/endpoints.dart';
@@ -23,6 +24,7 @@ final class OtpVerifyApi {
 
       if (response.statusCode == 200) {
         Map<String, dynamic> data = json.decode(json.encode(response.data));
+        ToastUtil.showShortToast(data['message']);
         return data;
       } else {
         // Handle non-200 status code errors
