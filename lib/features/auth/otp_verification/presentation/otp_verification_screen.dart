@@ -7,6 +7,7 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
+import 'package:genzeh911/helpers/loading_helper.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
 import 'package:genzeh911/networks/api_acess.dart';
@@ -14,7 +15,8 @@ import 'package:get/get.dart';
 import '../../../../common_widgets/custom_elevated_button.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({super.key});
+  final String email;
+  const OtpVerificationScreen({super.key, required this.email});
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
@@ -152,10 +154,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       onPressed: () {
                         otpVerifyRx.otpVerify(otp: otp).then((success) {
                           if (success) {
-                            NavigationService.navigateToReplacement(
-                                Routes.createNewPassword);
+                            NavigationService.navigateToReplacementWithObject(
+                                Routes.createNewPassword,{
+                                  "email": widget.email
+                                }).waitingForFutureWithoutBg();
                           }
-                        });
+                        }).waitingForFutureWithoutBg();
                       },
                       child: Text(
                         'Confirm',

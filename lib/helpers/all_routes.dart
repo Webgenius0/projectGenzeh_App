@@ -93,18 +93,26 @@ final class RouteGenerator {
                 builder: (context) => const ForgotPasswordScreen());
 
       case Routes.otpVerificationScreen:
+              final args = settings.arguments as Map;
+
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: const OtpVerificationScreen(), settings: settings)
+                widget:  OtpVerificationScreen(email: args['email'],), settings: settings)
             : CupertinoPageRoute(
-                builder: (context) => const OtpVerificationScreen());
+                builder: (context) =>  OtpVerificationScreen(email: args['email'],));
 
       case Routes.createNewPassword:
+        final args = settings.arguments as Map;
         return Platform.isAndroid
             ? _FadedTransitionRoute(
-                widget: const CreateNewPasswordScreen(), settings: settings)
+                widget: CreateNewPasswordScreen(
+                  email: args['email'],
+                ),
+                settings: settings)
             : CupertinoPageRoute(
-                builder: (context) => const CreateNewPasswordScreen());
+                builder: (context) => CreateNewPasswordScreen(
+                      email: args['email'],
+                    ));
 
       case Routes.insightDetailsScreen:
         final args = settings.arguments as Map;

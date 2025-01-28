@@ -143,15 +143,15 @@ class _CustomGenderPickerState extends State<CustomGenderPicker> {
                 children: [
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'male');
+                      Navigator.pop(context, 'Male');
                     },
-                    child: Text("male"),
+                    child: Text("Male"),
                   ),
                   SimpleDialogOption(
                     onPressed: () {
-                      Navigator.pop(context, 'female');
+                      Navigator.pop(context, 'Female');
                     },
-                    child: Text("female"),
+                    child: Text("Female"),
                   ),
                   SimpleDialogOption(
                     onPressed: () {

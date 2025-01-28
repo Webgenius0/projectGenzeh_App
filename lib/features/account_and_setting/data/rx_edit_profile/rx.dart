@@ -15,10 +15,12 @@ final class GetEditProfileResponseRX extends RxResponseInt {
     required String gender,
     required String number,
     required File? avaterImage,
+        required String? date,
+
   }) async {
     try {
       Map data = await api.editProfile(
-          name: name, gender: gender, number: number, imagefile: avaterImage);
+          name: name, gender: gender, number: number, imagefile: avaterImage,date: date);
       return handleSuccessWithReturn(data);
     } catch (error) {
       return handleErrorWithReturn(error);
