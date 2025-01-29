@@ -48,10 +48,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Your Scans , Your Health: \nTracking Microplastic-Free Choices",
-                  style: TextFontStyle.textStyle18c4A80E1PoppinsW700
-                      .copyWith(fontSize: 20),
+                Expanded(
+                  child: Text(
+                    "Your Scans,Your Health: Tracking Microplastic-Free Choices.",
+                    style: TextFontStyle.textStyle18c4A80E1PoppinsW700
+                        .copyWith(fontSize: 20),
+                  ),
                 ),
               ],
             ),

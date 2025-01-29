@@ -53,7 +53,7 @@ class _SignUpTwoScreenState extends State<SignUpTwoScreen> {
                   children: [
                     UIHelper.verticalSpace(52.h),
                     Text(
-                      "Create an Account.",
+                      "Create an Account",
                       style: TextFontStyle.textStyle24c222222UrbanistW600
                           .copyWith(
                               letterSpacing: -0.5.sp, color: AppColors.c000000),
@@ -61,7 +61,7 @@ class _SignUpTwoScreenState extends State<SignUpTwoScreen> {
                     UIHelper.verticalSpace(16.h),
                     Center(
                       child: Text(
-                        "Enter your username, email and password.If you forget return to the forgot password screen ",
+                        "Enter your username, email, and password. If you forget return to the forgot password screen.",
                         style: TextFontStyle.textStyle24c222222UrbanistW600
                             .copyWith(
                           color: AppColors.c4B586B,
@@ -123,7 +123,7 @@ class _SignUpTwoScreenState extends State<SignUpTwoScreen> {
                       labelText: "Confirm Password",
                       isPasswordField: true,
                       showSuffixIcon: true,
-                      hintText: 'Re enter password',
+                      hintText: 'Re-enter password',
                       inputType: TextInputType.visiblePassword,
                       controller: context.read<AuthProvider>().confirmpassword,
                       validator: (value) {
@@ -278,7 +278,7 @@ class _RememberMeCheckboxState extends State<RememberMeCheckbox> {
         }),
         UIHelper.horizontalSpace(6.w), // Add spacing
         // Label
-        Text("Remember me",
+        Text("Remember Me",
             style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
                 fontWeight: FontWeight.w500,
                 fontSize: 12.sp,

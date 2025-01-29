@@ -48,10 +48,12 @@ class _InsightScreenState extends State<InsightScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Small steps, big change —\nlet’s finish this microplastic discovery",
-                  style: TextFontStyle.textStyle18c4A80E1PoppinsW700
-                      .copyWith(fontSize: 20),
+                Expanded(
+                  child: Text(
+                    "Knowing How Microplastics are Impacting Your Health, is a Key Step Towards Longevity.",
+                    style: TextFontStyle.textStyle18c4A80E1PoppinsW700
+                        .copyWith(fontSize: 20),
+                  ),
                 ),
               ],
             ),
