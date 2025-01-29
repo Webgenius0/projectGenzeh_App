@@ -79,7 +79,7 @@ class _RatingScreenState extends State<RatingScreen> {
                       }
                       return null;
                     },
-                    labelText: "Full Name",
+                    labelText: "",
                     isPasswordField: false,
                     showSuffixIcon: true,
                     hintText: 'Enter your name',

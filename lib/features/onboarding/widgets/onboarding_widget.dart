@@ -117,7 +117,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                           title:
                               'Scan to Get Instant Analysis and Recommendations',
                           description:
-                              'Our AI technology analyzes products for microplastic content in seconds.',
+                              'Our AI technology analyzes products for microplastic ingredients in seconds.',
                         ),
                         const OnboardingPageFive(
                           title: 'Microplastics Are Harmful to Our Health',
@@ -145,9 +145,9 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                         const OnboardingPageTen(
                           titleOne: 'Welcome to ',
                           titleTwo: ' BMAi',
-                          icon: '👋',
+                          icon: '',
                           description:
-                              'Your AI-powered Agent Helping You Detect Microplastic Ingredients in Personal And Household Products. A Must Have in Your Path to Longevity.',
+                              'Your AI-powered Agent Helping You Detect Microplastic Ingredients in Personal and Household Products. A Must Have for Your Path to Longevity.',
                         ),
                       ],
                     ),

@@ -108,14 +108,14 @@ class _HistoryDetailsState extends State<HistoryDetails> {
                               percent: 0.63,
                               center: Column(
                                 children: [
-                                  UIHelper.verticalSpace(3.h),
+                                  UIHelper.verticalSpace(20.h),
                                   Text(
                                     "${historyDetailsModel.data?.score}",
                                     textAlign: TextAlign.center,
                                     style: TextFontStyle
                                         .textStylec212121OpenSansW600
                                         .copyWith(
-                                            fontSize: 64.sp,
+                                            fontSize: 40.sp,
                                             letterSpacing: -0.64.sp,
                                             color: AppColors.cFFFFFF),
                                   ),
@@ -138,7 +138,7 @@ class _HistoryDetailsState extends State<HistoryDetails> {
                             ),
                             UIHelper.verticalSpace(12.h),
                             Text(
-                              '${historyDetailsModel.data?.microplastic}',
+                              '${historyDetailsModel.data?.microplastic?.toUpperCase()}',
                               style: TextFontStyle.textStylec212121OpenSansW600
                                   .copyWith(
                                       fontSize: 18.sp,

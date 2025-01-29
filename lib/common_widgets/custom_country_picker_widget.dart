@@ -172,8 +172,7 @@ class BirthDayAndCountryPickWidget extends StatefulWidget {
       _BirthDayAndCountryPickWidgetState();
 }
 
-class _BirthDayAndCountryPickWidgetState
-    extends State<BirthDayAndCountryPickWidget> {
+class _BirthDayAndCountryPickWidgetState extends State<BirthDayAndCountryPickWidget> {
   bool isIconVisible = false; // To manage dynamic icon display
   bool isDateSelected = false;
 

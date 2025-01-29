@@ -226,11 +226,14 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
                                   imageUrl: data[index].imageUrl ?? "",
                                   title: data[index].name ?? "Unknown",
                                   date: "${data[index].createdAt}",
-                                  status: data[index].riskLevel ?? "N/A",
-                                  statusColor: AppColors.cFFB041,
+                                  status:
+                                      data[index].riskLevel?.toUpperCase() ??
+                                          "N/A",
+                                  statusColor: data[index].riskLevel == "safe"
+                                      ? AppColors.c00B822
+                                      : AppColors.cFFB041,
                                   time: '',
                                   statusIconColor: AppColors.cFFD21E,
-                                  icon: Assets.icons.lowRisk,
                                 ),
                               );
                             },
@@ -255,12 +258,16 @@ class _HomeBodyScreenState extends State<HomeBodyScreen> {
                                 letterSpacing: -0.36),
                       ),
                       GestureDetector(
-                          onTap: () {
-                            // Get.to(() => EducationalInsides());
-                            NavigationService.popAndReplaceWihArgs(
-                                Routes.bottomNav, {"pageNum": 1});
-                          },
-                          child: SvgPicture.asset(Assets.icons.arrowRights))
+                        onTap: () {
+                          // Get.to(() => EducationalInsides());
+                          NavigationService.popAndReplaceWihArgs(
+                              Routes.bottomNav, {"pageNum": 1});
+                        },
+                        child: SvgPicture.asset(
+                          Assets.icons.arrowRights,
+                          color: AppColors.c000000,
+                        ),
+                      ),
                     ],
                   ),
                   UIHelper.verticalSpace(16.h),

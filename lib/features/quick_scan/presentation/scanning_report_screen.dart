@@ -123,7 +123,7 @@ class ScanningReportScreen extends StatelessWidget {
                             ),
                             UIHelper.verticalSpace(12.h),
                             Text(
-                              '${historyData.microplastic}',
+                              '${historyData.microplastic?.toUpperCase()}',
                               style: TextFontStyle.textStylec212121OpenSansW600
                                   .copyWith(
                                       fontSize: 18.sp,
@@ -154,7 +154,7 @@ class ScanningReportScreen extends StatelessWidget {
                                     .textStylec212121OpenSansW600
                                     .copyWith(
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 14.sp,
+                                        fontSize: 12.sp,
                                         color: AppColors.cFFFFFF),
                               ),
                             ),
