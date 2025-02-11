@@ -7,13 +7,11 @@ import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/features/account_and_setting/presentation/account_full_screen.dart';
 import 'package:genzeh911/features/history/presentation/history_screen.dart';
 import 'package:genzeh911/features/home/presentation/home_body_screen.dart';
-import 'package:genzeh911/features/home/presentation/notification_list_screen.dart';
 import 'package:genzeh911/features/insight/presentation/insight_screen.dart';
 import 'package:genzeh911/gen/assets.gen.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/all_routes.dart';
 import 'package:genzeh911/helpers/navigation_service.dart';
-import 'package:get/get.dart';
 
 class BottomNavBar extends StatefulWidget {
   final int pageNum;
@@ -45,35 +43,35 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 85,
-        leading: IconButton(
-          onPressed: () {
-            // Navigate back or perform an action
-          },
-          icon: SvgPicture.asset(
-            Assets.icons.logos,
-            width: 42.0.w, // Set desired width
-            height: 42.0.h, // Set desired height
-          ),
-          iconSize: 42.0,
-          constraints: const BoxConstraints(),
-          padding: EdgeInsets.only(left: 20.w),
-        ),
-        actions: (currentTab != 1 && currentTab != 2 && currentTab != 3)
-            ? [
-                Padding(
-                  padding: EdgeInsets.only(right: 20.w),
-                  child: GestureDetector(
-                    onTap: () {
-                      Get.to(() => NotificationListScreen());
-                    },
-                    child: SvgPicture.asset(Assets.icons.notification),
-                  ),
-                )
-              ]
-            : null,
-      ),
+      // appBar: AppBar(
+      //   leadingWidth: 85,
+      //   leading: IconButton(
+      //     onPressed: () {
+      //       // Navigate back or perform an action
+      //     },
+      //     icon: SvgPicture.asset(
+      //       Assets.icons.logos,
+      //       width: 42.0.w, // Set desired width
+      //       height: 42.0.h, // Set desired height
+      //     ),
+      //     iconSize: 42.0,
+      //     constraints: const BoxConstraints(),
+      //     padding: EdgeInsets.only(left: 20.w),
+      //   ),
+      //   actions: (currentTab != 1 && currentTab != 2 && currentTab != 3)
+      //       ? [
+      //           Padding(
+      //             padding: EdgeInsets.only(right: 20.w),
+      //             child: GestureDetector(
+      //               onTap: () {
+      //                 Get.to(() => NotificationListScreen());
+      //               },
+      //               child: SvgPicture.asset(Assets.icons.notification),
+      //             ),
+      //           )
+      //         ]
+      //       : null,
+      // ),
       body: PageStorage(
         bucket: bucket,
         child: currentScreen,

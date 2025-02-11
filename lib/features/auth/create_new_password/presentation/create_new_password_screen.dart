@@ -99,7 +99,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                       },
                       child: Text(
                         'Confirm',
-                        style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                        style: TextFontStyle.textStyle14c252C2EUrbanistW400
                             .copyWith(
                           fontSize: 12.sp,
                           color: AppColors.cFFFFFF,
@@ -225,7 +225,7 @@ class CustomButton extends StatelessWidget {
               if (loginIcon != null) UIHelper.horizontalSpace(12.w),
               Text(
                 text,
-                style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                   fontWeight: FontWeight.w600,
                   color: textColor ?? AppColors.c222222,
                 ),

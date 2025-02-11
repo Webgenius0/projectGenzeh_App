@@ -25,7 +25,7 @@ class _CustomChangePasswordWidgetState
       obscureText: _isObscured,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: TextFontStyle.textStyle16c4D4D4DOpenSansW400.copyWith(
+        hintStyle: TextFontStyle.textStyle16c4D4D4DUrbanistW400.copyWith(
           color: AppColors.c0A3004,
           fontSize: 12.sp,
         ), // Hint text color

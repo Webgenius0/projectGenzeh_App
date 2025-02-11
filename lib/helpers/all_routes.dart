@@ -9,6 +9,7 @@ import 'package:genzeh911/features/auth/forgot_password/presentation/forgot_pass
 import 'package:genzeh911/features/auth/otp_verification/presentation/otp_verification_screen.dart';
 import 'package:genzeh911/features/auth/sign_in/presentation/sign_in_screen.dart';
 import 'package:genzeh911/features/history/presentation/history_details.dart';
+import 'package:genzeh911/features/history/presentation/history_details_safe_mode.dart';
 import 'package:genzeh911/features/insight/presentation/insight_details.dart';
 import 'package:genzeh911/features/quick_scan/presentation/quick_scan_screen.dart';
 import 'package:genzeh911/features/quick_scan/presentation/scanning_report_screen.dart';
@@ -40,6 +41,7 @@ final class Routes {
   static const String processPaymentScreen = '/processPaymentScreen';
   static const String congratulationScreen = '/congratulationScreen';
   static const String scanningReportScreen = '/scanningReportScreen';
+  static const String historyDetailsSafeMode = '/historyDetailsSafeMode';
 }
 
 final class RouteGenerator {
@@ -140,6 +142,13 @@ final class RouteGenerator {
             ? _FadedTransitionRoute(
                 widget: ScanningReportScreen(), settings: settings)
             : CupertinoPageRoute(builder: (context) => ScanningReportScreen());
+
+      case Routes.historyDetailsSafeMode:
+        return Platform.isAndroid
+            ? _FadedTransitionRoute(
+                widget: HistoryDetailsSafeMode(), settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => HistoryDetailsSafeMode());
 
       case Routes.bottomNav:
         final args = settings.arguments as Map;

@@ -34,7 +34,7 @@ class _OnboardingPageFiveState extends State<OnboardingPageFive> {
             Text(
               widget.title,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle24c222222QuandoW400.copyWith(
+              style: TextFontStyle.textStyle24c222222urbanistW400.copyWith(
                 letterSpacing: -0.48.sp,
               ),
             ),
@@ -48,7 +48,7 @@ class _OnboardingPageFiveState extends State<OnboardingPageFive> {
             Text(
               widget.descriptionOne!,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle14c252C2EOpenSansW400
+              style: TextFontStyle.textStyle14c252C2EUrbanistW400
                   .copyWith(color: AppColors.c252C2E, fontSize: 16.sp),
             ),
             UIHelper.verticalSpace(26.h),
@@ -61,7 +61,7 @@ class _OnboardingPageFiveState extends State<OnboardingPageFive> {
             Text(
               widget.descriptionTwo!,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle14c252C2EOpenSansW400
+              style: TextFontStyle.textStyle14c252C2EUrbanistW400
                   .copyWith(color: AppColors.c252C2E, fontSize: 16.sp),
             ),
           ],

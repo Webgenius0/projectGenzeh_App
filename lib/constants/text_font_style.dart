@@ -6,18 +6,67 @@ import 'package:genzeh911/gen/colors.gen.dart';
 class TextFontStyle {
 //Initialising Constractor
   TextFontStyle._();
+  // old fonts
+  // static final textStyle24c222222QuandoW400 = GoogleFonts.quando(
+  //     color: AppColors.c222222, fontSize: 24.sp, fontWeight: FontWeight.w400);
 
-  static final textStyle24c222222QuandoW400 = GoogleFonts.quando(
+  static final textStyle24c222222urbanistW400 = GoogleFonts.urbanist(
       color: AppColors.c222222, fontSize: 24.sp, fontWeight: FontWeight.w400);
 
-  static final textStyle16c4D4D4DOpenSansW400 = GoogleFonts.openSans(
+  // old font
+  // static final textStyle14c252C2EOpenSansW400 = GoogleFonts.openSans(
+  //     color: AppColors.c212121, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+     static final textStyle14c252C2EUrbanistW400 = GoogleFonts.urbanist(
+       color: AppColors.c212121, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  // new font
+  // static final textStyle24c222222RobotoW400 = GoogleFonts.roboto(
+  //     color: AppColors.c222222, fontSize: 24.sp, fontWeight: FontWeight.w400);
+
+  
+  static final textStyle24c222222UrbanistW400 = GoogleFonts.urbanist(
+      color: AppColors.c222222, fontSize: 24.sp, fontWeight: FontWeight.w400);
+
+  // new font
+  static final textStyle14c252C2ERobotoW400 = GoogleFonts.roboto(
+      color: AppColors.c212121, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  // new font
+  static final textStyle24c222222PoppinsW400 = GoogleFonts.poppins(
+      color: AppColors.c222222, fontSize: 24.sp, fontWeight: FontWeight.w400);
+  // new font
+
+  static final textStyle24c222222InterW400 = GoogleFonts.inter(
+      color: AppColors.c222222, fontSize: 24.sp, fontWeight: FontWeight.w400);
+
+  // new font
+
+  static final textStyle14c222222InterW400 = GoogleFonts.inter(
+      color: AppColors.c222222, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  // new font
+  static final textStyle14c222222montserratW400 = GoogleFonts.montserrat(
+      color: AppColors.c222222, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  // new font
+  static final textStyle24c222222montserratW400 = GoogleFonts.montserrat(
+      color: AppColors.c222222, fontSize: 24.sp, fontWeight: FontWeight.w400);
+
+  static final textStyle14c252C2EpoppinsW400 = GoogleFonts.poppins(
+      color: AppColors.c212121, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  static final textStyle14c252C2EPoppinsW400 = GoogleFonts.poppins(
+      color: AppColors.c212121, fontSize: 14.sp, fontWeight: FontWeight.w400);
+
+  // static final textStyle16c4D4D4DOpenSansW400 = GoogleFonts.openSans(
+  //     color: AppColors.c4D4D4D, fontSize: 16.sp, fontWeight: FontWeight.w400);
+
+   static final textStyle16c4D4D4DUrbanistW400 = GoogleFonts.urbanist(
       color: AppColors.c4D4D4D, fontSize: 16.sp, fontWeight: FontWeight.w400);
 
   static final textStylec212121OpenSansW600 = GoogleFonts.openSans(
       color: AppColors.c4D4D4D, fontSize: 14.sp, fontWeight: FontWeight.w600);
-
-  static final textStyle14c252C2EOpenSansW400 = GoogleFonts.openSans(
-      color: AppColors.c212121, fontSize: 14.sp, fontWeight: FontWeight.w400);
 
   static final textStyle24c222222UrbanistW600 = GoogleFonts.urbanist(
       color: AppColors.c252C2E, fontSize: 24.sp, fontWeight: FontWeight.w600);
@@ -27,6 +76,18 @@ class TextFontStyle {
 
   static final textStyle12c0A3004PoppinsW500 = GoogleFonts.poppins(
       color: AppColors.c0A3004, fontSize: 12.sp, fontWeight: FontWeight.w500);
+
+  static final textStyle18c4A80E1PoppinsW600 = GoogleFonts.urbanist(
+      color: AppColors.c4A80E1, fontSize: 18.sp, fontWeight: FontWeight.w600);
+
+  static final textStyle18c4A80E1PoppinsW700 = GoogleFonts.urbanist(
+      color: AppColors.c4A80E1, fontSize: 20.sp, fontWeight: FontWeight.w700);
+
+  static final textStyle18cffffffOpenSansW600 = GoogleFonts.openSans(
+      color: AppColors.cffffff, fontSize: 18.sp, fontWeight: FontWeight.w600);
+
+  static final textStyle16cffffffOpenSansW600 = GoogleFonts.urbanist(
+      color: AppColors.cffffff, fontSize: 16.sp, fontWeight: FontWeight.w600);
 
   static final textStyle14c54585CDmSans400 =
       TextStyle(fontFamilyFallback: const [

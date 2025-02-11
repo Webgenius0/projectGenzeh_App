@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable, deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,6 +11,7 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
   final String title;
   final String time;
   final String source;
+  final Color backgroundColor;
   void Function()? onTap;
 
   CustomEducationalInsightCardWidget({
@@ -22,6 +21,7 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
     required this.time,
     required this.source,
     required this.onTap,
+    this.backgroundColor = AppColors.cE2F7FF, // Default value
   });
 
   @override
@@ -31,7 +31,7 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(8.r),
         decoration: BoxDecoration(
-          color: AppColors.cF7F7F7,
+          color: backgroundColor, // Use the dynamic color
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Row(
@@ -80,7 +80,7 @@ class CustomEducationalInsightCardWidget extends StatelessWidget {
                                 .copyWith(
                                     fontWeight: FontWeight.w300,
                                     fontSize: 9.sp,
-                                    color: AppColors.c757575),
+                                    color: AppColors.cC4C4C4),
                           ),
                         ],
                       ),

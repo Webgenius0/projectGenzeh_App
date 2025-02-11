@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:genzeh911/constants/text_font_style.dart';
 import 'package:genzeh911/gen/colors.gen.dart';
 import 'package:genzeh911/helpers/ui_helpers.dart';
@@ -14,7 +15,7 @@ class CustomRecentScanCard extends StatelessWidget {
   final String status;
   final Color statusColor;
   final Color statusIconColor;
-  // final String icon;
+  final String? icon;
 
   const CustomRecentScanCard({
     super.key,
@@ -25,7 +26,7 @@ class CustomRecentScanCard extends StatelessWidget {
     required this.status,
     required this.statusColor,
     required this.statusIconColor,
-    // required this.icon,
+    this.icon,
   });
 
   @override
@@ -51,7 +52,7 @@ class CustomRecentScanCard extends StatelessWidget {
                   Text(
                     title,
                     style:
-                        TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                        TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                       letterSpacing: -0.28,
                       fontWeight: FontWeight.w600,
                       color: AppColors.c212121,
@@ -62,14 +63,14 @@ class CustomRecentScanCard extends StatelessWidget {
                     children: [
                       Text(
                         date,
-                        style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                        style: TextFontStyle.textStyle14c252C2EUrbanistW400
                             .copyWith(
                                 fontSize: 12.sp, color: AppColors.c757575),
                       ),
                       UIHelper.horizontalSpace(8.h),
                       Text(
                         time,
-                        style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                        style: TextFontStyle.textStyle14c252C2EUrbanistW400
                             .copyWith(
                                 fontSize: 12.sp, color: AppColors.c757575),
                       ),
@@ -87,11 +88,23 @@ class CustomRecentScanCard extends StatelessWidget {
                   size: 16.h,
                 ),
                 UIHelper.verticalSpace(17.h),
-                Text(
-                  status,
-                  style: TextFontStyle.textStyle14c252C2EOpenSansW400
-                      .copyWith(fontSize: 12.sp, color: statusColor),
-                ),
+                Row(
+                  children: [
+                    icon != null
+                        ? SvgPicture.asset(icon!)
+                        : SizedBox
+                            .shrink(), // Or use a placeholder icon if needed
+                    UIHelper.horizontalSpace(10.w),
+                    Text(
+                      status,
+                      style:
+                          TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
+                        fontSize: 12.sp,
+                        color: statusColor,
+                      ),
+                    ),
+                  ],
+                )
               ],
             ),
           ],

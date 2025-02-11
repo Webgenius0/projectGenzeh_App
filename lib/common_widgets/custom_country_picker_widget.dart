@@ -92,7 +92,7 @@ class _CustomDateOrCountryPickWidgetState
               Expanded(
                 child: Text(
                   displayedHintText,
-                  style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                  style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                     color: AppColors.c4B586B, // Text color
                     fontSize: 14.sp,
                   ),

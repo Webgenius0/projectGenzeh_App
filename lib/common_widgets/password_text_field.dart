@@ -40,7 +40,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
         hintText: widget.hintText,
-        hintStyle: TextFontStyle.textStyle16c4D4D4DOpenSansW400.copyWith(
+        hintStyle: TextFontStyle.textStyle16c4D4D4DUrbanistW400.copyWith(
             color: widget.textColor,
             fontSize: 14.sp,
             fontWeight: FontWeight.w500),

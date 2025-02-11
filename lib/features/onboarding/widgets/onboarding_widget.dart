@@ -184,7 +184,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                                   child: Text(
                                     'Continue',
                                     style: TextFontStyle
-                                        .textStyle14c252C2EOpenSansW400
+                                        .textStyle14c252C2EUrbanistW400
                                         .copyWith(
                                       fontSize: 12.sp,
                                       color: AppColors.cFFFFFF,

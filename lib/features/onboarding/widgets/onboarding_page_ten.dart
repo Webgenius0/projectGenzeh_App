@@ -82,7 +82,7 @@ class _OnboardingPageTenState extends State<OnboardingPageTen> {
             Text(
               widget.description,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle16c4D4D4DOpenSansW400.copyWith(
+              style: TextFontStyle.textStyle16c4D4D4DUrbanistW400.copyWith(
                 color: AppColors.c252C2E,
               ),
             ),
@@ -163,7 +163,7 @@ class CustomButton extends StatelessWidget {
               if (loginIcon != null) UIHelper.horizontalSpace(12.w),
               Text(
                 text,
-                style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
               ),

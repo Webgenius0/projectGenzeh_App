@@ -40,7 +40,7 @@ class PopUpMenuButton extends StatelessWidget {
                         // Text in the dialog
                         Text(
                           'Delete',
-                          style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                          style: TextFontStyle.textStyle14c252C2EUrbanistW400
                               .copyWith(
                             color: AppColors.c00B822,
                             fontSize: 24.sp,
@@ -51,7 +51,7 @@ class PopUpMenuButton extends StatelessWidget {
                         UIHelper.verticalSpace(16.h),
                         Text(
                           'are you sure you want to delete \nthis word list?',
-                          style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                          style: TextFontStyle.textStyle14c252C2EUrbanistW400
                               .copyWith(
                             color: AppColors.c00B822,
                             fontSize: 16.sp,

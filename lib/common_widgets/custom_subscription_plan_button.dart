@@ -34,7 +34,7 @@ class CustomSubscriptionButton extends StatelessWidget {
         children: [
           Text(
             leftText,
-            style: TextFontStyle.textStyle16c4D4D4DOpenSansW400.copyWith(
+            style: TextFontStyle.textStyle16c4D4D4DUrbanistW400.copyWith(
               color: leftTextColor,
               fontSize: 14.sp,
             ),
@@ -43,7 +43,7 @@ class CustomSubscriptionButton extends StatelessWidget {
             children: [
               Text(
                 rightText1,
-                style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: 24.sp,
                     letterSpacing: -0.48.sp,
@@ -51,7 +51,7 @@ class CustomSubscriptionButton extends StatelessWidget {
               ),
               Text(
                 rightText2,
-                style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: 10.sp,
                     color: rightTextColor2),

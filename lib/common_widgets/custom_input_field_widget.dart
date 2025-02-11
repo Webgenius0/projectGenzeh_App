@@ -48,7 +48,7 @@ class _CustomInputFieldWidgetState extends State<CustomInputFieldWidget> {
           keyboardType: widget.inputType,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            hintStyle: TextFontStyle.textStyle14c252C2EOpenSansW400
+            hintStyle: TextFontStyle.textStyle14c252C2EUrbanistW400
                 .copyWith(color: AppColors.c4B586B),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(

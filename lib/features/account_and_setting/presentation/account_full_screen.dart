@@ -52,26 +52,23 @@ class _AccountFullScreenState extends State<AccountFullScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.cF4F5F6,
-        // appBar: AppBar(
-        //   backgroundColor: AppColors.cF4F5F6,
-        //   leading: IconButton(
-        //     onPressed: () {
-        //       // Get.back();
-        //     },
-        //     icon: SvgPicture.asset(
-        //       Assets.icons.appLogo,
-        //       width: 58.w,
-        //       height: 58.h,
-        //       fit: BoxFit.contain,
-        //     ),
-        //   ),
-        //   centerTitle: true,
-        //   title: Text('Account',
-        //       style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
-        //           fontSize: 20.sp,
-        //           letterSpacing: -0.4,
-        //           color: AppColors.c2B2B2B)),
-        // ),
+        appBar: AppBar(
+          backgroundColor: AppColors.cF4F5F6,
+          leading: IconButton(
+            onPressed: () {
+              // Get.back();
+            },
+            icon: SvgPicture.asset(
+              Assets.icons.logos,
+            ),
+          ),
+          centerTitle: true,
+          title: Text('Account',
+              style: TextFontStyle.textStyle24c222222UrbanistW600.copyWith(
+                  fontSize: 20.sp,
+                  letterSpacing: -0.4,
+                  color: AppColors.c2B2B2B)),
+        ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
           child: Column(

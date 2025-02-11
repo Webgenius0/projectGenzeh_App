@@ -68,7 +68,7 @@ class _NotificationEmptyScreenState extends State<NotificationEmptyScreen> {
               UIHelper.verticalSpace(12.h),
               Text(
                 'You dont have any notification at this time',
-                style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                style: TextFontStyle.textStyle14c252C2EUrbanistW400
                     .copyWith(color: AppColors.c000000, fontSize: 14.sp),
               ),
             ],

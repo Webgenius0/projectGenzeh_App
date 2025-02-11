@@ -46,7 +46,7 @@ class CustomProfileItemScreen extends StatelessWidget {
                   ? Text(
                       text,
                       style:
-                          TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                          TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                         color: AppColors.c0A3004,
                         fontSize: 16.sp,
                         letterSpacing: 0.15.sp,
@@ -55,7 +55,7 @@ class CustomProfileItemScreen extends StatelessWidget {
                   : Text(
                       text,
                       style:
-                          TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                          TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                         color: AppColors.c0A3004,
                         fontSize: 16.sp,
                         letterSpacing: 0.15.sp,

@@ -38,8 +38,14 @@ class _OnboardingPageTwoState extends State<OnboardingPageTwo> {
             Text(
               widget.title,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle24c222222QuandoW400
+
+              // client preffered font
+              style: TextFontStyle.textStyle24c222222UrbanistW400
                   .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
+
+              // old fonts
+              // style: TextFontStyle.textStyle24c222222QuandoW400
+              //     .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
             ),
             UIHelper.verticalSpace(42.h),
             Column(
@@ -95,12 +101,12 @@ class CustomButton extends StatelessWidget {
         child: Center(
             child: Text(text,
                 style: isSelected
-                    ? TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                    ? TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                         fontWeight: FontWeight.w600,
                         color: AppColors.cFFFFFF,
                         fontSize: 12.sp,
                       )
-                    : TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                    : TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                         fontWeight: FontWeight.w600,
                         color: AppColors.c3689FD,
                         fontSize: 12.sp,

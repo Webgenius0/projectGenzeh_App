@@ -24,7 +24,7 @@ class CustomEditProfileScreen extends StatelessWidget {
       children: [
         Text(
           labelText,
-          style: TextFontStyle.textStyle14c252C2EOpenSansW400
+          style: TextFontStyle.textStyle14c252C2EUrbanistW400
               .copyWith(color: AppColors.c0A3004),
         ),
         UIHelper.verticalSpace(14.h),

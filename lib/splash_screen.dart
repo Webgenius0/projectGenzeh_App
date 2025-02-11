@@ -29,13 +29,13 @@ class SplashScreen extends StatelessWidget {
                 children: [
                   Text(
                     "BYE,\nMICROPLASTICS\nAI",
-                    style: TextFontStyle.textStyle24c222222QuandoW400
+                    style: TextFontStyle.textStyle24c222222urbanistW400
                         .copyWith(letterSpacing: -0.48.sp),
                   ),
                   UIHelper.verticalSpace(13.h),
                   Text(
                     "Unmask Hidden Microplastics in Your\nEveryday Products. Empower Your Choices.\nProtect Your Health and The Environment.",
-                    style: TextFontStyle.textStyle16c4D4D4DOpenSansW400,
+                    style: TextFontStyle.textStyle16c4D4D4DUrbanistW400,
                   )
                 ],
               ),

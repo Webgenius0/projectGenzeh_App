@@ -22,7 +22,7 @@ Widget customSubscriptionText({required String text}) {
           )),
       UIHelper.horizontalSpace(16.w),
       Text(text,
-          style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+          style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
               color: AppColors.c222222,
               fontWeight: FontWeight.w600,
               fontSize: 13.sp)),

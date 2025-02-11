@@ -29,7 +29,7 @@ class _SubscriptionPlanScreenState extends State<SubscriptionPlanScreen> {
             UIHelper.verticalSpace(16.h),
             Text(
               'Subscription plans',
-              style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+              style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                   color: AppColors.c2B2B2B,
                   fontSize: 20.sp,
                   letterSpacing: -0.4.sp,

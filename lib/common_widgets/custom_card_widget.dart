@@ -55,7 +55,7 @@ class CustomCardWidget extends StatelessWidget {
             UIHelper.horizontalSpace(16.h),
             Text(
               text,
-              style: TextFontStyle.textStyle16c4D4D4DOpenSansW400.copyWith(
+              style: TextFontStyle.textStyle16c4D4D4DUrbanistW400.copyWith(
                   color: textColor,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500),

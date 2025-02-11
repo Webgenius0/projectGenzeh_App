@@ -40,14 +40,22 @@ class _OnboardingPageOneState extends State<OnboardingPageOne> {
             Text(
               widget.title,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle24c222222QuandoW400
+
+              // client preffered font
+
+              style: TextFontStyle.textStyle24c222222UrbanistW400
                   .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
+
+              // old fonts
+
+              // style: TextFontStyle.textStyle24c222222QuandoW400
+              //     .copyWith(letterSpacing: -0.48.sp, color: AppColors.c000000),
             ),
             UIHelper.verticalSpace(16.h),
             Text(
               widget.description ?? '',
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle14c252C2EOpenSansW400
+              style: TextFontStyle.textStyle14c252C2ERobotoW400
                   .copyWith(color: AppColors.c252C2E),
             ),
             UIHelper.verticalSpace(24.h),
@@ -104,12 +112,12 @@ class CustomButton extends StatelessWidget {
         child: Center(
           child: Text(text,
               style: isSelected
-                  ? TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                  ? TextFontStyle.textStyle14c252C2ERobotoW400.copyWith(
                       fontWeight: FontWeight.w600,
                       color: AppColors.cFFFFFF,
                       fontSize: 12.sp,
                     )
-                  : TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                  : TextFontStyle.textStyle14c252C2ERobotoW400.copyWith(
                       fontWeight: FontWeight.w600,
                       color: AppColors.c3689FD,
                       fontSize: 12.sp,

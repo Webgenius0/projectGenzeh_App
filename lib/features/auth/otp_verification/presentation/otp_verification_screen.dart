@@ -126,7 +126,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('Didn\'t receive email?',
-                          style: TextFontStyle.textStyle24c222222QuandoW400
+                          style: TextFontStyle.textStyle24c222222urbanistW400
                               .copyWith(
                                   fontSize: 16.sp, color: AppColors.c222222)),
                       UIHelper.horizontalSpace(10.w),
@@ -152,7 +152,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       },
                       child: Text(
                         'Confirm',
-                        style: TextFontStyle.textStyle14c252C2EOpenSansW400
+                        style: TextFontStyle.textStyle14c252C2EUrbanistW400
                             .copyWith(
                           fontSize: 12.sp,
                           color: AppColors.cFFFFFF,
@@ -277,7 +277,7 @@ class CustomButton extends StatelessWidget {
               if (loginIcon != null) UIHelper.horizontalSpace(12.w),
               Text(
                 text,
-                style: TextFontStyle.textStyle14c252C2EOpenSansW400.copyWith(
+                style: TextFontStyle.textStyle14c252C2EUrbanistW400.copyWith(
                   fontWeight: FontWeight.w600,
                   color: textColor ?? AppColors.c222222,
                 ),

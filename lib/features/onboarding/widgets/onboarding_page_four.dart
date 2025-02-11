@@ -32,14 +32,14 @@ class _OnboardingPageFourState extends State<OnboardingPageFour> {
             Text(
               widget.title,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle24c222222QuandoW400
+              style: TextFontStyle.textStyle24c222222urbanistW400
                   .copyWith(letterSpacing: -0.48.sp, color: AppColors.c222222),
             ),
             UIHelper.verticalSpace(13.h),
             Text(
               widget.description!,
               textAlign: TextAlign.center,
-              style: TextFontStyle.textStyle14c252C2EOpenSansW400
+              style: TextFontStyle.textStyle14c252C2EUrbanistW400
                   .copyWith(color: AppColors.c252C2E, fontSize: 16.sp),
             ),
             UIHelper.verticalSpace(30.h),

@@ -23,7 +23,7 @@ class ScanningReportScreen extends StatelessWidget {
           style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
               fontSize: 20.sp,
               letterSpacing: -0.4.sp,
-              color: AppColors.c00340D),
+              color: AppColors.cffffff),
         ),
         centerTitle: true,
         leading: IconButton(
@@ -58,14 +58,6 @@ class ScanningReportScreen extends StatelessWidget {
                   color: AppColors.cFFFFFF,
                 )),
           )
-          // Padding(
-          //   padding: EdgeInsets.only(right: 24.w),
-          //   child: SvgPicture.asset(
-          //     Assets.icons.editProfile,
-          //     height: 24.h,
-          //     width: 24.w,
-          //   ),
-          // )
         ],
       ),
       body: SingleChildScrollView(
@@ -74,7 +66,7 @@ class ScanningReportScreen extends StatelessWidget {
             // Header section
             Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 20.h),
+              padding: EdgeInsets.symmetric(vertical: 25.h),
               decoration: BoxDecoration(
                   color: AppColors.c3689FD,
                   borderRadius: BorderRadius.only(
@@ -82,14 +74,6 @@ class ScanningReportScreen extends StatelessWidget {
                       bottomRight: Radius.circular(32.r))),
               child: Column(
                 children: [
-                  Text(
-                    'Microplastic Found',
-                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
-                        fontSize: 18.sp,
-                        letterSpacing: -0.36.sp,
-                        color: AppColors.cFFFFFF),
-                  ),
-                  UIHelper.verticalSpace(12.h),
                   CircularPercentIndicator(
                     radius: 70.0,
                     lineWidth: 10.0,
@@ -113,14 +97,22 @@ class ScanningReportScreen extends StatelessWidget {
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w400,
                                   letterSpacing: -0.64.sp,
-                                  color: AppColors.c034057),
+                                  color: AppColors.cffffff),
                         ),
                       ],
                     ),
-                    progressColor: Colors.yellow,
-                    backgroundColor: Colors.white,
+                    progressColor: AppColors.cC4ECFC,
+                    backgroundColor: AppColors.c2A2A2A1A.withOpacity(.4),
                   ),
-                  SizedBox(height: 10),
+                  UIHelper.verticalSpace(12.h),
+                  Text(
+                    'Microplastic Found',
+                    style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
+                        fontSize: 18.sp,
+                        letterSpacing: -0.36.sp,
+                        color: AppColors.cFFFFFF),
+                  ),
+                  UIHelper.verticalSpace(15.h),
                   Container(
                     height: 37.h,
                     width: 117.w,
@@ -132,7 +124,7 @@ class ScanningReportScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(33.r),
                     ),
                     child: Text(
-                      "High Rish",
+                      "High Risk",
                       style: TextFontStyle.textStylec212121OpenSansW600
                           .copyWith(
                               fontWeight: FontWeight.w400,
@@ -154,6 +146,7 @@ class ScanningReportScreen extends StatelessWidget {
                     style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
+                        height: 1.5,
                         color: AppColors.c000000),
                   ),
                   UIHelper.verticalSpace(24.h),
@@ -219,6 +212,7 @@ class _ExpandableTileState extends State<ExpandableTile> {
                 style: TextFontStyle.textStylec212121OpenSansW600.copyWith(
                     color: AppColors.c180E19,
                     fontSize: 16.sp,
+                    height: 1.5,
                     letterSpacing: -0.32.sp),
               ),
               trailing: SvgPicture.asset(

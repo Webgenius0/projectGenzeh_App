@@ -130,7 +130,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
                               Text(
                                 notification["date"] ?? '',
                                 style: TextFontStyle
-                                    .textStyle14c252C2EOpenSansW400
+                                    .textStyle14c252C2EUrbanistW400
                                     .copyWith(color: AppColors.c717171),
                               ),
                               UIHelper.horizontalSpace(15.w),
@@ -194,7 +194,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
                               Text(
                                 notification["description"],
                                 style: TextFontStyle
-                                    .textStyle14c252C2EOpenSansW400
+                                    .textStyle14c252C2EUrbanistW400
                                     .copyWith(
                                   color: AppColors.c2B2B2B,
                                 ),
@@ -203,7 +203,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
                               Text(
                                 notification["time"],
                                 style: TextFontStyle
-                                    .textStyle14c252C2EOpenSansW400
+                                    .textStyle14c252C2EUrbanistW400
                                     .copyWith(
                                   color: AppColors.c717171,
                                   fontSize: 12.sp,
